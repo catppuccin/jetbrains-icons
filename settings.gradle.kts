@@ -1,1 +1,1 @@
-rootProject.name = "Catppuccin Theme"
+rootProject.name = "Catppuccin Icons"
