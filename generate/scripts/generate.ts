@@ -1,5 +1,7 @@
 import {mkdirSync, readdirSync, readFileSync, writeFileSync} from 'fs';
 import {extensions, files, folders} from "../vscode-icons/src/associations";
+import {catppuccinizeSvg} from "../vscode-icons/scripts/catppuccinize";
+import {optimizeSvg} from "../vscode-icons/scripts/optimize";
 
 function generateIcons() {
   mkdirSync('src/main/resources/icons', {recursive: true});
@@ -8,9 +10,11 @@ function generateIcons() {
       return
     }
 
-    let data = readFileSync(`generate/vscode-icons/src/icons/${file}`, {encoding: 'utf-8'});
-    data = data.replace("width=\"100.0px\"", "width=\"16.0px\"");
-    data = data.replace("height=\"100.0px\"", "height=\"16.0px\"");
+    let data = readFileSync(`generate/vscode-icons/src/icons/${file}`, {encoding: 'utf-8'})
+    data = data.replace("width=\"100.0px\"", "width=\"16.0px\"")
+    data = data.replace("height=\"100.0px\"", "height=\"16.0px\"")
+    data = catppuccinizeSvg(data)
+    data = optimizeSvg(data)
     writeFileSync(`src/main/resources/icons/${file}`, data, {encoding: 'utf-8'})
   });
 }
@@ -64,5 +68,5 @@ function generateIconsKt() {
   writeFileSync(`src/main/kotlin/com/github/catppuccin/icons/Icons.kt`, data, {encoding: 'utf-8'})
 }
 
-generateIcons();
+generateIcons()
 generateIconsKt()

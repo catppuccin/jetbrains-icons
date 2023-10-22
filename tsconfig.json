@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "generate/vscode-icons/src/*"
+      ]
+    },
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
+    "typeRoots": [
+      "./generate/vscode-icons/src/types"
+    ]
+  }
+}
