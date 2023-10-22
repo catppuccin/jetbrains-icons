@@ -9,8 +9,6 @@ class IconProvider : IconProvider() {
     override fun getIcon(element: PsiElement, flags: Int): Icon? {
         val file = PsiUtilCore.getVirtualFile(element)
 
-        println(file?.fileType?.name)
-
         // Folders
         if (file?.isDirectory == true) {
             return Icons.FOLDER_TO_ICONS[file.name] ?: Icons.FOLDER
