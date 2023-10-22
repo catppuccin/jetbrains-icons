@@ -18,5 +18,8 @@
       instance="com.github.catppuccin.icons.settings.PluginSettings"
       id="PluginSettings"
     />
+    <applicationService
+      serviceImplementation="com.github.catppuccin.icons.settings.PluginSettingsState"
+    />
   </extensions>
 </idea-plugin>

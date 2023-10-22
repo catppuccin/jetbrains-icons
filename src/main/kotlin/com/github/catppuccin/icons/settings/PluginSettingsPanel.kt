@@ -1,11 +1,30 @@
 package com.github.catppuccin.icons.settings
 
 import com.intellij.openapi.ui.ComboBox
+import com.intellij.ui.Hint
+import com.intellij.util.ui.ColorPalette
+import com.intellij.util.ui.JBUI
 import java.awt.Component
 import java.awt.Dimension
 import javax.swing.*
 
-class PluginSettingsPanel() : JPanel() {
+enum class Variant(val id: String, val label: String) {
+    LATTE("latte", "Catppuccin Latte"),
+    FRAPPE("frappe", "Catppuccin Frappé"),
+    MACCHIATO("macchiato", "Catppuccin Macchiato"),
+    MOCHA("mocha", "Catppuccin Mocha");
+
+    override fun toString(): String {
+        return label
+    }
+}
+
+class PluginSettingsPanel(private val currentVariant: String) : JPanel() {
+    private val dropdown = ComboBox<Variant>()
+
+    val variant: String
+        get() = (dropdown.selectedItem as Variant).id
+
     init {
         val panel = JPanel()
         panel.layout = BoxLayout(panel, BoxLayout.Y_AXIS)
@@ -15,6 +34,8 @@ class PluginSettingsPanel() : JPanel() {
         drawTitle(panel)
         panel.add(Box.createRigidArea(Dimension(0, 20)))
         drawDropdown(panel)
+        panel.add(Box.createRigidArea(Dimension(0, 20)))
+        drawHint(panel)
 
         add(panel)
     }
@@ -43,17 +64,21 @@ class PluginSettingsPanel() : JPanel() {
         label.alignmentY = Component.CENTER_ALIGNMENT
         horizontalPanel.add(label)
 
-        horizontalPanel.add(Box.createRigidArea(Dimension(5, 0)))
+        for (variant in Variant.values()) {
+            dropdown.addItem(variant)
+        }
 
-        val dropdown = ComboBox<String>()
-        dropdown.addItem("Catppuccin Latte")
-        dropdown.addItem("Catppuccin Frappé")
-        dropdown.addItem("Catppuccin Macchiato")
-        dropdown.addItem("Catppuccin Mocha")
-
+        dropdown.selectedItem = Variant.values().find { it.id == currentVariant }
         dropdown.alignmentY = Component.CENTER_ALIGNMENT
         horizontalPanel.add(dropdown)
 
         panel.add(horizontalPanel)
+    }
+
+    private fun drawHint(panel: JPanel) {
+        val label = JLabel("Restart IDE to apply changes")
+        label.alignmentX = Component.CENTER_ALIGNMENT
+        label.font = label.font.deriveFont(11.0f)
+        panel.add(label)
     }
 }

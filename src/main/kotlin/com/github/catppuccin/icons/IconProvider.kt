@@ -1,21 +1,24 @@
 package com.github.catppuccin.icons
 
+import com.github.catppuccin.icons.settings.PluginSettingsState
 import com.intellij.ide.IconProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
 import javax.swing.Icon
 
 class IconProvider : IconProvider() {
-    override fun getIcon(element: PsiElement, flags: Int): Icon? {
+    private var icons = Icons(PluginSettingsState.instance.variant)
+
+    override fun getIcon(element: PsiElement, flags: Int): Icon {
         val file = PsiUtilCore.getVirtualFile(element)
 
         // Folders
         if (file?.isDirectory == true) {
-            return Icons.FOLDER_TO_ICONS[file.name.lowercase()] ?: Icons.FOLDER
+            return icons.FOLDER_TO_ICONS[file.name.lowercase()] ?: icons.folder
         }
 
         // Files
-        val icon = Icons.FILE_TO_ICONS[file?.name?.lowercase()]
+        val icon = icons.FILE_TO_ICONS[file?.name?.lowercase()]
         if (icon != null) {
             return icon
         }
@@ -26,7 +29,7 @@ class IconProvider : IconProvider() {
         if (parts != null) {
             for (i in parts.indices) {
                 val path = parts.subList(i, parts.size).joinToString(".")
-                val icon = Icons.EXT_TO_ICONS[path]
+                val icon = icons.EXT_TO_ICONS[path]
                 if (icon != null) {
                     return icon
                 }
@@ -34,9 +37,9 @@ class IconProvider : IconProvider() {
         }
 
         if (file?.fileType?.isBinary == true) {
-            return Icons.BINARY
+            return icons.binary
         }
 
-        return Icons.FILE
+        return icons.file
     }
 }
