@@ -35,7 +35,7 @@ function generateIconsKt() {
   data += `\n    val EXT_TO_ICONS = mapOf(\n`
   Object.entries(extensions).forEach(([key, value]: [string, string[]]) => {
     value.forEach((ext) => {
-      data += `        "${ext}" to Icons.${key.toUpperCase()},\n`
+      data += `        "${ext}" to ${key.toUpperCase()},\n`
     })
   })
   data += `)\n`
