@@ -6,8 +6,17 @@
   <depends>com.intellij.modules.platform</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-    <iconProvider implementation="com.github.catppuccin.icons.IconProvider"
-                  order="first"
-                  id="IconProvider"/>
+    <iconProvider
+      implementation="com.github.catppuccin.icons.IconProvider"
+      order="first"
+      id="IconProvider"
+    />
+    <applicationConfigurable
+      parentId="appearance"
+      groupId="com.github.catppuccin.icons"
+      displayName="Catppuccin Icons"
+      instance="com.github.catppuccin.icons.settings.PluginSettings"
+      id="PluginSettings"
+    />
   </extensions>
 </idea-plugin>
