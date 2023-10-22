@@ -33,6 +33,10 @@ class IconProvider : IconProvider() {
             }
         }
 
-        return null
+        if (file?.fileType?.isBinary == true) {
+            return Icons.BINARY
+        }
+
+        return Icons.FILE
     }
 }
