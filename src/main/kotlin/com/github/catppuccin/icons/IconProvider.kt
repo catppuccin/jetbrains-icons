@@ -9,6 +9,20 @@ class IconProvider : IconProvider() {
     override fun getIcon(element: PsiElement, flags: Int): Icon? {
         val file = PsiUtilCore.getVirtualFile(element)
 
+        println(file?.fileType?.name)
+
+        // Folders
+        if (file?.isDirectory == true) {
+            return Icons.FOLDER_TO_ICONS[file.name] ?: Icons.FOLDER
+        }
+
+        // Files
+        val icon = Icons.FILE_TO_ICONS[file?.name]
+        if (icon != null) {
+            return icon
+        }
+
+        // Extensions
         // if the file is abc.test.tsx, try abc.test.tsx, then test.tsx, then tsx
         val parts = file?.name?.split(".")
         if (parts != null) {

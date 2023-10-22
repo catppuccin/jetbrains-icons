@@ -1,5 +1,5 @@
 import {mkdirSync, readdirSync, readFileSync, writeFileSync} from 'fs';
-import {extensions} from "../vscode-icons/src/associations";
+import {extensions, files, folders} from "../vscode-icons/src/associations";
 
 function generateIcons() {
   mkdirSync('src/main/resources/icons', {recursive: true});
@@ -32,13 +32,32 @@ function generateIconsKt() {
     data += `\n`
   })
 
+  // Folders to Icons
+  data += `\n    val FOLDER_TO_ICONS = mapOf(\n`
+  Object.entries(folders).forEach(([key, value]: [string, string[]]) => {
+    value.forEach((folder) => {
+      data += `        "${folder}" to ${key.toUpperCase()},\n`
+    })
+  })
+  data += `    )\n`
+
+  // File name to Icons
+  data += `\n    val FILE_TO_ICONS = mapOf(\n`
+  Object.entries(files).forEach(([key, value]: [string, string[]]) => {
+    value.forEach((filename) => {
+      data += `        "${filename}" to ${key.toUpperCase()},\n`
+    })
+  })
+  data += `    )\n`
+
+  // Extensions to Icons
   data += `\n    val EXT_TO_ICONS = mapOf(\n`
   Object.entries(extensions).forEach(([key, value]: [string, string[]]) => {
     value.forEach((ext) => {
       data += `        "${ext}" to ${key.toUpperCase()},\n`
     })
   })
-  data += `)\n`
+  data += `    )\n`
 
   data += `\n}\n`
 
