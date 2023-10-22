@@ -43,4 +43,7 @@ bin/
 
 ### Node ###
 node_modules
+
+### Auto-generated ###
 src/main/resources/icons
+src/main/kotlin/com/github/catppuccin/icons/Icons.kt

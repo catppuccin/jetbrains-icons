@@ -14,4 +14,26 @@ function generateIcons() {
   });
 }
 
+function generateIconsKt() {
+  let data = `package com.github.catppuccin.icons`
+  data += `\n\n`
+  data += `import com.intellij.openapi.util.IconLoader`
+  data += `\n\n`
+  data += `object Icons {`
+
+  readdirSync('src/main/resources/icons').forEach((file) => {
+    if (!file.endsWith('.svg')) {
+      return
+    }
+
+    data += `\n    @JvmField`
+    data += `\n    val ${file.replace('.svg', '').toUpperCase()} = IconLoader.getIcon("/icons/${file}", javaClass)`
+  })
+
+  data += `\n}\n`
+
+  writeFileSync(`src/main/kotlin/com/github/catppuccin/icons/Icons.kt`, data, {encoding: 'utf-8'})
+}
+
 generateIcons();
+generateIconsKt()
