@@ -1,4 +1,5 @@
 import {mkdirSync, readdirSync, readFileSync, writeFileSync} from 'fs';
+import {extensions} from "../vscode-icons/src/associations";
 
 function generateIcons() {
   mkdirSync('src/main/resources/icons', {recursive: true});
@@ -28,7 +29,16 @@ function generateIconsKt() {
 
     data += `\n    @JvmField`
     data += `\n    val ${file.replace('.svg', '').toUpperCase()} = IconLoader.getIcon("/icons/${file}", javaClass)`
+    data += `\n`
   })
+
+  data += `\n    val EXT_TO_ICONS = mapOf(\n`
+  Object.entries(extensions).forEach(([key, value]: [string, string[]]) => {
+    value.forEach((ext) => {
+      data += `        "${ext}" to Icons.${key.toUpperCase()},\n`
+    })
+  })
+  data += `)\n`
 
   data += `\n}\n`
 

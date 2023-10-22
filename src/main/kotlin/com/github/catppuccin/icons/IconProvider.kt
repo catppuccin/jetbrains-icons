@@ -8,11 +8,6 @@ import javax.swing.Icon
 class IconProvider : IconProvider() {
     override fun getIcon(element: PsiElement, flags: Int): Icon? {
         val file = PsiUtilCore.getVirtualFile(element)
-
-        // switch cases
-        return when {
-            file?.name?.endsWith(".md") == true -> Icons.MARKDOWN
-            else -> null
-        }
+        return Icons.EXT_TO_ICONS[file?.extension]
     }
 }
