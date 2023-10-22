@@ -11,11 +11,11 @@ class IconProvider : IconProvider() {
 
         // Folders
         if (file?.isDirectory == true) {
-            return Icons.FOLDER_TO_ICONS[file.name] ?: Icons.FOLDER
+            return Icons.FOLDER_TO_ICONS[file.name.lowercase()] ?: Icons.FOLDER
         }
 
         // Files
-        val icon = Icons.FILE_TO_ICONS[file?.name]
+        val icon = Icons.FILE_TO_ICONS[file?.name?.lowercase()]
         if (icon != null) {
             return icon
         }
