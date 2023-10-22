@@ -11,7 +11,7 @@ class IconProvider : IconProvider() {
 
         // switch cases
         return when {
-            file?.name?.startsWith(".example") == true -> Icons.EXAMPLE
+            file?.name?.endsWith(".md") == true -> Icons.MARKDOWN
             else -> null
         }
     }

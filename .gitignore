@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Node ###
+node_modules
+src/main/resources/icons

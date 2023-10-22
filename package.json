@@ -1,0 +1,18 @@
+{
+  "name": "catppuccin-icons",
+  "version": "0.0.0",
+  "description": "🦌 Soothing pastel icons for Catppuccin",
+  "repository": "https://github.com/catppuccin/icons",
+  "author": "Quentin Guidée <quentin.guidee@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsx generate/scripts/generate.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.7",
+    "scale-that-svg": "^1.0.6",
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2"
+  }
+}
