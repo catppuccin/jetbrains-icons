@@ -1,4 +1,4 @@
-package com.github.catppuccin.icons.settings
+package com.github.catppuccin.jetbrains_icons.settings
 
 import com.intellij.openapi.ui.ComboBox
 import java.awt.Component

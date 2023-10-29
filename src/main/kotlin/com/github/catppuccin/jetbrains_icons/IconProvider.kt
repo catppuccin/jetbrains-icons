@@ -1,6 +1,6 @@
-package com.github.catppuccin.icons
+package com.github.catppuccin.jetbrains_icons
 
-import com.github.catppuccin.icons.settings.PluginSettingsState
+import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.intellij.ide.IconProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore

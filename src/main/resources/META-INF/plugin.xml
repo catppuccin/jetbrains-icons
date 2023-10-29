@@ -1,5 +1,5 @@
 <idea-plugin>
-  <id>com.github.catppuccin.icons</id>
+  <id>com.github.catppuccin.jetbrains_icons</id>
   <name>Catppuccin Icons</name>
   <vendor url="https://github.com/catppuccin">Catppuccin</vendor>
   <description><![CDATA[
@@ -34,19 +34,19 @@ For further help, see also:
   <depends>com.intellij.modules.platform</depends>
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider
-      implementation="com.github.catppuccin.icons.IconProvider"
+      implementation="com.github.catppuccin.jetbrains_icons.IconProvider"
       order="first"
       id="IconProvider"
     />
     <applicationConfigurable
       parentId="appearance"
-      groupId="com.github.catppuccin.icons"
+      groupId="com.github.catppuccin.jetbrains_icons"
       displayName="Catppuccin Icons"
-      instance="com.github.catppuccin.icons.settings.PluginSettings"
+      instance="com.github.catppuccin.jetbrains_icons.settings.PluginSettings"
       id="PluginSettings"
     />
     <applicationService
-      serviceImplementation="com.github.catppuccin.icons.settings.PluginSettingsState"
+      serviceImplementation="com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState"
     />
   </extensions>
 </idea-plugin>

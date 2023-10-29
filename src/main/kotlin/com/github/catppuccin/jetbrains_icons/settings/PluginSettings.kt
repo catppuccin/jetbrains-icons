@@ -1,4 +1,4 @@
-package com.github.catppuccin.icons.settings
+package com.github.catppuccin.jetbrains_icons.settings
 
 import com.intellij.ide.GeneralSettings
 import com.intellij.ide.IdeBundle
