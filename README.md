@@ -12,26 +12,26 @@
 </p>
 
 <p align="center">
-	<img src="generate/vscode-icons/assets/preview.webp"/>
+	<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/preview.webp"/>
 </p>
 
 ## Previews
 
 <details>
 <summary>🌻 Latte</summary>
-<img src="generate/vscode-icons/assets/previews/latte.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/latte.png"/>
 </details>
 <details>
 <summary>🪴 Frappé</summary>
-<img src="generate/vscode-icons/assets/previews/frappe.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/frappe.png"/>
 </details>
 <details>
 <summary>🌺 Macchiato</summary>
-<img src="generate/vscode-icons/assets/previews/macchiato.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/macchiato.png"/>
 </details>
 <details>
 <summary>🌿 Mocha</summary>
-<img src="generate/vscode-icons/assets/previews/mocha.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/mocha.png"/>
 </details>
 
 ## Installation
