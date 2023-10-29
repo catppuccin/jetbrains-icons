@@ -22,11 +22,11 @@ function generateIcons(variant: CattppucinVariant) {
 }
 
 function generateIconsKt() {
-  let data = `package com.github.catppuccin.icons`
-  data += `\n\n`
-  data += `import com.intellij.openapi.util.IconLoader`
-  data += `\n\n`
-  data += `class Icons(private val variant: String) {`
+  let data = `package com.github.catppuccin.jetbrains_icons
+
+import com.intellij.openapi.util.IconLoader
+
+class Icons(private val variant: String) {`
 
   readdirSync('generate/vscode-icons/src/icons').forEach((file) => {
     if (!file.endsWith('.svg')) {
@@ -67,7 +67,7 @@ function generateIconsKt() {
 
   data += `\n}\n`
 
-  writeFileSync(`src/main/kotlin/com/github/catppuccin/icons/Icons.kt`, data, {encoding: 'utf-8'})
+  writeFileSync(`src/main/kotlin/com/github/catppuccin/jetbrains_icons/Icons.kt`, data, {encoding: 'utf-8'})
 }
 
 // Modified version of injectPalette from github.com/catppuccin/vscode-icons/scripts/catppuccinize.ts:
