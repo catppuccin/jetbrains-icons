@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+🚀 Initial Release 🚀
+
 ### Added
 
 ### Changed
