@@ -77,11 +77,6 @@ Settings</kbd> → <kbd>Plugins</kbd> → ⚙️ → <kbd>Install plugin from di
     ./gradlew buildPlugin
     ```
 
-## 🙋 FAQ
-
-- Q: **_"Where can I install?"_**\
-  A: This theme is not ready yet!
-
 ## 💝 Thanks to
 
 - [Quentin](https://github.com/quentinguidee)
