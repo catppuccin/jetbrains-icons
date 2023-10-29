@@ -1,9 +1,6 @@
 package com.github.catppuccin.icons.settings
 
 import com.intellij.openapi.ui.ComboBox
-import com.intellij.ui.Hint
-import com.intellij.util.ui.ColorPalette
-import com.intellij.util.ui.JBUI
 import java.awt.Component
 import java.awt.Dimension
 import javax.swing.*
@@ -41,7 +38,7 @@ class PluginSettingsPanel(private val currentVariant: String) : JPanel() {
     }
 
     private fun drawLogo(panel: JPanel) {
-        val url = javaClass.getResource("/catppuccin.png")
+        val url = javaClass.getResource("/pluginIcon.png")
         var image = ImageIcon(url)
         image = ImageIcon(image.image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH))
 
