@@ -3,7 +3,8 @@ name: Build
 on:
   workflow_dispatch:
   push:
-    branches: [ "main", "ci/build-and-release" ]
+    branches:
+      - "main"
     paths:
       - 'src/**'
       - 'generate/**'
@@ -42,7 +43,7 @@ jobs:
           cache: yarn
 
       - name: Install Deps
-        run: yarn install --immutable
+        run: yarn install
 
       - name: Generate Icons
         run: yarn build
