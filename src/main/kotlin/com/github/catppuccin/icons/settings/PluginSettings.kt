@@ -2,9 +2,6 @@ package com.github.catppuccin.icons.settings
 
 import com.intellij.ide.GeneralSettings
 import com.intellij.ide.IdeBundle
-import com.intellij.notification.NotificationGroupManager
-import com.intellij.openapi.actionSystem.ActionManager
-import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ex.ApplicationEx
 import com.intellij.openapi.options.Configurable

@@ -2,9 +2,36 @@
   <id>com.github.catppuccin.icons</id>
   <name>Catppuccin Icons</name>
   <vendor url="https://github.com/catppuccin">Catppuccin</vendor>
+  <description><![CDATA[
+<h2>🦊 Soothing pastel icons for JetBrains IDEs</h2>
 
+<p>
+This is an <strong>icon pack</strong> designed to be used with the <a href="https://plugins.jetbrains.com/plugin/18682-catppuccin-theme" target="_blank">Catppuccin Theme</a></li> extension.
+</p>
+
+<h3>Usage</h3>
+
+<ol>
+  <li>Head to <strong>Settings</strong> → <strong>Appearance & Behavior</strong> → <strong>Catppuccin Icons</strong></li>
+  <li>Select a flavor for the icons to use.</li>
+  <li>Restart your IDE.</li>
+  <li>Enjoy your new icons!</li>
+</ol>
+
+<h3>Help</h3>
+
+For further help, see also:
+
+<ul>
+  <li><a href="https://github.com/catppuccin/jetbrains-icons" target="_blank">GitHub Repository</a></li>
+  <li><a href="https://github.com/catppuccin/jetbrains-icons/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc" target="_blank">Issue Tracker</a></li>
+</ul>
+
+<p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.png"/></p>
+<p align="center">Copyright &copy; 2023-present <a href="https://github.com/catppuccin" target="_blank">Catppuccin Org</a>
+<p align="center"><a href="https://github.com/catppuccin/jetbrains-icons/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.png?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8" border="0"/></a></p>
+]]></description>
   <depends>com.intellij.modules.platform</depends>
-
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider
       implementation="com.github.catppuccin.icons.IconProvider"

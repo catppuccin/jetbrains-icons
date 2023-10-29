@@ -11,10 +11,52 @@
 	<a href="https://github.com/catppuccin/jetbrains-icons/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/jetbrains-icons?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
-<!-- this section is optional -->
+## Installation
+
+### Plugin Marketplace
+
+1. Head to the [Plugin Marketplace](https://plugins.jetbrains.com/) (<kbd>Settings</kbd> → <kbd>Plugins</kbd> → <kbd>
+   Marketplace</kbd>)
+2. Search for **"Catppuccin Icons"**
+3. Install Plugin
+
+### Manual
+
+Download the [latest release](https://github.com/catppuccin/jetbrains-icons/releases/latest) and import it by heading
+to <kbd>
+Settings</kbd> → <kbd>Plugins</kbd> → ⚙️ → <kbd>Install plugin from disk...</kbd>
+
+## Usage
+
+1. Head to **Settings** → **Appearance & Behavior** → **Catppuccin Icons**
+2. Select a flavor for the icons to use.
+3. Restart your IDE.
+4. Enjoy your new icons!
+
+## Development
+
+1. Clone repository.
+
+    ```shell
+    git clone https://github.com/catppuccin/jetbrains-icons --recursive
+    cd jetbrains-icons
+    ```
+
+2. Generate icons from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons).
+
+    ```shell
+    yarn install && yarn build
+    ```
+
+3. `Build Plugin` via Intellij or terminal.
+
+    ```shell
+    ./gradlew buildPlugin
+    ```
+
 ## 🙋 FAQ
 
--	Q: **_"Where can I install?"_**\
+- Q: **_"Where can I install?"_**\
   A: This theme is not ready yet!
 
 ## 💝 Thanks to
