@@ -1,0 +1,63 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+    paths:
+      - 'src/**'
+      - 'generate/**'
+      - 'gradle.properties'
+      - 'package.json'
+      - '**.gradle.kts'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'generate/**'
+      - 'gradle.properties'
+      - 'package.json'
+      - '**.gradle.kts'
+
+jobs:
+  build:
+    name: Build Plugin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 17
+          cache: 'gradle'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: yarn
+
+      - name: Install Deps
+        run: yarn install
+
+      - name: Generate Icons
+        run: yarn build
+
+      - name: Build Plugin
+        run: ./gradlew buildPlugin
+
+      - name: Upload JAR(s)
+        uses: actions/upload-artifact@v3
+        with:
+          name: "Catppuccin Icons"
+          path: build/libs/*.jar
+
+      - name: Output Unreleased Changes
+        run: |
+          echo "# 🚧 Unreleased 🚧" >> $GITHUB_STEP_SUMMARY
+          echo "$(./gradlew getChangelog --unreleased --no-header --console=plain -q)" >> $GITHUB_STEP_SUMMARY
