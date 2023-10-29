@@ -35,8 +35,11 @@ jobs:
           node-version: 'lts/*'
           cache: yarn
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install Deps
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Generate Icons
         run: yarn build
