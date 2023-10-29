@@ -33,7 +33,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-          cache: yarn
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Yarn Cache
+        uses: actions/cache@v3
+        with:
+          path: .yarn/cache
+          key: yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: yarn-
 
       - name: Install Deps
         run: yarn install
