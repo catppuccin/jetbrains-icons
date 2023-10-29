@@ -45,8 +45,14 @@ bin/
 node_modules
 
 ### Yarn ###
-.yarn
+.yarn-error.log
 .yarnrc.yml
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 ### Auto-generated ###
 src/main/resources/icons
