@@ -46,7 +46,7 @@ jobs:
         run: corepack enable
 
       - name: Install Deps
-        run: yarn install --immutable
+        run: yarn install
 
       - name: Generate Icons
         run: yarn build
