@@ -11,6 +11,29 @@
 	<a href="https://github.com/catppuccin/jetbrains-icons/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/jetbrains-icons?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
+<p align="center">
+	<img src="generate/vscode-icons/assets/preview.webp"/>
+</p>
+
+## Previews
+
+<details>
+<summary>🌻 Latte</summary>
+<img src="generate/vscode-icons/assets/previews/latte.png"/>
+</details>
+<details>
+<summary>🪴 Frappé</summary>
+<img src="generate/vscode-icons/assets/previews/frappe.png"/>
+</details>
+<details>
+<summary>🌺 Macchiato</summary>
+<img src="generate/vscode-icons/assets/previews/macchiato.png"/>
+</details>
+<details>
+<summary>🌿 Mocha</summary>
+<img src="generate/vscode-icons/assets/previews/mocha.png"/>
+</details>
+
 ## Installation
 
 ### Plugin Marketplace
