@@ -1,0 +1,92 @@
+# Workflow Description:
+#   - Generates icons from catppuccin/vscode
+#   - Patches the `CHANGELOG.md` into the `.jar` for updated release notes
+#   - Builds the `.jar`
+#   - Publishes to the JetBrains Marketplace
+#   - Creates a draft release on GitHub for maintainers with the new `.jar` to manually review and release
+
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  build:
+    name: Publish Plugin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 17
+          cache: 'gradle'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: yarn
+
+      - name: Install Deps
+        run: yarn install
+
+      - name: Generate Icons
+        run: yarn build
+
+      - name: Export Properties
+        run: |
+          PROPERTIES="$(./gradlew properties --console=plain -q)"
+          echo "version=$(echo "$PROPERTIES" | grep "^version:" | cut -f2- -d ' ')" >> $GITHUB_ENV
+          echo "name=$(echo "$PROPERTIES" | grep "^pluginName:" | cut -f2- -d ' ')" >> $GITHUB_ENV
+
+      - name: Patch Changelog
+        run: ./gradlew patchChangelog
+
+      - name: Build Plugin
+        run: ./gradlew buildPlugin
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.name }}-${{ env.version }}.jar
+          path: build/libs/*.jar
+
+      # Notes on Script Hardening: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#understanding-the-risk-of-script-injections
+      - name: Output Release Notes
+        run: |
+          echo "# 🚀 Tagged Release 🚀" >> $GITHUB_STEP_SUMMARY
+          RELEASE_NOTES="$(./gradlew getChangelog --console=plain -q)"
+          DELIMITER="$(openssl rand -hex 8)"
+
+          echo "release_notes<<$DELIMITER" >> $GITHUB_ENV
+          echo "$RELEASE_NOTES" >> $GITHUB_ENV
+          echo "$DELIMITER" >> $GITHUB_ENV
+
+          echo "$RELEASE_NOTES" >> $GITHUB_STEP_SUMMARY
+
+      - name: Publish Plugin
+        env:
+          PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
+        run: ./gradlew publishPlugin
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: build/libs/*.jar
+          body: ${{ env.release_notes }}
+          draft: true
+
+      - name: Commit Release Notes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "CHANGELOG.md"
+          message: "docs: update changelog"
+          default_author: github_actions
