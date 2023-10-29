@@ -7,7 +7,7 @@ import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(
-    name = "com.github.catppuccin.icons.settings.PluginSettingsState",
+    name = "com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState",
     storages = [Storage("CatppuccinIcons.xml")]
 )
 class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
