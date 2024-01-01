@@ -93,3 +93,5 @@ jobs:
           add: "CHANGELOG.md"
           message: "docs: update changelog"
           default_author: github_actions
+          # See https://github.com/EndBug/add-and-commit/issues/389
+          push: "origin HEAD:main"
