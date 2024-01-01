@@ -29,14 +29,14 @@ jobs:
           java-version: 17
           cache: 'gradle'
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: yarn
-
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: Install Deps
         run: yarn install
