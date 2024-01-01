@@ -4,13 +4,20 @@
 
 ### Added
 
+- `Dhall` icon.
+- `Haml` icon.
+
 ### Changed
+
+- Rework `yarn` icons for v4.
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- Mapping for `vue` icon.
 
 ### Security
 
