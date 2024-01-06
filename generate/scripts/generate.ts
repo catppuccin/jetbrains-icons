@@ -4,6 +4,9 @@ import {catppuccinizeSvg} from "../vscode-icons/scripts/catppuccinize";
 import {optimizeSvg} from "../vscode-icons/scripts/optimize";
 import {CattppucinVariant, cssVarStyleTags, hexToVar, varToHex} from "@/palettes";
 
+const WIDTH_REGEX = new RegExp(/width="(100\.0px|100)"/g);
+const HEIGHT_REGEX = new RegExp(/height="(100\.0px|100)"/g);
+
 function generateIcons(variant: CattppucinVariant) {
   mkdirSync('src/main/resources/icons', {recursive: true});
   readdirSync('generate/vscode-icons/src/icons').forEach((file) => {
@@ -12,8 +15,8 @@ function generateIcons(variant: CattppucinVariant) {
     }
 
     let data = readFileSync(`generate/vscode-icons/src/icons/${file}`, {encoding: 'utf-8'})
-    data = data.replace("width=\"100.0px\"", "width=\"16.0px\"")
-    data = data.replace("height=\"100.0px\"", "height=\"16.0px\"")
+    data = data.replace(WIDTH_REGEX, "width=\"16.0px\"")
+    data = data.replace(HEIGHT_REGEX, "height=\"16.0px\"")
     data = catppuccinizeSvg(data)
     data = optimizeSvg(data)
     data = injectPalette(data, variant)
