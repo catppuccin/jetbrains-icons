@@ -12,6 +12,10 @@
 
 ### Fixed
 
+- `flake.lock` icon.
+- `yarn` icon.
+- `yarn.lock` icon.
+
 ### Security
 
 ## 1.1.0 - 2024-01-01
