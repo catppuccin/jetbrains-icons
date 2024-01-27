@@ -1,25 +1,14 @@
 import {mkdirSync, readdirSync, readFileSync, writeFileSync} from 'fs';
-import {extensions, files, folders} from "@/associations";
-import {catppuccinizeSvg} from "../vscode-icons/scripts/catppuccinize";
-import {optimizeSvg} from "../vscode-icons/scripts/optimize";
-import {CattppucinVariant, cssVarStyleTags, hexToVar, varToHex} from "@/palettes";
+import {fileIcons} from "@/defaults/fileIcons";
+import {folderIcons} from "@/defaults/folderIcons";
 
-const WIDTH_REGEX = new RegExp(/width="(100\.0px|100)"/g);
-const HEIGHT_REGEX = new RegExp(/height="(100\.0px|100)"/g);
-
-function generateIcons(variant: CattppucinVariant) {
+function generateIcons(variant: string) {
   mkdirSync('src/main/resources/icons', {recursive: true});
-  readdirSync('generate/vscode-icons/src/icons').forEach((file) => {
+  readdirSync(`generate/vscode-icons/icons/${variant}`).forEach((file) => {
     if (!file.endsWith('.svg')) {
       return
     }
-
-    let data = readFileSync(`generate/vscode-icons/src/icons/${file}`, {encoding: 'utf-8'})
-    data = data.replace(WIDTH_REGEX, "width=\"16.0px\"")
-    data = data.replace(HEIGHT_REGEX, "height=\"16.0px\"")
-    data = catppuccinizeSvg(data)
-    data = optimizeSvg(data)
-    data = injectPalette(data, variant)
+    let data = readFileSync(`generate/vscode-icons/icons/${variant}/${file}`, {encoding: 'utf-8'})
     writeFileSync(`src/main/resources/icons/${variant}_${file}`, data, {encoding: 'utf-8'})
   });
 }
@@ -31,39 +20,39 @@ import com.intellij.openapi.util.IconLoader
 
 class Icons(private val variant: String) {`
 
-  readdirSync('generate/vscode-icons/src/icons').forEach((file) => {
+  readdirSync('generate/vscode-icons/icons/latte').forEach((file) => {
     if (!file.endsWith('.svg')) {
       return
     }
 
     data += `\n    @JvmField`
-    data += `\n    val ${file.replace('.svg', '')} = IconLoader.getIcon("/icons/" + variant + "_${file}", javaClass)`
+    data += `\n    val ${file.replace('.svg', '').replaceAll('-', '_')} = IconLoader.getIcon("/icons/" + variant + "_${file}", javaClass)`
     data += `\n`
   })
 
   // Folders to Icons
   data += `\n    val FOLDER_TO_ICONS = mapOf(\n`
-  Object.entries(folders).forEach(([key, value]: [string, string[]]) => {
-    value.forEach((folder) => {
-      data += `        "${folder}" to ${key},\n`
+  Object.entries(folderIcons).forEach(([key, value]: [string, object]) => {
+    value["folderNames"].forEach((folder: string) => {
+      data += `        "${folder}" to folder_${key.replaceAll('-', '_')},\n`
     })
   })
   data += `    )\n`
 
   // File name to Icons
   data += `\n    val FILE_TO_ICONS = mapOf(\n`
-  Object.entries(files).forEach(([key, value]: [string, string[]]) => {
-    value.forEach((filename) => {
-      data += `        "${filename}" to ${key},\n`
+  Object.entries(fileIcons).forEach(([key, value]: [string, object]) => {
+    value["fileNames"]?.forEach((filename: string) => {
+      data += `        "${filename}" to ${key.replaceAll('-', '_')},\n`
     })
   })
   data += `    )\n`
 
   // Extensions to Icons
   data += `\n    val EXT_TO_ICONS = mapOf(\n`
-  Object.entries(extensions).forEach(([key, value]: [string, string[]]) => {
-    value.forEach((ext) => {
-      data += `        "${ext}" to ${key},\n`
+  Object.entries(fileIcons).forEach(([key, value]: [string, object]) => {
+    value["fileExtensions"]?.forEach((ext: string) => {
+      data += `        "${ext}" to ${key.replaceAll('-', '_')},\n`
     })
   })
   data += `    )\n`
@@ -73,16 +62,5 @@ class Icons(private val variant: String) {`
   writeFileSync(`src/main/kotlin/com/github/catppuccin/jetbrains_icons/Icons.kt`, data, {encoding: 'utf-8'})
 }
 
-// Modified version of injectPalette from github.com/catppuccin/vscode-icons/scripts/catppuccinize.ts:
-export function injectPalette(svg: string, variant: CattppucinVariant) {
-  const replaced = svg.replaceAll(/#([a-dA-F0-9]{6})/gi, m => {
-    const v = hexToVar.mocha[m]
-    return varToHex[variant][v]
-  })
-  return replaced.replace(/\n/, cssVarStyleTags.mocha)
-}
-
-['latte', 'frappe', 'macchiato', 'mocha'].forEach((variant: CattppucinVariant) => {
-  generateIcons(variant)
-})
+['latte', 'frappe', 'macchiato', 'mocha'].forEach(generateIcons)
 generateIconsKt()

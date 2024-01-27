@@ -14,7 +14,7 @@ class IconProvider : IconProvider() {
 
         // Folders
         if (file?.isDirectory == true) {
-            return icons.FOLDER_TO_ICONS[file.name.lowercase()] ?: icons.folder
+            return icons.FOLDER_TO_ICONS[file.name.lowercase()] ?: icons._folder
         }
 
         // Files
@@ -40,6 +40,6 @@ class IconProvider : IconProvider() {
             return icons.binary
         }
 
-        return icons.file
+        return icons._file
     }
 }
