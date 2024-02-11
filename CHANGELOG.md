@@ -4,6 +4,19 @@
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## 1.2.0 - 2024-02-11
+
+### Added
 - Php icon ([#73](https://github.com/catppuccin/vscode-icons/pull/73))
 - Org icon ([#74](https://github.com/catppuccin/vscode-icons/pull/74))
 - Evelenty icon ([#82](https://github.com/catppuccin/vscode-icons/pull/82))
@@ -15,21 +28,11 @@
 - Puppeteer icon ([7212fcf](https://github.com/catppuccin/vscode-icons/commit/7212fcf))
 
 ### Changed
-
 - Rework all existing icons for lower resolutions
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 
 ## 1.1.1 - 2024-01-11
 
 ### Fixed
-
 - `flake.lock` icon.
 - `yarn` icon.
 - `yarn.lock` icon.
@@ -37,20 +40,16 @@
 ## 1.1.0 - 2024-01-01
 
 ### Added
-
 - `Dhall` icon.
 - `Haml` icon.
 
 ### Changed
-
 - Rework `yarn` icons for v4.
 
 ### Fixed
-
 - Mapping for `vue` icon.
 
 ## 1.0.0 - 2023-10-29
-
 🚀 Initial Release 🚀
 
 ## 0.0.0 - 2023-10-21
