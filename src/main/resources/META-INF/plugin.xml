@@ -37,6 +37,10 @@ For further help, see also:
       order="first"
       id="IconProvider"
     />
+    <projectViewNodeDecorator
+      implementation="com.github.catppuccin.jetbrains_icons.ProjectViewNodeDecorator"
+      id="ProjectViewNodeDecorator"
+    />
     <applicationConfigurable
       parentId="appearance"
       groupId="com.github.catppuccin.jetbrains_icons"
