@@ -38,8 +38,8 @@ For further help, see also:
       id="IconProvider"
     />
     <projectViewNodeDecorator
-      implementation="com.github.catppuccin.jetbrains_icons.ProjectViewNodeDecorator"
-      id="ProjectViewNodeDecorator"
+      implementation="com.github.catppuccin.jetbrains_icons.decorators.PythonProjectViewNodeDecorator"
+      id="PythonProjectViewNodeDecorator"
     />
     <applicationConfigurable
       parentId="appearance"
