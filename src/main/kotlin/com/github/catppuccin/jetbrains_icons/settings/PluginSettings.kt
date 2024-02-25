@@ -10,20 +10,20 @@ import javax.swing.JComponent
 
 
 class PluginSettings : Configurable {
-    private val panel = PluginSettingsPanel(PluginSettingsState.instance.variant)
+    private val component = PluginSettingsComponent(PluginSettingsState.instance.variant)
 
     override fun createComponent(): JComponent {
-        return panel
+        return component.view
     }
 
     override fun isModified(): Boolean {
         val state = PluginSettingsState.instance
-        return panel.variant != state.variant
+        return component.iconPack.variant != state.variant
     }
 
     override fun apply() {
         val state = PluginSettingsState.instance
-        state.variant = panel.variant
+        state.variant = component.iconPack.variant
         restart()
     }
 
