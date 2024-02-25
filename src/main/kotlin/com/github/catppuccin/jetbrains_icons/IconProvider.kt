@@ -7,7 +7,7 @@ import com.intellij.psi.util.PsiUtilCore
 import javax.swing.Icon
 
 class IconProvider : IconProvider() {
-    private var icons = Icons(PluginSettingsState.instance.variant)
+    private var icons = IconPack.instance.icons
 
     override fun getIcon(element: PsiElement, flags: Int): Icon {
         val file = PsiUtilCore.getVirtualFile(element)

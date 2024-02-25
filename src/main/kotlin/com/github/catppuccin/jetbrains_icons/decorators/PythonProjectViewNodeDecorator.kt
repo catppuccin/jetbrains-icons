@@ -1,19 +1,18 @@
 package com.github.catppuccin.jetbrains_icons.decorators
 
-import com.github.catppuccin.jetbrains_icons.Icons
-import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
+import com.github.catppuccin.jetbrains_icons.IconPack
 import com.intellij.ide.projectView.ProjectViewNode
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.ide.projectView.ProjectViewNodeDecorator
 
 class PythonProjectViewNodeDecorator : ProjectViewNodeDecorator {
-    private var icons = Icons(PluginSettingsState.instance.variant)
+    private var icons = IconPack.instance.icons
 
     override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
-        val fileType = node.virtualFile?.name?.split(".")?.last()
+        val extension = node.virtualFile?.name?.split(".")?.last()
 
-        if (fileType.equals("py")) {
-            data.setIcon(icons.EXT_TO_ICONS["py"])
+        if (extension.equals("py")) {
+            data.setIcon(icons.EXT_TO_ICONS[extension])
         }
     }
 }
