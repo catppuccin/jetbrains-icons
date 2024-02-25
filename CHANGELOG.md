@@ -4,6 +4,8 @@
 
 ### Added
 
+- Python decorator support ([#26](https://github.com/catppuccin/jetbrains-icons/pull/26))
+
 ### Changed
 
 ### Deprecated
