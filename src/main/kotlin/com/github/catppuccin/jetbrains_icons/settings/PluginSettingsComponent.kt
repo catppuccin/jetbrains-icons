@@ -1,5 +1,6 @@
 package com.github.catppuccin.jetbrains_icons.settings
 
+import com.github.catppuccin.jetbrains_icons.settings.views.SettingsAboutView
 import com.github.catppuccin.jetbrains_icons.settings.views.SettingsHeaderView
 import com.github.catppuccin.jetbrains_icons.settings.views.SettingsIconPackView
 import com.intellij.openapi.ui.ComboBox
@@ -32,6 +33,8 @@ class PluginSettingsComponent(currentVariant: String) {
             .addComponent(SettingsHeaderView())
             .addComponent(TitledSeparator("Icon Pack"))
             .addComponent(iconPack)
+            .addComponent(TitledSeparator("About"))
+            .addComponent(SettingsAboutView())
             .addComponentFillVertically(JPanel(), 0)
             .panel
     }
