@@ -3,11 +3,9 @@ package com.github.catppuccin.jetbrains_icons.settings
 import com.github.catppuccin.jetbrains_icons.settings.views.SettingsAboutView
 import com.github.catppuccin.jetbrains_icons.settings.views.SettingsHeaderView
 import com.github.catppuccin.jetbrains_icons.settings.views.SettingsIconPackView
-import com.intellij.openapi.ui.ComboBox
+import com.github.catppuccin.jetbrains_icons.settings.views.SettingsAdditionalSupportView
 import com.intellij.ui.TitledSeparator
 import com.intellij.util.ui.FormBuilder
-import java.awt.Component
-import java.awt.Dimension
 import javax.swing.*
 
 enum class Variant(val id: String, val label: String) {
@@ -28,11 +26,16 @@ class PluginSettingsComponent(currentVariant: String) {
     var iconPack = SettingsIconPackView(currentVariant)
         private set
 
+    var additionalSupport = SettingsAdditionalSupportView()
+        private set
+
     init {
         view = FormBuilder.createFormBuilder()
             .addComponent(SettingsHeaderView())
-            .addComponent(TitledSeparator("Icon Pack"))
+            .addComponent(TitledSeparator("General"))
             .addComponent(iconPack)
+            .addComponent(TitledSeparator("Additional Support"))
+            .addComponent(additionalSupport)
             .addComponent(TitledSeparator("About"))
             .addComponent(SettingsAboutView())
             .addComponentFillVertically(JPanel(), 0)

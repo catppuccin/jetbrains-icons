@@ -16,15 +16,26 @@ class PluginSettings : Configurable {
         return component.view
     }
 
-    override fun isModified(): Boolean {
+    private fun packChanged(): Boolean {
         val state = PluginSettingsState.instance
         return component.iconPack.variant != state.variant
     }
 
+    override fun isModified(): Boolean {
+        val state = PluginSettingsState.instance
+        return packChanged() ||
+            component.additionalSupport.python.isSelected != state.pythonSupport
+    }
+
     override fun apply() {
         val state = PluginSettingsState.instance
-        state.variant = component.iconPack.variant
-        restart()
+
+        state.pythonSupport = component.additionalSupport.python.isSelected
+
+        if (packChanged()) {
+            state.variant = component.iconPack.variant
+            restart()
+        }
     }
 
     override fun getDisplayName(): String {

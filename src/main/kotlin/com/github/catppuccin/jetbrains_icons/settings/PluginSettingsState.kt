@@ -13,6 +13,8 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
     var variant = Variant.MOCHA.id
 
+    var pythonSupport = true
+
     companion object {
         val instance: PluginSettingsState
             get() = ApplicationManager.getApplication().getService(PluginSettingsState::class.java)

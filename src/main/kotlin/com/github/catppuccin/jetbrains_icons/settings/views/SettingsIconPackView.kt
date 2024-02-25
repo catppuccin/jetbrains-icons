@@ -2,6 +2,7 @@ package com.github.catppuccin.jetbrains_icons.settings.views
 
 import com.github.catppuccin.jetbrains_icons.settings.Variant
 import com.intellij.openapi.ui.ComboBox
+import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBLabel
 import com.intellij.util.ui.FormBuilder
 import java.awt.Component
