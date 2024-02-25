@@ -4,8 +4,6 @@
 
 ### Added
 
-- Python decorator support ([#26](https://github.com/catppuccin/jetbrains-icons/pull/26))
-
 ### Changed
 
 ### Deprecated
@@ -15,6 +13,11 @@
 ### Fixed
 
 ### Security
+
+## 1.3.0 - 2024-02-25
+
+### Added
+- Python decorator support ([#26](https://github.com/catppuccin/jetbrains-icons/pull/26))
 
 ## 1.2.0 - 2024-02-11
 
