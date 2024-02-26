@@ -11,6 +11,7 @@ class PythonProjectViewNodeDecorator : ProjectViewNodeDecorator {
 
     override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
         if (!PluginSettingsState.instance.pythonSupport) return
+        if (node.virtualFile?.isDirectory == true) return
 
         val extension = node.virtualFile?.name?.split(".")?.last()
 
