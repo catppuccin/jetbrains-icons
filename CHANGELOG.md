@@ -3,6 +3,8 @@
 ## [Unreleased]
 
 ### Added
+- Brand new settings panel ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
+- Ability to disable Python support ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
 
 ### Changed
 
@@ -11,6 +13,8 @@
 ### Removed
 
 ### Fixed
+- Mapping for `html` association
+- Mapping for directories named `py`
 
 ### Security
 
