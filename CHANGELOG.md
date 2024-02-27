@@ -3,8 +3,6 @@
 ## [Unreleased]
 
 ### Added
-- Brand new settings panel ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
-- Ability to disable Python support ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
 
 ### Changed
 
@@ -13,10 +11,18 @@
 ### Removed
 
 ### Fixed
-- Mapping for `html` association
-- Mapping for directories named `py`
 
 ### Security
+
+## 1.4.0 - 2024-02-27
+
+### Added
+- Brand new settings panel ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
+- Ability to disable Python support ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
+
+### Fixed
+- Mapping for `html` association
+- Mapping for directories named `py`
 
 ## 1.3.0 - 2024-02-25
 
