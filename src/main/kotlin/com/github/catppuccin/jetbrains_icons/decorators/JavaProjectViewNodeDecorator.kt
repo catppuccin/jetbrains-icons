@@ -1,6 +1,7 @@
 package com.github.catppuccin.jetbrains_icons.decorators
 
 import com.github.catppuccin.jetbrains_icons.IconPack
+import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.github.catppuccin.jetbrains_icons.util.PsiClassUtils
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.ide.projectView.ProjectViewNode
@@ -14,6 +15,7 @@ import org.jetbrains.kotlin.psi.psiUtil.isObjectLiteral
 
 class JavaProjectViewNodeDecorator : ProjectViewNodeDecorator {
     override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
+        if (!PluginSettingsState.instance.javaSupport) return
         if (node.virtualFile?.isDirectory == true) return
 
         val icons = IconPack.instance.icons
