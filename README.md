@@ -60,22 +60,28 @@ Settings</kbd> → <kbd>Plugins</kbd> → ⚙️ → <kbd>Install plugin from di
 
 1. Clone repository.
 
-    ```shell
-    git clone https://github.com/catppuccin/jetbrains-icons --recursive
-    cd jetbrains-icons
-    ```
+   ```shell
+   git clone https://github.com/catppuccin/jetbrains-icons --recursive
+   cd jetbrains-icons
+   ```
 
-2. Generate icons from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons).
+2. If you don't have it enabled yet, enable corepack
 
-    ```shell
-    yarn install && yarn build
-    ```
+   ```shell
+    sudo corepack enable
+   ```
 
-3. `Build Plugin` via Intellij or terminal.
+3. Generate icons from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons).
 
-    ```shell
-    ./gradlew buildPlugin
-    ```
+   ```shell
+   yarn install && yarn build
+   ```
+
+4. `Build Plugin` via Intellij or terminal.
+
+   ```shell
+   ./gradlew buildPlugin
+   ```
 
 ## 💝 Thanks to
 
