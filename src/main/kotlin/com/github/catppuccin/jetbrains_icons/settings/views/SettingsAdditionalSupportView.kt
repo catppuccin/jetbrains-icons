@@ -8,14 +8,14 @@ import javax.swing.JPanel
 
 class SettingsAdditionalSupportView : JPanel() {
     val python = JBCheckBox("Python", PluginSettingsState.instance.pythonSupport)
-    val java = JBCheckBox("Java filetypes", PluginSettingsState.instance.javaSupport)
+    val java = JBCheckBox("Java Filetypes", PluginSettingsState.instance.javaSupport)
 
     init {
         val form = FormBuilder.createFormBuilder()
             .addComponent(python)
             .addTooltip("Override the Python plugin icons")
             .addComponent(java)
-            .addTooltip("Use multiple different Icons for Java filetypes")
+            .addTooltip("Use different colors for Java filetypes (e.g. Class, Interface, Record, etc.)")
             .panel
 
         add(form)
