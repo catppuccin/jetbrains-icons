@@ -1,31 +1,46 @@
 package com.github.catppuccin.jetbrains_icons
 
-import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.intellij.ide.IconProvider
 import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiManager
 import com.intellij.psi.util.PsiUtilCore
 import javax.swing.Icon
 
 class IconProvider : IconProvider() {
     private var icons = IconPack.instance.icons
 
+    private val fileTypes = mapOf(
+        "Dockerfile" to icons.docker,
+    )
+
     override fun getIcon(element: PsiElement, flags: Int): Icon {
-        val file = PsiUtilCore.getVirtualFile(element)
+        val virtualFile = PsiUtilCore.getVirtualFile(element)
+
+        // File types
+        if (virtualFile != null) {
+            val file = PsiManager.getInstance(element.project).findFile(virtualFile)
+            if (file != null) {
+                val icon = fileTypes[file.fileType.name]
+                if (icon != null) {
+                    return icon
+                }
+            }
+        }
 
         // Folders
-        if (file?.isDirectory == true) {
-            return icons.FOLDER_TO_ICONS[file.name.lowercase()] ?: icons._folder
+        if (virtualFile?.isDirectory == true) {
+            return icons.FOLDER_TO_ICONS[virtualFile.name.lowercase()] ?: icons._folder
         }
 
         // Files
-        val icon = icons.FILE_TO_ICONS[file?.name?.lowercase()]
+        val icon = icons.FILE_TO_ICONS[virtualFile?.name?.lowercase()]
         if (icon != null) {
             return icon
         }
 
         // Extensions
         // if the file is abc.test.tsx, try abc.test.tsx, then test.tsx, then tsx
-        val parts = file?.name?.split(".")
+        val parts = virtualFile?.name?.split(".")
         if (parts != null) {
             for (i in parts.indices) {
                 val path = parts.subList(i, parts.size).joinToString(".")
@@ -36,7 +51,7 @@ class IconProvider : IconProvider() {
             }
         }
 
-        if (file?.fileType?.isBinary == true) {
+        if (virtualFile?.fileType?.isBinary == true) {
             return icons.binary
         }
 
