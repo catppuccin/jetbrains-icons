@@ -12,26 +12,26 @@
 </p>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/preview.webp"/>
+	<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/9072c437d896dd8d7f4a8063499517ccd44a489e/assets/catwalk.webp"/>
 </p>
 
 ## Previews
 
 <details>
 <summary>🌻 Latte</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/latte.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/9072c437d896dd8d7f4a8063499517ccd44a489e/assets/latte.webp"/>
 </details>
 <details>
 <summary>🪴 Frappé</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/frappe.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/9072c437d896dd8d7f4a8063499517ccd44a489e/assets/frappe.webp"/>
 </details>
 <details>
 <summary>🌺 Macchiato</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/macchiato.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/9072c437d896dd8d7f4a8063499517ccd44a489e/assets/macchiato.webp"/>
 </details>
 <details>
 <summary>🌿 Mocha</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/91f4dd575c4b304d0e915d112d27d205cd7ad322/assets/previews/mocha.png"/>
+<img src="https://raw.githubusercontent.com/catppuccin/vscode-icons/9072c437d896dd8d7f4a8063499517ccd44a489e/assets/mocha.webp"/>
 </details>
 
 ## Installation
@@ -60,22 +60,28 @@ Settings</kbd> → <kbd>Plugins</kbd> → ⚙️ → <kbd>Install plugin from di
 
 1. Clone repository.
 
-    ```shell
-    git clone https://github.com/catppuccin/jetbrains-icons --recursive
-    cd jetbrains-icons
-    ```
+   ```shell
+   git clone https://github.com/catppuccin/jetbrains-icons --recursive
+   cd jetbrains-icons
+   ```
 
-2. Generate icons from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons).
+2. If you don't have it enabled yet, enable corepack
 
-    ```shell
-    yarn install && yarn build
-    ```
+   ```shell
+    sudo corepack enable
+   ```
 
-3. `Build Plugin` via Intellij or terminal.
+3. Generate icons from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons).
 
-    ```shell
-    ./gradlew buildPlugin
-    ```
+   ```shell
+   yarn install && yarn build
+   ```
+
+4. `Build Plugin` via Intellij or terminal.
+
+   ```shell
+   ./gradlew buildPlugin
+   ```
 
 ## 💝 Thanks to
 

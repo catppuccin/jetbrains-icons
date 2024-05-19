@@ -14,6 +14,7 @@ class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
     var variant = Variant.MOCHA.id
 
     var pythonSupport = true
+    var javaSupport = true
 
     companion object {
         val instance: PluginSettingsState
