@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-
+- Added Dependency on the IntelliJ Java Module
 ### Changed
 
 ### Deprecated
