@@ -4,11 +4,6 @@
 
 ### Added
 
-- Different colors for Java filetypes (e.g. `Class`: Red, `Interface`: Green, `Record`: Mauve, `Enum`:
-  Yellow and `Annotation`: Green) ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
-- Ability to disable different colors for Java filetypes in settings panel. ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
-- Add Docker icon to all files with string `Dockerfile` (e.g. `dev.Dockerfile`)
-
 ### Changed
 
 ### Deprecated
@@ -18,6 +13,14 @@
 ### Fixed
 
 ### Security
+
+## 1.5.0 - 2024-05-19
+
+### Added
+- Different colors for Java filetypes (e.g. `Class`: Red, `Interface`: Green, `Record`: Mauve, `Enum`:
+  Yellow and `Annotation`: Green) ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
+- Ability to disable different colors for Java filetypes in settings panel. ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
+- Add Docker icon to all files with string `Dockerfile` (e.g. `dev.Dockerfile`)
 
 ## 1.4.0 - 2024-02-27
 
