@@ -32,6 +32,7 @@ For further help, see also:
 ]]></description>
   <depends>com.intellij.modules.platform</depends>
   <depends>org.jetbrains.kotlin</depends>
+  <depends>com.intellij.modules.java</depends>
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider
       implementation="com.github.catppuccin.jetbrains_icons.IconProvider"
