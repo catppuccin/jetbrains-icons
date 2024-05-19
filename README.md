@@ -38,7 +38,7 @@
 
 ### Plugin Marketplace
 
-1. Install the [Catppuccin Icons plugin](https://plugins.jetbrains.com/plugin/23029-catppuccin-icons) from the JetBrains Marketplace.
+1. Install the [Catppuccin Icons plugin](https://plugins.jetbrains.com/plugin/23029-catppuccin-icons) from the JetBrains Marketplace, or navigate to the Plugin Marketplace in your editor with **Settings** > **Plugins** > **Marketplace** and search for "Catppuccin Icons" there.
 
 ### Manual
 
