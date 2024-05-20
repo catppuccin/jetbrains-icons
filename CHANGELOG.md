@@ -5,7 +5,9 @@
 ### Added
 
 ### Changed
-
+- Updated Gradle Wrapper to 8.7
+- Updated Kotlin Version to 1.9.24
+- Update IntelliJ Platform plugin to 1.17.3
 ### Deprecated
 
 ### Removed
