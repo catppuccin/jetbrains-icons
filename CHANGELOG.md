@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-- Added Github Action to verify Gradle wrapper checksum
+
 ### Changed
 - Updated Gradle Wrapper to 8.7
 - Updated Kotlin Version to 1.9.24
@@ -15,6 +15,8 @@
 ### Fixed
 
 ### Security
+- Added Github Action to verify Gradle wrapper checksum
+
 ## 1.5.0 - 2024-05-19
 
 ### Added
