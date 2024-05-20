@@ -29,6 +29,9 @@ jobs:
         with:
           submodules: true
 
+      - name: Verify Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v3
+
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
