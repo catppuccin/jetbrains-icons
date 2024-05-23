@@ -8,9 +8,10 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.9.24"
+    id("org.jetbrains.kotlin.jvm") version "2.0.0"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.17.3"
+    id("org.jetbrains.intellij.platform") version "2.0.0-beta3"
+    id("org.jetbrains.intellij.platform.migration") version "2.0.0-beta3"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.0.0"
 }
@@ -20,15 +21,29 @@ version = properties("pluginVersion")
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-intellij {
-    pluginName.set(properties("pluginName"))
-    version.set(properties("platformVersion"))
-    type.set(properties("platformType"))
+dependencies {
+    intellijPlatform {
+        intellijIdeaCommunity("2024.1.1")
 
-    // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-    plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
+        intellijPlatform {
+            bundledPlugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
+
+            instrumentationTools()
+        }
+    }
+}
+
+intellijPlatform {
+    pluginConfiguration {
+        id.set(properties("pluginGroup"))
+        name.set(properties("pluginName"))
+        version.set(properties("pluginVersion"))
+    }
 }
 
 changelog {
@@ -59,7 +74,7 @@ tasks {
     }
 
     patchPluginXml {
-        version.set(properties("pluginVersion"))
+        pluginVersion.set(properties("pluginVersion"))
         sinceBuild.set(properties("pluginSinceBuild"))
         untilBuild.set(properties("pluginUntilBuild"))
 
