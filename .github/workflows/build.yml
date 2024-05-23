@@ -23,6 +23,9 @@ jobs:
   build:
     name: Build Plugin
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20 ]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -42,17 +45,22 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.1.2
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
-          cache: yarn
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
       - name: Install Deps
-        run: yarn install
+        run: pnpm install
 
       - name: Generate Icons
-        run: yarn build
+        run: pnpm build
 
       - name: Build Plugin
         run: ./gradlew buildPlugin
