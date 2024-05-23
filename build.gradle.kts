@@ -11,7 +11,6 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "2.0.0"
     // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij.platform") version "2.0.0-beta3"
-    id("org.jetbrains.intellij.platform.migration") version "2.0.0-beta3"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.0.0"
 }
@@ -28,7 +27,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity("2024.1.1")
+        intellijIdeaCommunity(properties("platformVersion"))
 
         intellijPlatform {
             bundledPlugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
