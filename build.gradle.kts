@@ -67,7 +67,7 @@ tasks {
         }
         withType<KotlinCompile> {
             compilerOptions {
-                apiVersion = KotlinVersion.KOTLIN_2_0
+                apiVersion = KotlinVersion.KOTLIN_1_8
                 jvmTarget = JvmTarget.fromTarget(properties("javaVersion"))
             }
         }
