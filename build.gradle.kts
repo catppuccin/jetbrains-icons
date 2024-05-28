@@ -1,5 +1,7 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.date
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -8,9 +10,9 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.9.24"
+    id("org.jetbrains.kotlin.jvm") version "2.0.0"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.17.3"
+    id("org.jetbrains.intellij.platform") version "2.0.0-beta3"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.0.0"
 }
@@ -20,15 +22,29 @@ version = properties("pluginVersion")
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-intellij {
-    pluginName.set(properties("pluginName"))
-    version.set(properties("platformVersion"))
-    type.set(properties("platformType"))
+dependencies {
+    intellijPlatform {
+        intellijIdeaCommunity(properties("platformVersion"))
 
-    // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-    plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
+        intellijPlatform {
+            bundledPlugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
+
+            instrumentationTools()
+        }
+    }
+}
+
+intellijPlatform {
+    pluginConfiguration {
+        id.set(properties("pluginGroup"))
+        name.set(properties("pluginName"))
+        version.set(properties("pluginVersion"))
+    }
 }
 
 changelog {
@@ -50,7 +66,10 @@ tasks {
             targetCompatibility = it
         }
         withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = it
+            compilerOptions {
+                apiVersion = KotlinVersion.KOTLIN_1_8
+                jvmTarget = JvmTarget.fromTarget(properties("javaVersion"))
+            }
         }
     }
 
@@ -59,7 +78,7 @@ tasks {
     }
 
     patchPluginXml {
-        version.set(properties("pluginVersion"))
+        pluginVersion.set(properties("pluginVersion"))
         sinceBuild.set(properties("pluginSinceBuild"))
         untilBuild.set(properties("pluginUntilBuild"))
 
