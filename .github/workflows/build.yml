@@ -23,9 +23,6 @@ jobs:
   build:
     name: Build Plugin
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 20 ]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -53,7 +50,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 'lts/*'
           cache: 'pnpm'
 
       - name: Install Deps
