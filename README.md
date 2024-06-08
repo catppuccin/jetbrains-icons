@@ -74,7 +74,7 @@ Settings</kbd> → <kbd>Plugins</kbd> → ⚙️ → <kbd>Install plugin from di
 3. Generate icons from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons).
 
    ```shell
-   yarn install && yarn build
+   pnpm install && pnpm build
    ```
 
 4. `Build Plugin` via Intellij or terminal.
