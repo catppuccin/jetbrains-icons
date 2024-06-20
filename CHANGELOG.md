@@ -5,9 +5,10 @@
 ### Added
 
 ### Changed
+
 - Updated Gradle Wrapper to 8.7
 - Updated Kotlin Version to 2.0.0
-- Update IntelliJ Platform plugin to 2.0.0-beta3
+- Update IntelliJ Platform plugin to 2.0.0-beta7
 
 ### Deprecated
 
@@ -16,11 +17,13 @@
 ### Fixed
 
 ### Security
+
 - Added Github Action to verify Gradle wrapper checksum
 
 ## 1.5.0 - 2024-05-19
 
 ### Added
+
 - Different colors for Java filetypes (e.g. `Class`: Red, `Interface`: Green, `Record`: Mauve, `Enum`:
   Yellow and `Annotation`: Green) ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
 - Ability to disable different colors for Java filetypes in settings panel. ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
@@ -30,21 +33,25 @@
 ## 1.4.0 - 2024-02-27
 
 ### Added
+
 - Brand new settings panel ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
 - Ability to disable Python support ([#27](https://github.com/catppuccin/jetbrains-icons/pull/27))
 
 ### Fixed
+
 - Mapping for `html` association
 - Mapping for directories named `py`
 
 ## 1.3.0 - 2024-02-25
 
 ### Added
+
 - Python decorator support ([#26](https://github.com/catppuccin/jetbrains-icons/pull/26))
 
 ## 1.2.0 - 2024-02-11
 
 ### Added
+
 - Php icon ([#73](https://github.com/catppuccin/vscode-icons/pull/73))
 - Org icon ([#74](https://github.com/catppuccin/vscode-icons/pull/74))
 - Evelenty icon ([#82](https://github.com/catppuccin/vscode-icons/pull/82))
@@ -56,11 +63,13 @@
 - Puppeteer icon ([7212fcf](https://github.com/catppuccin/vscode-icons/commit/7212fcf))
 
 ### Changed
+
 - Rework all existing icons for lower resolutions
 
 ## 1.1.1 - 2024-01-11
 
 ### Fixed
+
 - `flake.lock` icon.
 - `yarn` icon.
 - `yarn.lock` icon.
@@ -68,16 +77,20 @@
 ## 1.1.0 - 2024-01-01
 
 ### Added
+
 - `Dhall` icon.
 - `Haml` icon.
 
 ### Changed
+
 - Rework `yarn` icons for v4.
 
 ### Fixed
+
 - Mapping for `vue` icon.
 
 ## 1.0.0 - 2023-10-29
+
 🚀 Initial Release 🚀
 
 ## 0.0.0 - 2023-10-21
