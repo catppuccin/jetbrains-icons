@@ -4,6 +4,13 @@
 
 ### Added
 
+- `Vital` icons
+- `Apple` icons
+- `Amber` icons
+- `Fastlane` folder icons
+- `Stata` icons
+- `Caddy` folder icons
+
 ### Changed
 
 - Updated Gradle Wrapper to 8.7
