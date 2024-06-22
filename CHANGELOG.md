@@ -6,15 +6,21 @@
 
 ### Changed
 
-- Updated Gradle Wrapper to 8.7
-- Updated Kotlin Version to 2.0.0
-- Update IntelliJ Platform plugin to 2.0.0-beta7
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+### Security
+
+## 1.6.0 - 2024-06-22
+
+### Changed
+
+- Updated Gradle Wrapper to 8.7
+- Updated Kotlin Version to 2.0.0
+- Update IntelliJ Platform plugin to 2.0.0-beta7
 
 ### Security
 
