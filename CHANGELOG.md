@@ -4,6 +4,20 @@
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## 1.6.0 - 2024-06-22
+
+### Added
+
 - `Vital` icons
 - `Apple` icons
 - `Amber` icons
@@ -17,12 +31,6 @@
 - Updated Kotlin Version to 2.0.0
 - Update IntelliJ Platform plugin to 2.0.0-beta7
 - Update vscode-icons submodule to v1.13.0
-
-### Deprecated
-
-### Removed
-
-### Fixed
 
 ### Security
 
