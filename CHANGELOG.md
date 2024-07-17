@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- Refactor java class type logic ([#68](https://github.com/catppuccin/jetbrains-icons/pull/68))
+
 ### Security
 
 ## 1.6.0 - 2024-06-22
