@@ -43,10 +43,6 @@ For further help, see also:
       implementation="com.github.catppuccin.jetbrains_icons.decorators.PythonProjectViewNodeDecorator"
       id="PythonProjectViewNodeDecorator"
     />
-    <projectViewNodeDecorator
-      implementation="com.github.catppuccin.jetbrains_icons.decorators.JavaProjectViewNodeDecorator"
-      id="JavaProjectViewNodeDecorator"
-    />
     <applicationConfigurable
       parentId="appearance"
       groupId="com.github.catppuccin.jetbrains_icons"
