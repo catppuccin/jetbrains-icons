@@ -12,7 +12,7 @@
 
 ### Fixed
 
-- Display different Java icons in editor tabs ([#68](https://github.com/catppuccin/jetbrains-icons/pull/68))
+- Display correct coloured Java icons in editor tabs ([#68](https://github.com/catppuccin/jetbrains-icons/pull/68))
 
 ### Security
 
