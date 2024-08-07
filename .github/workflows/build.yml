@@ -8,16 +8,16 @@ on:
     paths:
       - 'src/**'
       - 'generate/**'
-      - 'gradle.properties'
+      - '**gradle**'
       - 'package.json'
-      - '**.gradle.kts'
+      - 'pnpm-lock.yaml'
   pull_request:
     paths:
       - 'src/**'
       - 'generate/**'
-      - 'gradle.properties'
+      - '**gradle**'
       - 'package.json'
-      - '**.gradle.kts'
+      - 'pnpm-lock.yaml'
 
 jobs:
   build:
