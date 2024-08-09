@@ -4,8 +4,6 @@
 
 ### Added
 
-- Support 2024.2
-
 ### Changed
 
 ### Deprecated
@@ -14,10 +12,18 @@
 
 ### Fixed
 
+### Security
+
+## 1.6.1 - 2024-08-09
+
+### Added
+
+- Support 2024.2
+
+### Fixed
+
 - Lazily initialize PluginSettingsState in IconPack ([#81](https://github.com/catppuccin/jetbrains-icons/pull/81))
 - Display correct coloured Java icons in editor tabs ([#68](https://github.com/catppuccin/jetbrains-icons/pull/68))
-
-### Security
 
 ## 1.6.0 - 2024-06-22
 
