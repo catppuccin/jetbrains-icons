@@ -14,6 +14,7 @@
 
 ### Fixed
 
+- Lazily initialize PluginSettingsState in IconPack ([#81](https://github.com/catppuccin/jetbrains-icons/pull/81))
 - Display correct coloured Java icons in editor tabs ([#68](https://github.com/catppuccin/jetbrains-icons/pull/68))
 
 ### Security
