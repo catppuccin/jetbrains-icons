@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- Make `org.jetbrains.kotlin` and `com.intellij.java` modules optional. This reintroduces support for IDEs outside IntelliJ, Android Studio & Aqua. ([#86](https://github.com/catppuccin/jetbrains-icons/pull/86)) 
+
 ### Security
 
 ## 1.6.1 - 2024-08-09
