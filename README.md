@@ -1,7 +1,7 @@
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
-	Catppuccin icons for <a href="https://www.jetbrains.com">JetBrains IDEs</a>
+	Catppuccin Icons for <a href="https://www.jetbrains.com">JetBrains IDEs</a>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
@@ -38,39 +38,31 @@
 
 ### Plugin Marketplace
 
-1. Head to the [Plugin Marketplace](https://plugins.jetbrains.com/) (<kbd>Settings</kbd> → <kbd>Plugins</kbd> → <kbd>
-   Marketplace</kbd>)
-2. Search for **"Catppuccin Icons"**
+1. Head to the [Plugin Marketplace](https://plugins.jetbrains.com/) (**Settings** > **Plugins** > **Marketplace**)
+2. Search for "Catppuccin Icons"
 3. Install Plugin
 
 ### Manual
 
-Download the [latest release](https://github.com/catppuccin/jetbrains-icons/releases/latest) and import it by heading
-to <kbd>
-Settings</kbd> → <kbd>Plugins</kbd> → ⚙️ → <kbd>Install plugin from disk...</kbd>
+Download the [latest release](https://github.com/catppuccin/jetbrains-icons/releases/latest) and import it with **Settings** > **Plugins** > ⚙️ > **Install plugin from disk...**.
 
 ## Usage
 
-1. Head to **Settings** → **Appearance & Behavior** → **Catppuccin Icons**
+1. Head to **Settings** > **Appearance & Behavior** > **Catppuccin Icons**.
 2. Select a flavor for the icons to use.
 3. Restart your IDE.
 4. Enjoy your new icons!
 
 ## Development
 
-1. Clone repository.
+1. Clone the repository.
 
    ```shell
    git clone https://github.com/catppuccin/jetbrains-icons --recursive
    cd jetbrains-icons
    ```
 
-2. If you don't have it enabled yet, enable corepack
-
-   ```shell
-    sudo corepack enable
-   ```
-
+2. If you haven't already, enable [Corepack](https://github.com/nodejs/corepack).
 3. Generate icons from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons).
 
    ```shell
