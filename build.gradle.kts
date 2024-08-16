@@ -12,7 +12,7 @@ plugins {
     // Kotlin support
     id("org.jetbrains.kotlin.jvm") version "2.0.10"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij.platform") version "2.0.0-beta7"
+    id("org.jetbrains.intellij.platform") version "2.0.1"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.2.1"
 }
@@ -29,13 +29,10 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity(properties("platformVersion"))
-
-        intellijPlatform {
-            bundledPlugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
-
-            instrumentationTools()
-        }
+        create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
+        bundledPlugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
+        instrumentationTools()
+        pluginVerifier()
     }
 }
 
@@ -44,19 +41,26 @@ intellijPlatform {
         id.set(properties("pluginGroup"))
         name.set(properties("pluginName"))
         version.set(properties("pluginVersion"))
+
+        changelog {
+            version.set(properties("pluginVersion"))
+            path.set(file("CHANGELOG.md").canonicalPath)
+            header.set(provider { "${version.get()} - ${date()}" })
+            headerParserRegex.set("""(\d\.\d\.\d)""".toRegex())
+            itemPrefix.set("-")
+            keepUnreleasedSection.set(true)
+            unreleasedTerm.set("[Unreleased]")
+            groups.set(listOf("Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"))
+        }
+    }
+
+    pluginVerification {
+        ides {
+            recommended()
+        }
     }
 }
 
-changelog {
-    version.set(properties("pluginVersion"))
-    path.set(file("CHANGELOG.md").canonicalPath)
-    header.set(provider { "${version.get()} - ${date()}" })
-    headerParserRegex.set("""(\d\.\d\.\d)""".toRegex())
-    itemPrefix.set("-")
-    keepUnreleasedSection.set(true)
-    unreleasedTerm.set("[Unreleased]")
-    groups.set(listOf("Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"))
-}
 
 tasks {
     // Set the JVM compatibility versions
