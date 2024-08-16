@@ -49,6 +49,7 @@ Download the [latest release](https://github.com/catppuccin/jetbrains-icons/rele
 1. Head to **Settings** > **Appearance & Behavior** > **Catppuccin Icons**.
 2. Select a flavor for the icons to use.
 3. Restart your IDE.
+4. Enjoy your new icons!
 
 ## Development
 
