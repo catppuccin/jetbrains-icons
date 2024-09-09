@@ -4,6 +4,10 @@
 
 ### Added
 
+- Differentiate Java files (Annotation, Class, Enum, etc.) by colour and shape in the file tree. If you know how to
+  implement these icons in the rest of the user interface, please reach out to us via the issue tracker or the
+  Catppuccin discord!
+
 ### Changed
 
 ### Deprecated
