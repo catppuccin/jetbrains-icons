@@ -17,6 +17,6 @@ object PsiClassUtils {
     }
 
     fun isException(psiClass: PsiClass): Boolean {
-        return psiClass.name!!.endsWith("com.github.catppuccin.jetbrains_icons.test.Exception")
+        return psiClass.name!!.endsWith("Exception")
     }
 }
