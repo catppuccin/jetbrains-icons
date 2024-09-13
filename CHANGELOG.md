@@ -4,6 +4,11 @@
 
 ### Added
 
+- Differentiate Java files (Annotation, Class, Enum, etc.) by colour and shape in the file tree. If you know how to
+  implement these icons in the rest of the user interface, please reach out to us via the issue tracker or the
+  Catppuccin discord!
+- Upgrade submodule `vscode-icons` from v1.15.0 to v1.16.0 (See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1160) for added icons and associations)
+
 ### Changed
 
 ### Deprecated

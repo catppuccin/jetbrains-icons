@@ -74,10 +74,13 @@ class IconProvider : IconProvider() {
         file.accept(object : JavaRecursiveElementVisitor() {
             override fun visitClass(aClass: PsiClass) {
                 when {
+                    aClass.isAnnotationType -> fileType = "JAVA_ANNOTATION"
                     aClass.isInterface -> fileType = "JAVA_INTERFACE"
                     aClass.isEnum -> fileType = "JAVA_ENUM"
-                    aClass.isAnnotationType -> fileType = "JAVA_ANNOTATION"
                     aClass.isRecord -> fileType = "JAVA_RECORD"
+                    PsiClassUtils.isException(aClass) -> fileType = "JAVA_EXCEPTION"
+                    PsiClassUtils.isSealed(aClass) -> fileType = "JAVA_SEALED"
+                    PsiClassUtils.isFinal(aClass) -> fileType = "JAVA_FINAL"
                     PsiClassUtils.isAbstract(aClass) -> fileType = "JAVA_ABSTRACT"
                 }
             }
@@ -87,12 +90,15 @@ class IconProvider : IconProvider() {
 
     private fun provideJavaIcons(): Map<String, Icon> {
         return mapOf(
-            "JAVA_INTERFACE" to icons.java_alt_1,
-            "JAVA_ENUM" to icons.java_alt_3,
-            "JAVA_ANNOTATION" to icons.java_alt_1,
-            "JAVA_RECORD" to icons.java_alt_2,
-            "JAVA_ABSTRACT" to icons.java_alt_1,
-            "JAVA_CLASS" to icons.java,
+            "JAVA_ANNOTATION" to icons.java_annotation,
+            "JAVA_INTERFACE" to icons.java_interface,
+            "JAVA_ENUM" to icons.java_enum,
+            "JAVA_RECORD" to icons.java_record,
+            "JAVA_EXCEPTION" to icons.java_exception,
+            "JAVA_ABSTRACT" to icons.java_class_abstract,
+            "JAVA_SEALED" to icons.java_class_sealed,
+            "JAVA_FINAL" to icons.java_class_final,
+            "JAVA_CLASS" to icons.java_class,
         )
     }
 }
