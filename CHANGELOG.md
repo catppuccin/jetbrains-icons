@@ -6,6 +6,8 @@
 
 ### Changed
 
+- Load Java Support optionally ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+
 ### Deprecated
 
 ### Removed

@@ -1,9 +1,11 @@
 package com.github.catppuccin.jetbrains_icons.settings
 
+import com.intellij.ide.plugins.PluginManager.*
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
+import com.intellij.openapi.extensions.PluginId.findId
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(
@@ -14,7 +16,7 @@ class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
     var variant = Variant.MOCHA.id
 
     var pythonSupport = true
-    var javaSupport = true
+    var javaSupport = isPluginInstalled(findId("com.intellij.java"))
 
     companion object {
         val instance: PluginSettingsState
