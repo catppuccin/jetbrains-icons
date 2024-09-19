@@ -14,6 +14,8 @@
 
 ### Fixed
 
+- Visibility Icons for Java Files in the structure view are not hidden anymore ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116)) 
+
 ### Security
 
 ## 1.8.0 - 2024-09-13
