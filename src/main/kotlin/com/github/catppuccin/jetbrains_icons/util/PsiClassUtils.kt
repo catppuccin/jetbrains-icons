@@ -5,22 +5,28 @@ import com.intellij.psi.PsiModifier
 
 object PsiClassUtils {
     fun isAbstract(psiClass: PsiClass): Boolean {
-        return psiClass.hasModifierProperty(PsiModifier.ABSTRACT)
+        return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.ABSTRACT)
     }
 
     fun isSealed(psiClass: PsiClass): Boolean {
-        return psiClass.hasModifierProperty(PsiModifier.SEALED)
+        return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.SEALED)
     }
 
     fun isFinal(psiClass: PsiClass): Boolean {
-        return psiClass.hasModifierProperty(PsiModifier.FINAL)
+        return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.FINAL)
     }
 
     fun isStatic(psiClass: PsiClass): Boolean {
-        return psiClass.hasModifierProperty(PsiModifier.STATIC)
+        return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.STATIC)
     }
 
     fun isException(psiClass: PsiClass): Boolean {
-        return psiClass.name!!.endsWith("Exception")
+        val className = psiClass.name
+        if (className.isNullOrEmpty()) return false
+
+        if (!psiClass.isValid) return false
+
+        return psiClass.superTypes.any { it.className == "Throwable" || it.className == "Exception" }
+            || className.endsWith("Exception")
     }
 }
