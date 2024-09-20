@@ -29,4 +29,12 @@ object PsiClassUtils {
         return psiClass.superTypes.any { it.className == "Throwable" || it.className == "Exception" }
             || className.endsWith("Exception")
     }
+
+    fun isPackagePrivate(psiClass: PsiClass): Boolean {
+        val modifierList = psiClass.modifierList
+        return modifierList != null && !modifierList.hasModifierProperty(PsiModifier.PUBLIC) &&
+            !modifierList.hasModifierProperty(PsiModifier.PROTECTED) &&
+            !modifierList.hasModifierProperty(PsiModifier.PRIVATE)
+    }
+
 }

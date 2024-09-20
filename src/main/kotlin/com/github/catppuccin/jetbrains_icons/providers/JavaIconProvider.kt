@@ -42,7 +42,7 @@ class JavaIconProvider : IconProvider() {
             }
         }
 
-        val visibilityIconsEnabled = ProjectView.getInstance(element.project)?.isShowVisibilityIcons("ProjectPane") ?: false
+        val visibilityIconsEnabled = ProjectView.getInstance(element.project)?.isShowVisibilityIcons("ProjectPane") == true
 
         return when {
             visibilityIconsEnabled -> {
@@ -62,6 +62,7 @@ class JavaIconProvider : IconProvider() {
         psiElement.hasModifierProperty(PsiModifier.PUBLIC) -> AllIcons.Nodes.Public
         psiElement.hasModifierProperty(PsiModifier.PRIVATE) -> AllIcons.Nodes.Private
         psiElement.hasModifierProperty(PsiModifier.PROTECTED) -> AllIcons.Nodes.Protected
+        PsiClassUtils.isPackagePrivate(psiElement) -> AllIcons.Nodes.PackageLocal
         else -> null
     }
 
