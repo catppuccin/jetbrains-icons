@@ -16,6 +16,10 @@ object PsiClassUtils {
         return psiClass.hasModifierProperty(PsiModifier.FINAL)
     }
 
+    fun isStatic(psiClass: PsiClass): Boolean {
+        return psiClass.hasModifierProperty(PsiModifier.STATIC)
+    }
+
     fun isException(psiClass: PsiClass): Boolean {
         return psiClass.name!!.endsWith("Exception")
     }
