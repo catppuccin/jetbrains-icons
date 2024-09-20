@@ -19,7 +19,7 @@ class JavaIconProvider : IconProvider() {
         "JAVA_ABSTRACT" to icons.java_class_abstract,
         "JAVA_SEALED" to icons.java_class_sealed,
         "JAVA_FINAL" to icons.java_class_final,
-        "JAVA_CLASS" to icons.java,
+        "JAVA_CLASS" to icons.java_class,
     )
 
     override fun getIcon(element: PsiElement, flags: Int): Icon? {
@@ -34,9 +34,9 @@ class JavaIconProvider : IconProvider() {
     }
 
     private fun determineJavaFileType(aClass: PsiClass): String = when {
+        aClass.isAnnotationType -> "JAVA_ANNOTATION"
         aClass.isInterface -> "JAVA_INTERFACE"
         aClass.isEnum -> "JAVA_ENUM"
-        aClass.isAnnotationType -> "JAVA_ANNOTATION"
         aClass.isRecord -> "JAVA_RECORD"
         PsiClassUtils.isException(aClass) -> "JAVA_EXCEPTION"
         PsiClassUtils.isSealed(aClass) -> "JAVA_SEALED"
