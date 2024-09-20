@@ -19,7 +19,7 @@ class SettingsAdditionalSupportView : JPanel() {
             .addComponent(python)
             .addTooltip("Override the Python plugin icons")
             .addComponent(java)
-            .addTooltip("Use different colors for Java filetypes (e.g. Class, Interface, Record, etc.)")
+            .addTooltip("Use different shapes and colors for Java filetypes (e.g. Class, Interface, Record, etc.)")
             .panel
 
         add(form)

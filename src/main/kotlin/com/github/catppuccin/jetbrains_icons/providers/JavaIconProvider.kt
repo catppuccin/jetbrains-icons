@@ -10,17 +10,6 @@ import javax.swing.Icon
 
 class JavaIconProvider : IconProvider() {
     private val icons = IconPack.instance.icons
-    private val javaIcons = mapOf(
-        "JAVA_INTERFACE" to icons.java_interface,
-        "JAVA_ENUM" to icons.java_enum,
-        "JAVA_ANNOTATION" to icons.java_annotation,
-        "JAVA_RECORD" to icons.java_record,
-        "JAVA_EXCEPTION" to icons.java_exception,
-        "JAVA_ABSTRACT" to icons.java_class_abstract,
-        "JAVA_SEALED" to icons.java_class_sealed,
-        "JAVA_FINAL" to icons.java_class_final,
-        "JAVA_CLASS" to icons.java_class,
-    )
 
     override fun getIcon(element: PsiElement, flags: Int): Icon? {
         if (!PluginSettingsState.instance.javaSupport) return icons.java
@@ -30,18 +19,18 @@ class JavaIconProvider : IconProvider() {
         val virtualFile = PsiUtilCore.getVirtualFile(element) ?: return null
         if (!virtualFile.name.endsWith(".java")) return null
 
-        return javaIcons[determineJavaFileType(element)]
+        return getJavaIcon(element)
     }
 
-    private fun determineJavaFileType(aClass: PsiClass): String = when {
-        aClass.isAnnotationType -> "JAVA_ANNOTATION"
-        aClass.isInterface -> "JAVA_INTERFACE"
-        aClass.isEnum -> "JAVA_ENUM"
-        aClass.isRecord -> "JAVA_RECORD"
-        PsiClassUtils.isException(aClass) -> "JAVA_EXCEPTION"
-        PsiClassUtils.isSealed(aClass) -> "JAVA_SEALED"
-        PsiClassUtils.isFinal(aClass) -> "JAVA_FINAL"
-        PsiClassUtils.isAbstract(aClass) -> "JAVA_ABSTRACT"
-        else -> "JAVA_CLASS"
+    private fun getJavaIcon(aClass: PsiClass): Icon = when {
+        aClass.isAnnotationType -> icons.java_annotation
+        aClass.isInterface -> icons.java_interface
+        aClass.isEnum -> icons.java_enum
+        aClass.isRecord -> icons.java_record
+        PsiClassUtils.isException(aClass) -> icons.java_exception
+        PsiClassUtils.isSealed(aClass) -> icons.java_class_sealed
+        PsiClassUtils.isFinal(aClass) -> icons.java_class_final
+        PsiClassUtils.isAbstract(aClass) -> icons.java_class_abstract
+        else -> icons.java_class
     }
 }
