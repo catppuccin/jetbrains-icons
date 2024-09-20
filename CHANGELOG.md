@@ -14,7 +14,8 @@
 
 ### Fixed
 
-- Visibility Icons for Java Files in the structure view are not hidden anymore ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116)) 
+- Visibility Icons for Java Files are not hidden anymore ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116)) 
+- Static Classes for Java files now have the appropriate Static Mark ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
 
 ### Security
 
