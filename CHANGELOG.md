@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- Fix deprecation warnings for 2024.3 EAP ([#121](https://github.com/catppuccin/jetbrains-icons/pull/121))
+
 ### Security
 
 ## 1.9.0 - 2024-09-21
