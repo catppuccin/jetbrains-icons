@@ -31,7 +31,8 @@ For further help, see also:
 <p>LICENSE: <a href="https://github.com/catppuccin/jetbrains-icons/blob/main/LICENSE">MIT</a></p>
 ]]></description>
   <depends>com.intellij.modules.platform</depends>
-  <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withKotlin.xml">org.jetbrains.kotlin</depends>
+  <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withKotlin.xml">org.jetbrains.kotlin
+  </depends>
   <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withJava.xml">com.intellij.java</depends>
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider
@@ -39,13 +40,17 @@ For further help, see also:
       order="first"
       id="IconProvider"
     />
+    <iconProvider
+      implementation="com.github.catppuccin.jetbrains_icons.providers.GolangIconProvider"
+      order="first"
+      id="GolangIconProvider"
+    />
     <projectViewNodeDecorator
       implementation="com.github.catppuccin.jetbrains_icons.decorators.PythonProjectViewNodeDecorator"
       id="PythonProjectViewNodeDecorator"
     />
     <applicationConfigurable
       parentId="appearance"
-      groupId="com.github.catppuccin.jetbrains_icons"
       displayName="Catppuccin Icons"
       instance="com.github.catppuccin.jetbrains_icons.settings.PluginSettings"
       id="PluginSettings"

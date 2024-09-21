@@ -17,6 +17,7 @@ class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
 
     var pythonSupport = true
     var javaSupport = isPluginInstalled(findId("com.intellij.java"))
+    var goSupport = true
 
     companion object {
         val instance: PluginSettingsState

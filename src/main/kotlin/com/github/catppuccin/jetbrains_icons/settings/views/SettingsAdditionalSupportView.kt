@@ -13,6 +13,7 @@ class SettingsAdditionalSupportView : JPanel() {
     val java = JBCheckBox("Java Filetypes", PluginSettingsState.instance.javaSupport).apply {
         isEnabled = isPluginInstalled(findId("com.intellij.java"))
     }
+    val go = JBCheckBox("Go", PluginSettingsState.instance.goSupport)
 
     init {
         val form = FormBuilder.createFormBuilder()
@@ -20,6 +21,8 @@ class SettingsAdditionalSupportView : JPanel() {
             .addTooltip("Override the Python plugin icons")
             .addComponent(java)
             .addTooltip("Use different shapes and colors for Java filetypes (e.g. Class, Interface, Record, etc.)")
+            .addComponent(go)
+            .addTooltip("Add a small indicator to go icon to differentiate test files")
             .panel
 
         add(form)

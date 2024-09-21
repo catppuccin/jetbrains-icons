@@ -28,6 +28,7 @@ class PluginSettings : Configurable {
         val state = PluginSettingsState.instance
         return packChanged() ||
             component.additionalSupport.python.isSelected != state.pythonSupport ||
+            component.additionalSupport.go.isSelected != state.goSupport ||
             component.additionalSupport.java.isSelected != state.javaSupport
     }
 
@@ -36,6 +37,7 @@ class PluginSettings : Configurable {
 
         state.pythonSupport = component.additionalSupport.python.isSelected
         state.javaSupport = component.additionalSupport.java.isSelected
+        state.goSupport = component.additionalSupport.go.isSelected
 
         if (packChanged()) {
             state.variant = component.iconPack.variant

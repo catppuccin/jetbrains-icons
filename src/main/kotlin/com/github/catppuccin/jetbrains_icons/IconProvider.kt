@@ -24,6 +24,9 @@ class IconProvider : IconProvider() {
                    file.name.endsWith(".java") -> {
                        return null
                    }
+                    file.name.endsWith(".go") -> {
+                        return null
+                    }
                     else -> {
                         file.fileType.name
                     }
