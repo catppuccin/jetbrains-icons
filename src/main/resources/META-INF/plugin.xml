@@ -54,4 +54,5 @@ For further help, see also:
       serviceImplementation="com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState"
     />
   </extensions>
+  <resource-bundle>messages.PluginSettingsBundle</resource-bundle>
 </idea-plugin>

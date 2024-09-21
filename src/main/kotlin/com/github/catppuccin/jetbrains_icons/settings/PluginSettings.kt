@@ -1,5 +1,6 @@
 package com.github.catppuccin.jetbrains_icons.settings
 
+import com.github.catppuccin.jetbrains_icons.bundles.PluginSettingsBundle
 import com.intellij.ide.GeneralSettings
 import com.intellij.ide.IdeBundle
 import com.intellij.ide.projectView.ProjectView
@@ -56,10 +57,10 @@ class PluginSettings : Configurable {
     private fun restart() {
         val result = if (GeneralSettings.getInstance().isConfirmExit) {
             Messages.showYesNoDialog(
-                "The IDE needs to be restarted for the changes to take effect. Restart now?",
-                IdeBundle.message("dialog.title.restart.ide"),
-                IdeBundle.message("dialog.action.restart.yes"),
-                IdeBundle.message("dialog.action.restart.cancel"),
+                PluginSettingsBundle.message("dialog.message.restart.ide"),
+                PluginSettingsBundle.message("dialog.title.restart.ide"),
+                PluginSettingsBundle.message("dialog.action.restart.yes"),
+                PluginSettingsBundle.message("dialog.action.restart.cancel"),
                 Messages.getWarningIcon()
             ) == Messages.YES
         } else {
