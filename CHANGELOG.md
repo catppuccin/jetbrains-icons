@@ -12,6 +12,11 @@
 
 ### Fixed
 
+- Fix plugin defect warnings by optionally loading Java icons  ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+- Visibility Icons for Java Files are not hidden anymore ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116)) 
+- Static Classes for Java files now have the appropriate Static Mark ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+- Accurately apply `Exception` icon on all classes extending `Exception` and `Throwable` ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+
 ### Security
 
 ## 1.8.0 - 2024-09-13
