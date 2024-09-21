@@ -16,6 +16,7 @@
 
 - Visibility Icons for Java Files are not hidden anymore ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116)) 
 - Static Classes for Java files now have the appropriate Static Mark ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+- Accurately apply `Exception` icon on all classes extending `Exception` and `Throwable` ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
 
 ### Security
 

@@ -1,6 +1,7 @@
 package com.github.catppuccin.jetbrains_icons.util
 
 import com.intellij.psi.PsiClass
+import com.intellij.psi.PsiClassType
 import com.intellij.psi.PsiModifier
 
 object PsiClassUtils {
@@ -23,11 +24,8 @@ object PsiClassUtils {
     fun isException(psiClass: PsiClass): Boolean {
         val className = psiClass.name
         if (className.isNullOrEmpty()) return false
-
         if (!psiClass.isValid) return false
-
-        return psiClass.superTypes.any { it.className == "Throwable" || it.className == "Exception" }
-            || className.endsWith("Exception")
+        return extendsException(psiClass)
     }
 
     fun isPackagePrivate(psiClass: PsiClass): Boolean {
@@ -37,4 +35,10 @@ object PsiClassUtils {
             !modifierList.hasModifierProperty(PsiModifier.PRIVATE)
     }
 
+    private fun extendsException(psiClass: PsiClass): Boolean {
+        return generateSequence(psiClass) { it.superClass }
+            .flatMap { it.superTypes.asSequence() }
+            .filterIsInstance<PsiClassType>()
+            .any { it.name in setOf("Exception", "Throwable") }
+    }
 }
