@@ -4,12 +4,7 @@
 
 ### Added
 
-- Add icon for `.razor` files.
-- Upgrade submodule `vscode-icons` from v1.16.0 to v1.17.0 (See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1170) for added icons and associations)
-
 ### Changed
-
-- Update IntelliJ Platform plugin to 2.1.0 ([#125](https://github.com/catppuccin/jetbrains-icons/pull/125))
 
 ### Deprecated
 
@@ -17,9 +12,22 @@
 
 ### Fixed
 
-- Fix deprecation warnings for 2024.3 EAP ([#121](https://github.com/catppuccin/jetbrains-icons/pull/121))
-
 ### Security
+
+## 1.10.0 - 2024-10-13
+
+### Added
+
+- Add icon for `.razor` files.
+- Upgrade submodule `vscode-icons` from v1.16.0 to v1.17.0 (See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1170) for added icons and associations)
+
+### Changed
+
+- Update IntelliJ Platform plugin to 2.1.0 ([#125](https://github.com/catppuccin/jetbrains-icons/pull/125))
+
+### Fixed
+
+- Fix deprecation warnings for 2024.3 EAP ([#121](https://github.com/catppuccin/jetbrains-icons/pull/121))
 
 ## 1.9.0 - 2024-09-21
 
