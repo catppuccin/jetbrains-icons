@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add icon for `.razor` files.
+
 ### Changed
 
 - Update IntelliJ Platform plugin to 2.1.0 ([#125](https://github.com/catppuccin/jetbrains-icons/pull/125))
