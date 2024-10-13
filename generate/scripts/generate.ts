@@ -13,6 +13,11 @@ function generateIcons(variant: string) {
   });
 }
 
+// VSCode sometimes doesn't need the `fileExtension` block to be populated but that affects JetBrains so we can add our
+// own extensions/overrides here if need be.
+const customFileExtensions = {razor: "razor"}
+const extendedFileExtensions = {...fileExtensions, ...customFileExtensions}
+
 function generateIconsKt() {
   let data = `package com.github.catppuccin.jetbrains_icons
 
@@ -46,7 +51,7 @@ class Icons(private val variant: String) {`
 
   // Extensions to Icons
   data += `\n    val EXT_TO_ICONS = mapOf(\n`
-  Object.entries(fileExtensions).forEach(([key, value]: [string, string]) => {
+  Object.entries(extendedFileExtensions).forEach(([key, value]: [string, string]) => {
     data += `        "${key}" to ${value.replaceAll('-', '_')},\n`
   })
   data += `    )\n`
