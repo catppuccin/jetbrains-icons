@@ -5,6 +5,7 @@
 ### Added
 
 - Add icon for `.razor` files.
+- Upgrade submodule `vscode-icons` from v1.16.0 to v1.17.0 (See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1170) for added icons and associations)
 
 ### Changed
 
