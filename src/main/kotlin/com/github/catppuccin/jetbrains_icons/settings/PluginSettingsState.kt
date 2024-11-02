@@ -9,25 +9,25 @@ import com.intellij.openapi.extensions.PluginId.findId
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(
-    name = "com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState",
-    storages = [Storage("CatppuccinIcons.xml")]
+  name = "com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState",
+  storages = [Storage("CatppuccinIcons.xml")],
 )
 class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
-    var variant = Variant.MOCHA.id
+  var variant = Variant.MOCHA.id
 
-    var pythonSupport = true
-    var javaSupport = isPluginInstalled(findId("com.intellij.java"))
+  var pythonSupport = true
+  var javaSupport = isPluginInstalled(findId("com.intellij.java"))
 
-    companion object {
-        val instance: PluginSettingsState
-            get() = ApplicationManager.getApplication().getService(PluginSettingsState::class.java)
-    }
+  companion object {
+    val instance: PluginSettingsState
+      get() = ApplicationManager.getApplication().getService(PluginSettingsState::class.java)
+  }
 
-    override fun getState(): PluginSettingsState {
-        return this
-    }
+  override fun getState(): PluginSettingsState {
+    return this
+  }
 
-    override fun loadState(state: PluginSettingsState) {
-        XmlSerializerUtil.copyBean(state, this)
-    }
+  override fun loadState(state: PluginSettingsState) {
+    XmlSerializerUtil.copyBean(state, this)
+  }
 }

@@ -9,21 +9,25 @@ import java.awt.FlowLayout
 import javax.swing.JPanel
 
 class SettingsAdditionalSupportView : JPanel() {
-    val python = JBCheckBox("Python", PluginSettingsState.instance.pythonSupport)
-    val java = JBCheckBox("Java Filetypes", PluginSettingsState.instance.javaSupport).apply {
-        isEnabled = isPluginInstalled(findId("com.intellij.java"))
+  val python = JBCheckBox("Python", PluginSettingsState.instance.pythonSupport)
+  val java =
+    JBCheckBox("Java Filetypes", PluginSettingsState.instance.javaSupport).apply {
+      isEnabled = isPluginInstalled(findId("com.intellij.java"))
     }
 
-    init {
-        val form = FormBuilder.createFormBuilder()
-            .addComponent(python)
-            .addTooltip("Override the Python plugin icons")
-            .addComponent(java)
-            .addTooltip("Use different shapes and colors for Java filetypes (e.g. Class, Interface, Record, etc.)")
-            .panel
+  init {
+    val form =
+      FormBuilder.createFormBuilder()
+        .addComponent(python)
+        .addTooltip("Override the Python plugin icons")
+        .addComponent(java)
+        .addTooltip(
+          "Use different shapes and colors for Java filetypes (e.g. Class, Interface, Record, etc.)"
+        )
+        .panel
 
-        add(form)
+    add(form)
 
-        layout = FlowLayout(FlowLayout.LEADING)
-    }
+    layout = FlowLayout(FlowLayout.LEADING)
+  }
 }

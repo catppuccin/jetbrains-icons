@@ -5,7 +5,7 @@ build/
 !**/src/test/**/build/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/*
 .intellijPlatform
 *.iws
 *.iml
@@ -13,6 +13,7 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+!.idea/ktfmt.xml
 
 ### Eclipse ###
 .apt_generated

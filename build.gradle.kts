@@ -15,6 +15,10 @@ plugins {
     id("org.jetbrains.intellij.platform") version "2.1.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.2.1"
+
+    // Code Quality
+    // ktfmt
+    id("com.ncorti.ktfmt.gradle") version "0.20.1"
 }
 
 group = properties("pluginGroup")
@@ -107,4 +111,9 @@ tasks {
 
 tasks.buildSearchableOptions {
     enabled = false
+}
+
+// Code quality settings
+ktfmt {
+    googleStyle()
 }

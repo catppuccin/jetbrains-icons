@@ -12,19 +12,6 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-# go
-[*.go]
-indent_style = tab
-indent_size = 4
-
-# python
-[*.{ini,py,py.tpl,rst,kt,kts}]
-indent_size = 4
-
-# rust
-[*.rs]
-indent_size = 4
-
 # documentation, utils
 [*.{md,mdx,diff}]
 trim_trailing_whitespace = false
