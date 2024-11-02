@@ -1,5 +1,6 @@
 package com.github.catppuccin.jetbrains_icons
 
+import com.github.catppuccin.jetbrains_icons.IconPack.icons
 import com.intellij.ide.IconProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
@@ -7,8 +8,6 @@ import com.intellij.psi.util.PsiUtilCore
 import javax.swing.Icon
 
 class IconProvider : IconProvider() {
-  private var icons = IconPack.instance.icons
-
   private val fileTypes = mapOf("Dockerfile" to icons.docker)
 
   override fun getIcon(element: PsiElement, flags: Int): Icon? {

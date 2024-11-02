@@ -18,16 +18,12 @@ class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
   var pythonSupport = true
   var javaSupport = isPluginInstalled(getId("com.intellij.java"))
 
+  override fun getState(): PluginSettingsState = this
+
+  override fun loadState(state: PluginSettingsState) = XmlSerializerUtil.copyBean(state, this)
+
   companion object {
     val instance: PluginSettingsState
       get() = ApplicationManager.getApplication().getService(PluginSettingsState::class.java)
-  }
-
-  override fun getState(): PluginSettingsState {
-    return this
-  }
-
-  override fun loadState(state: PluginSettingsState) {
-    XmlSerializerUtil.copyBean(state, this)
   }
 }

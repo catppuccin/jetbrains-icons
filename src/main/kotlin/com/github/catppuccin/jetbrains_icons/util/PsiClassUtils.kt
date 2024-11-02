@@ -5,21 +5,17 @@ import com.intellij.psi.PsiClassType
 import com.intellij.psi.PsiModifier
 
 object PsiClassUtils {
-  fun isAbstract(psiClass: PsiClass): Boolean {
-    return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.ABSTRACT)
-  }
+  fun isAbstract(psiClass: PsiClass): Boolean =
+    psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.ABSTRACT)
 
-  fun isSealed(psiClass: PsiClass): Boolean {
-    return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.SEALED)
-  }
+  fun isSealed(psiClass: PsiClass): Boolean =
+    psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.SEALED)
 
-  fun isFinal(psiClass: PsiClass): Boolean {
-    return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.FINAL)
-  }
+  fun isFinal(psiClass: PsiClass): Boolean =
+    psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.FINAL)
 
-  fun isStatic(psiClass: PsiClass): Boolean {
-    return psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.STATIC)
-  }
+  fun isStatic(psiClass: PsiClass): Boolean =
+    psiClass.isValid && psiClass.hasModifierProperty(PsiModifier.STATIC)
 
   fun isException(psiClass: PsiClass): Boolean {
     val className = psiClass.name
@@ -36,10 +32,9 @@ object PsiClassUtils {
       !modifierList.hasModifierProperty(PsiModifier.PRIVATE)
   }
 
-  private fun extendsException(psiClass: PsiClass): Boolean {
-    return generateSequence(psiClass) { it.superClass }
+  private fun extendsException(psiClass: PsiClass): Boolean =
+    generateSequence(psiClass) { it.superClass }
       .flatMap { it.superTypes.asSequence() }
       .filterIsInstance<PsiClassType>()
       .any { it.name in setOf("Exception", "Throwable") }
-  }
 }
