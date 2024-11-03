@@ -105,7 +105,7 @@ tasks {
   }
 
   buildPlugin {
-    dependsOn(ktfmtFormat, ktfmtCheck, test)
+    dependsOn(test)
   }
 
   signPlugin {

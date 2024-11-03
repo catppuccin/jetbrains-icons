@@ -57,7 +57,10 @@ jobs:
       - name: Generate Icons
         run: pnpm build
 
-      - name: Build Plugin
+      - name: Check Formatting
+        run: ./gradlew ktfmtCheck
+
+      - name: Test & Build Plugin
         run: ./gradlew buildPlugin
 
       - name: Upload JAR(s)
