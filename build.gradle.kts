@@ -99,6 +99,15 @@ tasks {
     )
   }
 
+  buildPlugin {
+    dependsOn(ktfmtFormat, ktfmtCheck)
+  }
+
+  test {
+    useJUnitPlatform()
+    testLogging { events("passed", "skipped", "failed") }
+  }
+
   signPlugin {
     certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
     privateKey.set(System.getenv("PRIVATE_KEY"))
@@ -109,11 +118,6 @@ tasks {
     dependsOn("patchChangelog")
     token.set(System.getenv("PUBLISH_TOKEN"))
     channels.set(listOf("default"))
-  }
-
-  test {
-    useJUnitPlatform()
-    testLogging { events("passed", "skipped", "failed") }
   }
 }
 
