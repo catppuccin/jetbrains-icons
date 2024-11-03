@@ -99,13 +99,13 @@ tasks {
     )
   }
 
-  buildPlugin {
-    dependsOn(ktfmtFormat, ktfmtCheck)
-  }
-
   test {
     useJUnitPlatform()
     testLogging { events("passed", "skipped", "failed") }
+  }
+
+  buildPlugin {
+    dependsOn(ktfmtFormat, ktfmtCheck, test)
   }
 
   signPlugin {
