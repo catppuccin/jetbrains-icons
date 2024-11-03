@@ -14,7 +14,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   private val icons = Icons("mocha")
 
   @Test
-  fun getIconForJavaClass() {
+  fun getIcon_javaClass() {
     val provider = JavaIconProvider()
 
     fixture.addFileToProject(
