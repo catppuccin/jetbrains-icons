@@ -20,7 +20,7 @@ plugins {
 
   // Code Quality
   // ktfmt
-  id("com.ncorti.ktfmt.gradle") version "0.20.1"
+  id("com.ncorti.ktfmt.gradle") version "0.21.0"
 }
 
 group = properties("pluginGroup")
@@ -87,7 +87,7 @@ tasks {
     }
   }
 
-  wrapper { gradleVersion = "8.10" }
+  wrapper { gradleVersion = "8.10.2" }
 
   patchPluginXml {
     pluginVersion.set(properties("pluginVersion"))
