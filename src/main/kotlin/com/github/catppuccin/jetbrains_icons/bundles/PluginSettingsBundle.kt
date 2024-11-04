@@ -1,4 +1,4 @@
-package com.github.catppuccin.jetbrains_icons.bundles;
+package com.github.catppuccin.jetbrains_icons.bundles
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.PropertyKey

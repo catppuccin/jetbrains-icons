@@ -59,7 +59,7 @@ jobs:
       - name: Patch Changelog
         run: ./gradlew patchChangelog
 
-      - name: Build Plugin
+      - name: Test & Build Plugin
         run: ./gradlew buildPlugin
 
       - name: Upload JAR

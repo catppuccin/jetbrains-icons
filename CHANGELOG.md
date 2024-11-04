@@ -6,6 +6,9 @@
 
 ### Changed
 
+- Add code formatting with ktfmt
+- Add tests
+
 ### Deprecated
 
 ### Removed
@@ -19,7 +22,9 @@
 ### Added
 
 - Add icon for `.razor` files.
-- Upgrade submodule `vscode-icons` from v1.16.0 to v1.17.0 (See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1170) for added icons and associations)
+- Upgrade submodule `vscode-icons` from v1.16.0 to v1.17.0 (
+  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1170) for added
+  icons and associations)
 
 ### Changed
 
@@ -37,10 +42,14 @@
 
 ### Fixed
 
-- Fix plugin defect warnings by optionally loading Java icons  ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
-- Visibility Icons for Java Files are not hidden anymore ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116)) 
-- Static Classes for Java files now have the appropriate Static Mark ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
-- Accurately apply `Exception` icon on all classes extending `Exception` and `Throwable` ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+- Fix plugin defect warnings by optionally loading Java
+  icons  ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+- Visibility Icons for Java Files are not hidden
+  anymore ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+- Static Classes for Java files now have the appropriate Static
+  Mark ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
+- Accurately apply `Exception` icon on all classes extending `Exception` and
+  `Throwable` ([#116](https://github.com/catppuccin/jetbrains-icons/pull/116))
 
 ## 1.8.0 - 2024-09-13
 
@@ -49,19 +58,24 @@
 - Differentiate Java files (Annotation, Class, Enum, etc.) by colour and shape in the file tree. If you know how to
   implement these icons in the rest of the user interface, please reach out to us via the issue tracker or the
   Catppuccin discord!
-- Upgrade submodule `vscode-icons` from v1.15.0 to v1.16.0 (See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1160) for added icons and associations)
+- Upgrade submodule `vscode-icons` from v1.15.0 to v1.16.0 (
+  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1160) for added
+  icons and associations)
 
 ## 1.7.0 - 2024-09-08
 
 ### Added
 
-- Upgrade submodule `vscode-icons` from v1.13.0 to v1.15.0 (See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1150) for added icons and associations)
+- Upgrade submodule `vscode-icons` from v1.13.0 to v1.15.0 (
+  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1150) for added
+  icons and associations)
 
 ## 1.6.2 - 2024-08-13
 
 ### Fixed
 
-- Make `org.jetbrains.kotlin` and `com.intellij.java` modules optional. This reintroduces support for IDEs outside IntelliJ, Android Studio & Aqua. ([#86](https://github.com/catppuccin/jetbrains-icons/pull/86))
+- Make `org.jetbrains.kotlin` and `com.intellij.java` modules optional. This reintroduces support for IDEs outside
+  IntelliJ, Android Studio & Aqua. ([#86](https://github.com/catppuccin/jetbrains-icons/pull/86))
 
 ## 1.6.1 - 2024-08-09
 
@@ -102,8 +116,10 @@
 
 - Different colors for Java filetypes (e.g. `Class`: Red, `Interface`: Green, `Record`: Mauve, `Enum`:
   Yellow and `Annotation`: Green) ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
-- Ability to disable different colors for Java filetypes in settings panel. ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
-- Add Docker icon to all files with string `Dockerfile` (e.g. `dev.Dockerfile`) ([#32](https://github.com/catppuccin/jetbrains-icons/pull/32))
+- Ability to disable different colors for Java filetypes in settings
+  panel. ([#35](https://github.com/catppuccin/jetbrains-icons/pull/35))
+- Add Docker icon to all files with string `Dockerfile` (e.g.
+  `dev.Dockerfile`) ([#32](https://github.com/catppuccin/jetbrains-icons/pull/32))
 - Add Dependency on the IntelliJ Java Module ([#40](https://github.com/catppuccin/jetbrains-icons/pull/40))
 
 ## 1.4.0 - 2024-02-27
