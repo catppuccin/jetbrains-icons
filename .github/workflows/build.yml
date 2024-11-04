@@ -58,7 +58,7 @@ jobs:
         run: pnpm build
 
       - name: Check Formatting
-        run: ./gradlew ktfmtCheck
+        run: ./gradlew checkFormatting
 
       - name: Test & Build Plugin
         run: ./gradlew buildPlugin
