@@ -281,9 +281,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
         .trimIndent(),
     )
 
-    val icon = runInEdtAndGet {
-      provider.getVisibilityIconForTesting(fixture.findClass("PublicClass"))
-    }
+    val icon = runInEdtAndGet { provider.getVisibilityIcon(fixture.findClass("PublicClass")) }
 
     assertEquals(AllIcons.Nodes.Public, icon)
   }
@@ -302,7 +300,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     )
 
     val icon = runInEdtAndGet {
-      provider.getVisibilityIconForTesting(fixture.findClass("OuterClass.PrivateClass"))
+      provider.getVisibilityIcon(fixture.findClass("OuterClass.PrivateClass"))
     }
 
     assertEquals(AllIcons.Nodes.Private, icon)
@@ -322,7 +320,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     )
 
     val icon = runInEdtAndGet {
-      provider.getVisibilityIconForTesting(fixture.findClass("OuterClass.ProtectedClass"))
+      provider.getVisibilityIcon(fixture.findClass("OuterClass.ProtectedClass"))
     }
 
     assertEquals(AllIcons.Nodes.Protected, icon)
@@ -340,7 +338,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     )
 
     val icon = runInEdtAndGet {
-      provider.getVisibilityIconForTesting(fixture.findClass("PackagePrivateClass"))
+      provider.getVisibilityIcon(fixture.findClass("PackagePrivateClass"))
     }
 
     assertEquals(AllIcons.Nodes.PackageLocal, icon)
@@ -352,7 +350,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     // Create a mock PsiClass that returns null for its modifier list
     val mockClass = mock<PsiClass> { on { modifierList } doReturn null }
 
-    val icon = runInEdtAndGet { provider.getVisibilityIconForTesting(mockClass) }
+    val icon = runInEdtAndGet { provider.getVisibilityIcon(mockClass) }
 
     assertNull(icon)
   }

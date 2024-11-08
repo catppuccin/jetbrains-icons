@@ -15,7 +15,6 @@ import com.intellij.ui.LayeredIcon
 import com.intellij.ui.RowIcon
 import javax.swing.Icon
 import org.jetbrains.annotations.NotNull
-import org.jetbrains.annotations.VisibleForTesting
 
 /** Provides icons for Java classes */
 class JavaIconProvider : IconProvider() {
@@ -102,7 +101,7 @@ class JavaIconProvider : IconProvider() {
    * @param psiElement The [PsiClass] to get the visibility icon for.
    * @return The visibility icon based on the class's modifier, or null if not applicable.
    */
-  private fun getVisibilityIcon(psiElement: PsiClass): Icon? =
+  internal fun getVisibilityIcon(psiElement: PsiClass): Icon? =
     when {
       psiElement.hasModifierProperty(PsiModifier.PUBLIC) -> AllIcons.Nodes.Public
       psiElement.hasModifierProperty(PsiModifier.PRIVATE) -> AllIcons.Nodes.Private
@@ -110,10 +109,6 @@ class JavaIconProvider : IconProvider() {
       PsiClassUtils.isPackagePrivate(psiElement) -> AllIcons.Nodes.PackageLocal
       else -> null
     }
-
-  @VisibleForTesting
-  internal fun getVisibilityIconForTesting(psiElement: PsiClass): Icon? =
-    getVisibilityIcon(psiElement)
 
   /**
    * Gets the appropriate Java icon based on the class type.
