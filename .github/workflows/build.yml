@@ -60,6 +60,10 @@ jobs:
       - name: Check Formatting
         run: ./gradlew checkFormatting
 
+      - name: Run Static Analysis
+        run: ./gradlew runStaticAnalysis
+        continue-on-error: true
+
       - name: Test & Build Plugin
         run: ./gradlew buildPlugin
 

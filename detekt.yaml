@@ -1,0 +1,6 @@
+config:
+  validation: true
+
+naming:
+  PackageNaming:
+    active: false

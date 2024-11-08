@@ -23,6 +23,14 @@ class IconProvider : IconProvider() {
   /** File extensions that are handled by more specific providers (not this class). */
   private val fileTypesByProviders = listOf(".java")
 
+  /**
+   * Returns an icon for the given PsiElement.
+   *
+   * @param element The PsiElement to get an icon for.
+   * @param flags Additional flags for icon retrieval (not used in this implementation).
+   * @return The icon for the element, or null if no suitable icon is found or if the file type is
+   *   handled by another provider.
+   */
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     val virtualFile = PsiUtilCore.getVirtualFile(element)
     val file = virtualFile?.let { PsiManager.getInstance(element.project).findFile(it) }
@@ -33,39 +41,70 @@ class IconProvider : IconProvider() {
       return null
     }
 
-    // Check if the name of the file is overridden by anything, if so return that icon.
-    if (iconOverrides.containsKey(file?.fileType?.name?.lowercase())) {
-      return iconOverrides[file?.fileType?.name?.lowercase()]
-    }
+    return findIcon(virtualFile, file)
+  }
 
-    // Folders
-    if (virtualFile?.isDirectory == true) {
-      return icons.FOLDER_TO_ICONS[virtualFile.name.lowercase()] ?: icons._folder
+  /**
+   * Finds an appropriate icon for the given virtual file and PsiFile.
+   *
+   * @param virtualFile The VirtualFile associated with the element.
+   * @param file The PsiFile associated with the element.
+   * @return The icon for the file, or a default icon if no specific icon is found.
+   */
+  private fun findIcon(
+    virtualFile: com.intellij.openapi.vfs.VirtualFile?,
+    file: com.intellij.psi.PsiFile?,
+  ): Icon? {
+    val fileTypeName = file?.fileType?.name?.lowercase()
+
+    return when {
+      // Check if the name of the file is overridden by anything, if so return that icon.
+      iconOverrides.containsKey(fileTypeName) -> iconOverrides[fileTypeName]
+      virtualFile?.isDirectory == true ->
+        icons.FOLDER_TO_ICONS[virtualFile.name.lowercase()] ?: icons._folder
+      else -> findFileIcon(virtualFile) ?: icons._file
     }
+  }
+
+  /**
+   * Finds an icon specifically for a file (not a directory).
+   *
+   * @param virtualFile The VirtualFile to find an icon for.
+   * @return The icon for the file, or null if no specific icon is found.
+   */
+  private fun findFileIcon(virtualFile: com.intellij.openapi.vfs.VirtualFile?): Icon? {
+    val fileName = virtualFile?.name?.lowercase()
 
     // Files
-    val icon = icons.FILE_TO_ICONS[virtualFile?.name?.lowercase()]
-    if (icon != null) {
-      return icon
-    }
+    return icons.FILE_TO_ICONS[fileName]
+      ?: findExtensionIcon(fileName)
+      ?: if (virtualFile?.fileType?.isBinary == true) icons.binary else null
+  }
 
+  /**
+   * Finds an icon based on the file extension.
+   *
+   * @param fileName The name of the file to find an icon for.
+   * @return The icon for the file extension, or null if no matching icon is found.
+   */
+  private fun findExtensionIcon(fileName: String?): Icon? {
     // Extensions
     // if the file is abc.test.tsx, try abc.test.tsx, then test.tsx, then tsx
-    val parts = virtualFile?.name?.split(".")
-    if (parts != null) {
-      for (i in parts.indices) {
-        val path = parts.subList(i, parts.size).joinToString(".")
-        val icon = icons.EXT_TO_ICONS[path]
-        if (icon != null) {
-          return icon
+    return when {
+      // Return null if filename is null since we can't process it
+      fileName == null -> null
+      else -> {
+        val parts = fileName.split(".")
+        for (i in parts.indices) {
+          val path = parts.subList(i, parts.size).joinToString(".")
+          // Return the first matching icon we find, starting from the longest possible extension
+          icons.EXT_TO_ICONS[path]?.let {
+            return it
+          }
         }
+        // No matching extension was found, so return null to fall back to default icon
+        null
       }
     }
-
-    if (virtualFile?.fileType?.isBinary == true) {
-      return icons.binary
-    }
-
-    return icons._file
   }
 }

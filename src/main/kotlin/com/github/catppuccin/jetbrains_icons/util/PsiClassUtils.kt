@@ -22,10 +22,8 @@ object PsiClassUtils {
 
   /** Returns true if the [psiClass] is an exception (inherits from an exception). */
   fun isException(psiClass: PsiClass): Boolean {
-    val className = psiClass.name
-    if (className.isNullOrEmpty()) return false
-    if (!psiClass.isValid) return false
-    return extendsException(psiClass)
+    if (psiClass.name.isNullOrEmpty()) return false
+    return psiClass.isValid && extendsException(psiClass)
   }
 
   /** Returns true if the [psiClass] has package-private visibility. */
