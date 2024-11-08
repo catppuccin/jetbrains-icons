@@ -6,40 +6,30 @@ import com.github.catppuccin.jetbrains_icons.settings.views.SettingsHeaderView
 import com.github.catppuccin.jetbrains_icons.settings.views.SettingsIconPackView
 import com.intellij.ui.TitledSeparator
 import com.intellij.util.ui.FormBuilder
-import javax.swing.*
+import javax.swing.JPanel
 
-enum class Variant(val id: String, val label: String) {
+enum class Variant(val id: String, private val label: String) {
   LATTE("latte", "Catppuccin Latte"),
   FRAPPE("frappe", "Catppuccin Frappé"),
   MACCHIATO("macchiato", "Catppuccin Macchiato"),
   MOCHA("mocha", "Catppuccin Mocha");
 
-  override fun toString(): String {
-    return label
-  }
+  override fun toString(): String = label
 }
 
 class PluginSettingsComponent(currentVariant: String) {
-  var view = JPanel()
-    private set
+  val additionalSupport = SettingsAdditionalSupportView()
+  val iconPack = SettingsIconPackView(currentVariant)
 
-  var iconPack = SettingsIconPackView(currentVariant)
-    private set
-
-  var additionalSupport = SettingsAdditionalSupportView()
-    private set
-
-  init {
-    view =
-      FormBuilder.createFormBuilder()
-        .addComponent(SettingsHeaderView())
-        .addComponent(TitledSeparator("General"))
-        .addComponent(iconPack)
-        .addComponent(TitledSeparator("Additional Support"))
-        .addComponent(additionalSupport)
-        .addComponent(TitledSeparator("About"))
-        .addComponent(SettingsAboutView())
-        .addComponentFillVertically(JPanel(), 0)
-        .panel
-  }
+  val view: JPanel =
+    FormBuilder.createFormBuilder()
+      .addComponent(SettingsHeaderView())
+      .addComponent(TitledSeparator("General"))
+      .addComponent(iconPack)
+      .addComponent(TitledSeparator("Additional Support"))
+      .addComponent(additionalSupport)
+      .addComponent(TitledSeparator("About"))
+      .addComponent(SettingsAboutView())
+      .addComponentFillVertically(JPanel(), 0)
+      .panel
 }

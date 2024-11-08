@@ -15,6 +15,8 @@
 
 ### Fixed
 
+- Fixed K2 compatibility warning
+
 ### Security
 
 ## 1.10.0 - 2024-10-13

@@ -31,7 +31,8 @@ For further help, see also:
 <p>LICENSE: <a href="https://github.com/catppuccin/jetbrains-icons/blob/main/LICENSE">MIT</a></p>
 ]]></description>
   <depends>com.intellij.modules.platform</depends>
-  <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withKotlin.xml">org.jetbrains.kotlin</depends>
+  <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withKotlin.xml">org.jetbrains.kotlin
+  </depends>
   <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withJava.xml">com.intellij.java</depends>
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider
@@ -53,6 +54,9 @@ For further help, see also:
     <applicationService
       serviceImplementation="com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState"
     />
+  </extensions>
+  <extensions defaultExtensionNs="com.intellij.kotlin">
+    <supportsKotlinPluginMode supportsK2="true"/>
   </extensions>
   <resource-bundle>messages.PluginSettingsBundle</resource-bundle>
 </idea-plugin>

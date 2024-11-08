@@ -13,14 +13,7 @@ import javax.swing.JComponent
 class PluginSettings : Configurable {
   private val component = PluginSettingsComponent(PluginSettingsState.instance.variant)
 
-  override fun createComponent(): JComponent {
-    return component.view
-  }
-
-  private fun packChanged(): Boolean {
-    val state = PluginSettingsState.instance
-    return component.iconPack.variant != state.variant
-  }
+  override fun createComponent(): JComponent = component.view
 
   override fun isModified(): Boolean {
     val state = PluginSettingsState.instance
@@ -48,12 +41,15 @@ class PluginSettings : Configurable {
     }
   }
 
-  override fun getDisplayName(): String {
-    return "Catppuccin Icons"
+  override fun getDisplayName(): String = "Catppuccin Icons"
+
+  private fun packChanged(): Boolean {
+    val state = PluginSettingsState.instance
+    return component.iconPack.variant != state.variant
   }
 
   private fun restart() {
-    val result =
+    val exitConfirmed =
       if (GeneralSettings.getInstance().isConfirmExit) {
         Messages.showYesNoDialog(
           PluginSettingsBundle.message("dialog.message.restart.ide"),
@@ -66,7 +62,7 @@ class PluginSettings : Configurable {
         true
       }
 
-    if (result) {
+    if (exitConfirmed) {
       val app = ApplicationManager.getApplication() as ApplicationEx
       app.restart(true)
     }

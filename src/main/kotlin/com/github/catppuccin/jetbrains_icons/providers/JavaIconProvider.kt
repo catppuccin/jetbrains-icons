@@ -1,6 +1,6 @@
 package com.github.catppuccin.jetbrains_icons.providers
 
-import com.github.catppuccin.jetbrains_icons.IconPack
+import com.github.catppuccin.jetbrains_icons.IconPack.icons
 import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.github.catppuccin.jetbrains_icons.util.PsiClassUtils
 import com.intellij.icons.AllIcons
@@ -17,8 +17,6 @@ import javax.swing.Icon
 import org.jetbrains.annotations.NotNull
 
 class JavaIconProvider : IconProvider() {
-  private val icons = IconPack.instance.icons
-
   override fun getIcon(@NotNull element: PsiElement, @IconFlags flags: Int): Icon? {
     if (!PluginSettingsState.instance.javaSupport) return icons.java
 
@@ -38,9 +36,7 @@ class JavaIconProvider : IconProvider() {
             setIcon(staticMark, 1)
           }
         }
-        else -> {
-          baseIcon
-        }
+        else -> baseIcon
       }
 
     val visibilityIconsEnabled =
