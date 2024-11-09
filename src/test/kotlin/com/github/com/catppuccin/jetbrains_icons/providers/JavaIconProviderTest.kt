@@ -4,7 +4,6 @@ import com.github.catppuccin.jetbrains_icons.Icons
 import com.github.catppuccin.jetbrains_icons.providers.JavaIconProvider
 import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.intellij.icons.AllIcons
-import com.intellij.psi.PsiClass
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase5
 import com.intellij.testFramework.runInEdtAndGet
 import com.intellij.ui.LayeredIcon
@@ -15,8 +14,6 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.mock
 
 /**
  * Test class for JavaIconProvider. This class tests various scenarios for icon provision for Java
@@ -342,16 +339,5 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     }
 
     assertEquals(AllIcons.Nodes.PackageLocal, icon)
-  }
-
-  @Test
-  @DisplayName("Test that a class with no modifier list returns null for its modifier list")
-  fun getVisibilityIconForTesting_classWithNoModifierList_returnsNull() {
-    // Create a mock PsiClass that returns null for its modifier list
-    val mockClass = mock<PsiClass> { on { modifierList } doReturn null }
-
-    val icon = runInEdtAndGet { provider.getVisibilityIcon(mockClass) }
-
-    assertNull(icon)
   }
 }

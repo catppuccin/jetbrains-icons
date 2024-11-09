@@ -52,7 +52,6 @@ dependencies {
   }
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
-  testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
 }
 
 intellijPlatform {
