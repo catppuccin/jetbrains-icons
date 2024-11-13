@@ -9,13 +9,6 @@ import javax.swing.JPanel
 
 class SettingsHeaderView : JPanel() {
 
-  companion object {
-    private const val SPACER_WIDTH = 4
-    private const val SPACER_HEIGHT = 8
-    private const val LOGO_SIZE = 60
-    private const val FONT_SIZE = 24.0f
-  }
-
   init {
     drawLogo()
 
@@ -38,5 +31,12 @@ class SettingsHeaderView : JPanel() {
     val label = JLabel("Catppuccin Icons")
     label.font = label.font.deriveFont(FONT_SIZE)
     add(label)
+  }
+
+  companion object {
+    private const val SPACER_WIDTH = 4
+    private const val SPACER_HEIGHT = 8
+    private const val LOGO_SIZE = 60
+    private const val FONT_SIZE = 24.0f
   }
 }
