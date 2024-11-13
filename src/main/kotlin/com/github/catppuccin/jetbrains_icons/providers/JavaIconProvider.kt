@@ -16,28 +16,26 @@ import com.intellij.ui.RowIcon
 import javax.swing.Icon
 import org.jetbrains.annotations.NotNull
 
-/** Provides icons for Java classes in the IDE. */
+/** Provides icons for Java classes*/
 class JavaIconProvider : IconProvider() {
   /**
-   * Returns an icon for the given PsiElement if it's a Java class.
+   * Returns an icon for the given [PsiElement] if it's a Java class.
    *
-   * @param element The PsiElement to get an icon for.
+   * @param element The [PsiElement] to get an icon for.
    * @param flags Additional flags for icon retrieval.
    * @return The icon for the element, or null if no suitable icon is found.
    */
-  override fun getIcon(@NotNull element: PsiElement, @IconFlags flags: Int): Icon? {
-    return when {
-      !PluginSettingsState.instance.javaSupport -> icons.java
-      element !is PsiClass -> null
-      PsiUtilCore.getVirtualFile(element)?.name?.endsWith(".java") != true -> null
-      else -> getJavaClassIcon(element)
-    }
+  override fun getIcon(@NotNull element: PsiElement, @IconFlags flags: Int): Icon? = when {
+    !PluginSettingsState.instance.javaSupport -> icons.java
+    element !is PsiClass -> null
+    PsiUtilCore.getVirtualFile(element)?.name?.endsWith(".java") != true -> null
+    else -> getJavaClassIcon(element)
   }
 
   /**
    * Gets the appropriate icon for a Java class, including static and visibility markers.
    *
-   * @param element The PsiClass to get an icon for.
+   * @param element The [PsiClass] to get an icon for.
    * @return The icon for the Java class.
    */
   private fun getJavaClassIcon(element: PsiClass): Icon {
@@ -49,7 +47,7 @@ class JavaIconProvider : IconProvider() {
   /**
    * Adds a static mark to the icon if the class is static.
    *
-   * @param element The PsiClass to check for static modifier.
+   * @param element The [PsiClass] to check for static modifier.
    * @param baseIcon The base icon to add the static mark to.
    * @return The icon with static mark added if needed.
    */
@@ -66,9 +64,9 @@ class JavaIconProvider : IconProvider() {
   }
 
   /**
-   * Adds a visibility icon to the class icon if visibility icons are enabled in the project view.
+   * Adds a visibility icon to the class icon if visibility icons are enabled.
    *
-   * @param element The PsiClass to get the visibility for.
+   * @param element The [PsiClass] to get the visibility for.
    * @param icon The icon to add the visibility icon to.
    * @return The icon with visibility icon added if needed.
    */
@@ -87,17 +85,19 @@ class JavaIconProvider : IconProvider() {
 
   /**
    * Gets the static mark icon if the class is static.
+   * This is a small icon that is added to the class icon to indicate that the class is static.
    *
-   * @param element The PsiClass to check for static modifier.
+   * @param element The [PsiClass] to check for static modifier.
    * @return The static mark icon if the class is static, null otherwise.
+   * @see AllIcons.Nodes.StaticMark
    */
   private fun getStaticMark(element: PsiClass): Icon? =
     if (PsiClassUtils.isStatic(element)) AllIcons.Nodes.StaticMark else null
 
   /**
-   * Gets the visibility icon for the given PsiClass.
+   * Gets the visibility icon for the given [PsiClass].
    *
-   * @param psiElement The PsiClass to get the visibility icon for.
+   * @param psiElement The [PsiClass] to get the visibility icon for.
    * @return The visibility icon based on the class's modifier, or null if not applicable.
    */
   private fun getVisibilityIcon(psiElement: PsiClass): Icon? =
@@ -112,7 +112,7 @@ class JavaIconProvider : IconProvider() {
   /**
    * Gets the appropriate Java icon based on the class type.
    *
-   * @param aClass The PsiClass to get the icon for.
+   * @param aClass The [PsiClass] to get the icon for.
    * @return The icon representing the Java class type.
    */
   private fun getJavaIcon(aClass: PsiClass): Icon =

@@ -2,7 +2,9 @@ package com.github.catppuccin.jetbrains_icons
 
 import com.github.catppuccin.jetbrains_icons.IconPack.icons
 import com.intellij.ide.IconProvider
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
 import com.intellij.psi.util.PsiUtilCore
 import javax.swing.Icon
@@ -24,12 +26,11 @@ class IconProvider : IconProvider() {
   private val fileTypesByProviders = listOf(".java")
 
   /**
-   * Returns an icon for the given PsiElement.
+   * Returns an icon for the given [PsiElement].
    *
-   * @param element The PsiElement to get an icon for.
-   * @param flags Additional flags for icon retrieval (not used in this implementation).
-   * @return The icon for the element, or null if no suitable icon is found or if the file type is
-   *   handled by another provider.
+   * @param element the [PsiElement] to get an icon for.
+   * @param flags additional flags for icon retrieval (not used in this implementation).
+   * @return the [Icon] corresponding to the file type
    */
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     val virtualFile = PsiUtilCore.getVirtualFile(element)
@@ -45,15 +46,15 @@ class IconProvider : IconProvider() {
   }
 
   /**
-   * Finds an appropriate icon for the given virtual file and PsiFile.
+   * Finds an appropriate icon for the given virtual file and [PsiFile].
    *
-   * @param virtualFile The VirtualFile associated with the element.
-   * @param file The PsiFile associated with the element.
-   * @return The icon for the file, or a default icon if no specific icon is found.
+   * @param virtualFile the [VirtualFile] associated with the element.
+   * @param file the [PsiFile] associated with the element.
+   * @return the icon for the file, or a default icon if no specific icon is found.
    */
   private fun findIcon(
-    virtualFile: com.intellij.openapi.vfs.VirtualFile?,
-    file: com.intellij.psi.PsiFile?,
+    virtualFile: VirtualFile?,
+    file: PsiFile?,
   ): Icon? {
     val fileTypeName = file?.fileType?.name?.lowercase()
 
@@ -69,10 +70,10 @@ class IconProvider : IconProvider() {
   /**
    * Finds an icon specifically for a file (not a directory).
    *
-   * @param virtualFile The VirtualFile to find an icon for.
-   * @return The icon for the file, or null if no specific icon is found.
+   * @param virtualFile the [VirtualFile] to find an icon for.
+   * @return the icon for the file, or null if no specific icon is found.
    */
-  private fun findFileIcon(virtualFile: com.intellij.openapi.vfs.VirtualFile?): Icon? {
+  private fun findFileIcon(virtualFile: VirtualFile?): Icon? {
     val fileName = virtualFile?.name?.lowercase()
 
     // Files
@@ -84,8 +85,8 @@ class IconProvider : IconProvider() {
   /**
    * Finds an icon based on the file extension.
    *
-   * @param fileName The name of the file to find an icon for.
-   * @return The icon for the file extension, or null if no matching icon is found.
+   * @param fileName the name of the file to find an icon for.
+   * @return the icon for the file extension, or null if no matching icon is found.
    */
   private fun findExtensionIcon(fileName: String?): Icon? {
     // Extensions
@@ -102,7 +103,7 @@ class IconProvider : IconProvider() {
             return it
           }
         }
-        // No matching extension was found, so return null to fall back to default icon
+        // No matching extension was found, so return null, falling back to default icon
         null
       }
     }
