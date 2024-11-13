@@ -16,7 +16,7 @@ import com.intellij.ui.RowIcon
 import javax.swing.Icon
 import org.jetbrains.annotations.NotNull
 
-/** Provides icons for Java classes*/
+/** Provides icons for Java classes */
 class JavaIconProvider : IconProvider() {
   /**
    * Returns an icon for the given [PsiElement] if it's a Java class.
@@ -25,12 +25,13 @@ class JavaIconProvider : IconProvider() {
    * @param flags Additional flags for icon retrieval.
    * @return The icon for the element, or null if no suitable icon is found.
    */
-  override fun getIcon(@NotNull element: PsiElement, @IconFlags flags: Int): Icon? = when {
-    !PluginSettingsState.instance.javaSupport -> icons.java
-    element !is PsiClass -> null
-    PsiUtilCore.getVirtualFile(element)?.name?.endsWith(".java") != true -> null
-    else -> getJavaClassIcon(element)
-  }
+  override fun getIcon(@NotNull element: PsiElement, @IconFlags flags: Int): Icon? =
+    when {
+      !PluginSettingsState.instance.javaSupport -> icons.java
+      element !is PsiClass -> null
+      PsiUtilCore.getVirtualFile(element)?.name?.endsWith(".java") != true -> null
+      else -> getJavaClassIcon(element)
+    }
 
   /**
    * Gets the appropriate icon for a Java class, including static and visibility markers.
@@ -84,8 +85,8 @@ class JavaIconProvider : IconProvider() {
   }
 
   /**
-   * Gets the static mark icon if the class is static.
-   * This is a small icon that is added to the class icon to indicate that the class is static.
+   * Gets the static mark icon if the class is static. This is a small icon that is added to the
+   * class icon to indicate that the class is static.
    *
    * @param element The [PsiClass] to check for static modifier.
    * @return The static mark icon if the class is static, null otherwise.

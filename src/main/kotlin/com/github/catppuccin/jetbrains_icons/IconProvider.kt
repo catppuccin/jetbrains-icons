@@ -29,7 +29,8 @@ class IconProvider : IconProvider() {
    * Returns an icon for the given [PsiElement].
    *
    * @param element the [PsiElement] to get an icon for.
-   * @param flags additional flags for icon retrieval (not used in this implementation).
+   * @param flags additional flags for icon retrieval (not used in this implementation). It is only
+   *   used because the method signature requires it.
    * @return the [Icon] corresponding to the file type
    */
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
@@ -52,10 +53,7 @@ class IconProvider : IconProvider() {
    * @param file the [PsiFile] associated with the element.
    * @return the icon for the file, or a default icon if no specific icon is found.
    */
-  private fun findIcon(
-    virtualFile: VirtualFile?,
-    file: PsiFile?,
-  ): Icon? {
+  private fun findIcon(virtualFile: VirtualFile?, file: PsiFile?): Icon? {
     val fileTypeName = file?.fileType?.name?.lowercase()
 
     return when {
@@ -63,6 +61,7 @@ class IconProvider : IconProvider() {
       iconOverrides.containsKey(fileTypeName) -> iconOverrides[fileTypeName]
       virtualFile?.isDirectory == true ->
         icons.FOLDER_TO_ICONS[virtualFile.name.lowercase()] ?: icons._folder
+
       else -> findFileIcon(virtualFile) ?: icons._file
     }
   }
