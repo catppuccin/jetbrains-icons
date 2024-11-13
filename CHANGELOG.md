@@ -7,6 +7,7 @@
 ### Changed
 
 - Add code formatting with ktfmt
+- Add static analysis with detekt
 - Add tests
 
 ### Deprecated

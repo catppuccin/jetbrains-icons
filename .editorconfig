@@ -19,3 +19,6 @@ trim_trailing_whitespace = false
 # windows shell scripts
 [*.{cmd,bat,ps1}]
 end_of_line = crlf
+
+[*.{kt,kts}]
+ij_kotlin_name_count_to_use_star_import = 2147483647
