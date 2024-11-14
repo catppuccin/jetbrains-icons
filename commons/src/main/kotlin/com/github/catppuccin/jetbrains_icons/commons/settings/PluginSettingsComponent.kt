@@ -1,9 +1,9 @@
-package com.github.catppuccin.jetbrains_icons.settings
+package com.github.catppuccin.jetbrains_icons.commons.settings
 
-import com.github.catppuccin.jetbrains_icons.settings.views.SettingsAboutView
-import com.github.catppuccin.jetbrains_icons.settings.views.SettingsAdditionalSupportView
-import com.github.catppuccin.jetbrains_icons.settings.views.SettingsHeaderView
-import com.github.catppuccin.jetbrains_icons.settings.views.SettingsIconPackView
+import com.github.catppuccin.jetbrains_icons.commons.settings.views.SettingsAboutView
+import com.github.catppuccin.jetbrains_icons.commons.settings.views.SettingsAdditionalSupportView
+import com.github.catppuccin.jetbrains_icons.commons.settings.views.SettingsHeaderView
+import com.github.catppuccin.jetbrains_icons.commons.settings.views.SettingsIconPackView
 import com.intellij.ui.TitledSeparator
 import com.intellij.util.ui.FormBuilder
 import javax.swing.JPanel

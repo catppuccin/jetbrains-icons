@@ -1,4 +1,4 @@
-package com.github.catppuccin.jetbrains_icons.settings
+package com.github.catppuccin.jetbrains_icons.commons.settings
 
 import com.intellij.ide.plugins.PluginManager.isPluginInstalled
 import com.intellij.openapi.application.ApplicationManager
@@ -9,7 +9,7 @@ import com.intellij.openapi.extensions.PluginId.getId
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(
-  name = "com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState",
+  name = "com.github.catppuccin.jetbrains_icons.commons.settings.PluginSettingsState",
   storages = [Storage("CatppuccinIcons.xml")],
 )
 class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {

@@ -34,25 +34,22 @@ For further help, see also:
   <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withKotlin.xml">org.jetbrains.kotlin
   </depends>
   <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withJava.xml">com.intellij.java</depends>
+  <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withPython.xml">PythonCore</depends>
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider
-      implementation="com.github.catppuccin.jetbrains_icons.IconProvider"
+      implementation="com.github.catppuccin.jetbrains_icons.commons.IconProvider"
       order="first"
       id="IconProvider"
-    />
-    <projectViewNodeDecorator
-      implementation="com.github.catppuccin.jetbrains_icons.decorators.PythonProjectViewNodeDecorator"
-      id="PythonProjectViewNodeDecorator"
     />
     <applicationConfigurable
       parentId="appearance"
       groupId="com.github.catppuccin.jetbrains_icons"
       displayName="Catppuccin Icons"
-      instance="com.github.catppuccin.jetbrains_icons.settings.PluginSettings"
+      instance="com.github.catppuccin.jetbrains_icons.commons.settings.PluginSettings"
       id="PluginSettings"
     />
     <applicationService
-      serviceImplementation="com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState"
+      serviceImplementation="com.github.catppuccin.jetbrains_icons.commons.settings.PluginSettingsState"
     />
   </extensions>
   <extensions defaultExtensionNs="com.intellij.kotlin">

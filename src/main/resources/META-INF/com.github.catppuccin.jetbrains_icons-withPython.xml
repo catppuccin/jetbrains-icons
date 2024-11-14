@@ -1,0 +1,9 @@
+<idea-plugin>
+  <extensions defaultExtensionNs="com.intellij">
+    <iconProvider
+      implementation="com.github.catppuccin.jetbrains_icons.pycharm.providers.PythonIconProvider"
+      order="first"
+      id="PythonIconProvider"
+    />
+  </extensions>
+</idea-plugin>

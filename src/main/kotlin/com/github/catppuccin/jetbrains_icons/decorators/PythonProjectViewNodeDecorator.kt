@@ -1,7 +1,7 @@
 package com.github.catppuccin.jetbrains_icons.decorators
 
-import com.github.catppuccin.jetbrains_icons.IconPack.icons
-import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
+import com.github.catppuccin.jetbrains_icons.commons.IconPack.icons
+import com.github.catppuccin.jetbrains_icons.commons.settings.PluginSettingsState
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.ide.projectView.ProjectViewNode
 import com.intellij.ide.projectView.ProjectViewNodeDecorator

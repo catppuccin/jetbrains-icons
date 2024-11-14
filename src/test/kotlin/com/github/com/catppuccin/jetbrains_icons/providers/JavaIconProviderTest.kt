@@ -1,6 +1,6 @@
 package com.github.com.catppuccin.jetbrains_icons.providers
 
-import com.github.catppuccin.jetbrains_icons.Icons
+import com.github.catppuccin.jetbrains_icons.commons.Icons
 import com.github.catppuccin.jetbrains_icons.providers.JavaIconProvider
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase5
 import com.intellij.testFramework.runInEdtAndGet

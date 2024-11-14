@@ -3,6 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.date
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -13,7 +14,7 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "2.0.21"
+  kotlin("jvm") version "2.0.21"
   // Gradle IntelliJ Plugin
   id("org.jetbrains.intellij.platform") version "2.1.0"
   // Gradle Changelog Plugin
@@ -30,6 +31,51 @@ group = properties("pluginGroup")
 
 version = properties("pluginVersion")
 
+val javaVersion: String by project
+
+allprojects {
+
+  apply {
+    plugin("java")
+    plugin("org.jetbrains.kotlin.jvm")
+    plugin("org.jetbrains.intellij.platform")
+  }
+
+  intellijPlatform {
+    buildSearchableOptions = false
+    instrumentCode = true
+  }
+
+  repositories {
+    mavenCentral()
+
+    intellijPlatform {
+      defaultRepositories()
+    }
+  }
+
+  tasks {
+
+    javaVersion.let {
+      withType<JavaCompile> {
+        sourceCompatibility = it
+        targetCompatibility = it
+      }
+
+      withType<Copy> {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+      }
+    }
+  }
+
+  sourceSets {
+    main {
+      kotlin.srcDirs("src/main/kotlin")
+      resources.srcDirs("src/main/resources")
+    }
+  }
+}
+
 repositories {
   mavenCentral()
   intellijPlatform { defaultRepositories() }
@@ -45,6 +91,11 @@ dependencies {
     testFramework(TestFrameworkType.Plugin.Java)
   }
 
+  //Submodule dependencies (required for some fixes in specific IDEs)
+  implementation(project(":commons"))
+  runtimeOnly(project(":pycharm"))
+
+  //Test dependencies
   testImplementation(platform("org.junit:junit-bom:5.11.3"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher") {
@@ -73,6 +124,17 @@ intellijPlatform {
   }
 
   pluginVerification { ides { recommended() } }
+}
+
+sourceSets {
+  main {
+    kotlin.srcDirs("src/main/kotlin","commons/src/main/kotlin","pycharm/src/main/kotlin")
+    resources.srcDirs("src/main/resources","commons/src/main/resources","pycharm/src/main/resources")
+  }
+  test {
+    kotlin.srcDirs("src/test/kotlin","commons/src/test/kotlin","pycharm/src/test/kotlin")
+    resources.srcDirs("src/test/resources","commons/src/test/resources","pycharm/src/test/resources")
+  }
 }
 
 tasks {

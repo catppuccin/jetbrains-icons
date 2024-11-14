@@ -19,7 +19,7 @@ const customFileExtensions = {razor: "razor"}
 const extendedFileExtensions = {...fileExtensions, ...customFileExtensions}
 
 function generateIconsKt() {
-  let data = `package com.github.catppuccin.jetbrains_icons
+  let data = `package com.github.catppuccin.jetbrains_icons.commons
 
 import com.intellij.openapi.util.IconLoader
 
@@ -58,7 +58,8 @@ class Icons(private val variant: String) {`
 
   data += `\n}\n`
 
-  writeFileSync(`src/main/kotlin/com/github/catppuccin/jetbrains_icons/Icons.kt`, data, {encoding: 'utf-8'})
+  // writeFileSync(`src/main/kotlin/com/github/catppuccin/jetbrains_icons/Icons.kt`, data, {encoding: 'utf-8'})
+  writeFileSync(`commons/src/main/kotlin/com/github/catppuccin/jetbrains_icons/commons/Icons.kt`, data, {encoding: 'utf-8'})
 }
 
 ['latte', 'frappe', 'macchiato', 'mocha'].forEach(generateIcons)

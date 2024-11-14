@@ -1,6 +1,6 @@
-package com.github.catppuccin.jetbrains_icons.settings.views
+package com.github.catppuccin.jetbrains_icons.commons.settings.views
 
-import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
+import com.github.catppuccin.jetbrains_icons.commons.settings.PluginSettingsState
 import com.intellij.ide.plugins.PluginManager.isPluginInstalled
 import com.intellij.openapi.extensions.PluginId.findId
 import com.intellij.ui.components.JBCheckBox

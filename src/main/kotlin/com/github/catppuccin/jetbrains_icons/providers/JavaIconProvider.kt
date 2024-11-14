@@ -1,7 +1,7 @@
 package com.github.catppuccin.jetbrains_icons.providers
 
-import com.github.catppuccin.jetbrains_icons.IconPack.icons
-import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
+import com.github.catppuccin.jetbrains_icons.commons.settings.PluginSettingsState
+import com.github.catppuccin.jetbrains_icons.commons.IconPack.icons
 import com.github.catppuccin.jetbrains_icons.util.PsiClassUtils
 import com.intellij.icons.AllIcons
 import com.intellij.ide.IconProvider

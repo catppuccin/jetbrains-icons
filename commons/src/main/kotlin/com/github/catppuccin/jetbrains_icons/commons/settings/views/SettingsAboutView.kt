@@ -1,4 +1,4 @@
-package com.github.catppuccin.jetbrains_icons.settings.views
+package com.github.catppuccin.jetbrains_icons.commons.settings.views
 
 import com.intellij.ide.BrowserUtil
 import com.intellij.ui.components.ActionLink
