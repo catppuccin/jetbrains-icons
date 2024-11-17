@@ -7,6 +7,8 @@
 
 name: Publish
 
+permissions: read-all
+
 on:
   push:
     tags:
@@ -16,14 +18,13 @@ jobs:
   build:
     name: Publish Plugin
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           submodules: true
-
-      - name: Verify Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v4
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -31,6 +32,9 @@ jobs:
           distribution: zulu
           java-version: 17
           cache: 'gradle'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
