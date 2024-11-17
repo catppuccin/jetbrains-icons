@@ -10,7 +10,7 @@
     "build": "tsx generate/scripts/generate.ts"
   },
   "devDependencies": {
-    "@types/node": "^20.8.7",
+    "@types/node": "^22.0.0",
     "tsx": "^4.7.0",
     "typescript": "^5.2.2"
   },
