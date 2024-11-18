@@ -4,13 +4,16 @@ import com.github.catppuccin.jetbrains_icons.Icons
 import com.github.catppuccin.jetbrains_icons.providers.JavaIconProvider
 import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.intellij.icons.AllIcons
+import com.intellij.ide.projectView.impl.ProjectViewState
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase5
 import com.intellij.testFramework.runInEdtAndGet
 import com.intellij.ui.LayeredIcon
+import com.intellij.ui.RowIcon
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
@@ -27,6 +30,12 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
   private val icons = Icons("mocha")
   private val provider = JavaIconProvider()
+
+  @BeforeEach
+  fun setUp() {
+    PluginSettingsState.instance.javaSupport = true
+    ProjectViewState.getInstance(fixture.project).showVisibilityIcons = false
+  }
 
   @Test
   @DisplayName("Test icon provision for a standard Java class")
@@ -256,15 +265,11 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     )
 
     // Temporarily disable Java support
-    val originalSetting = PluginSettingsState.instance.javaSupport
     PluginSettingsState.instance.javaSupport = false
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeClass"), 1) }
 
     assertEquals(icons.java, icon)
-
-    // Restore original setting
-    PluginSettingsState.instance.javaSupport = originalSetting
   }
 
   @Test
@@ -278,9 +283,11 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
         .trimIndent(),
     )
 
-    val icon = runInEdtAndGet { provider.getVisibilityIcon(fixture.findClass("PublicClass")) }
+    ProjectViewState.getInstance(fixture.project).showVisibilityIcons = true
 
-    assertEquals(AllIcons.Nodes.Public, icon)
+    val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("PublicClass"), 1) }
+
+    assertEquals(AllIcons.Nodes.Public, (icon as RowIcon).getIcon(1))
   }
 
   @Test
@@ -296,11 +303,11 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
         .trimIndent(),
     )
 
-    val icon = runInEdtAndGet {
-      provider.getVisibilityIcon(fixture.findClass("OuterClass.PrivateClass"))
-    }
+    ProjectViewState.getInstance(fixture.project).showVisibilityIcons = true
 
-    assertEquals(AllIcons.Nodes.Private, icon)
+    val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("OuterClass.PrivateClass"), 1) }
+
+    assertEquals(AllIcons.Nodes.Private, (icon as RowIcon).getIcon(1))
   }
 
   @Test
@@ -316,11 +323,13 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
         .trimIndent(),
     )
 
+    ProjectViewState.getInstance(fixture.project).showVisibilityIcons = true
+
     val icon = runInEdtAndGet {
-      provider.getVisibilityIcon(fixture.findClass("OuterClass.ProtectedClass"))
+      provider.getIcon(fixture.findClass("OuterClass.ProtectedClass"), 1)
     }
 
-    assertEquals(AllIcons.Nodes.Protected, icon)
+    assertEquals(AllIcons.Nodes.Protected, (icon as RowIcon).getIcon(1))
   }
 
   @Test
@@ -334,10 +343,10 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
         .trimIndent(),
     )
 
-    val icon = runInEdtAndGet {
-      provider.getVisibilityIcon(fixture.findClass("PackagePrivateClass"))
-    }
+    ProjectViewState.getInstance(fixture.project).showVisibilityIcons = true
 
-    assertEquals(AllIcons.Nodes.PackageLocal, icon)
+    val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("PackagePrivateClass"), 1) }
+
+    assertEquals(AllIcons.Nodes.PackageLocal, (icon as RowIcon).getIcon(1))
   }
 }
