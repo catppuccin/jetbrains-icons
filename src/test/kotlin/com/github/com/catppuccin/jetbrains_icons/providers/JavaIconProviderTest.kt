@@ -15,15 +15,12 @@ import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
 /**
- * Test class for JavaIconProvider. This class tests various scenarios for icon provision for Java
- * elements.
+ * Tests for [JavaIconProvider]. This tests that the correct icons are returned for Java classes in
+ * both the files and the structure views.
  */
-@Tag("fast")
-@Tag("javaIcons")
 class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
   override fun getTestDataPath(): String = "src/test/testData"
@@ -38,7 +35,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a standard Java class")
+  @DisplayName("Icon for a standard Java class")
   fun getIcon_javaClass() {
     fixture.addFileToProject(
       "SomeClass.java",
@@ -54,7 +51,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java interface")
+  @DisplayName("Icon for a Java interface")
   fun getIcon_javaInterface() {
     fixture.addFileToProject(
       "SomeInterface.java",
@@ -70,7 +67,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java enum")
+  @DisplayName("Icon for a Java enum")
   fun getIcon_javaEnum() {
     fixture.addFileToProject(
       "SomeEnum.java",
@@ -86,7 +83,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java annotation")
+  @DisplayName("Icon for a Java annotation")
   fun getIcon_javaAnnotation() {
     fixture.addFileToProject(
       "SomeAnnotation.java",
@@ -102,7 +99,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java record")
+  @DisplayName("Icon for a Java record")
   fun getIcon_javaRecord() {
     fixture.addFileToProject(
       "SomeRecord.java",
@@ -118,7 +115,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java exception class")
+  @DisplayName("Icon for a Java exception class")
   fun getIcon_javaException() {
     fixture.addFileToProject(
       "SomeException.java",
@@ -134,7 +131,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java sealed class")
+  @DisplayName("Icon for a Java sealed class")
   fun getIcon_javaSealedClass() {
     fixture.addFileToProject(
       "SomeSealedClass.java",
@@ -150,7 +147,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java final class")
+  @DisplayName("Icon for a Java final class")
   fun getIcon_javaFinalClass() {
     fixture.addFileToProject(
       "SomeFinalClass.java",
@@ -166,7 +163,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test icon provision for a Java abstract class")
+  @DisplayName("Icon for a Java abstract class")
   fun getIcon_javaAbstractClass() {
     fixture.addFileToProject(
       "SomeAbstractClass.java",
@@ -182,7 +179,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test that a static class icon includes a static mark")
+  @DisplayName("Static class icon includes a static mark")
   fun getIcon_staticClass_hasStaticMark() {
     fixture.addFileToProject(
       "StaticClass.java",
@@ -203,7 +200,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test that a non-static class icon does not include a static mark")
+  @DisplayName("Non-static class icon does not include a static mark")
   fun getIcon_nonStaticClass_hasNoStaticMark() {
     fixture.addFileToProject(
       "RegularClass.java",
@@ -220,7 +217,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test that requesting an icon for a non-PsiClass element returns null")
+  @DisplayName("Non-PsiClass element returns null")
   fun getIcon_notPsiClass_returnsNull() {
     fixture.addFileToProject(
       "SomeClass.java",
@@ -238,7 +235,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test that requesting an icon for a non-Java file returns null")
+  @DisplayName("Non-Java file returns null")
   fun getIcon_nonJavaFile_returnsNull() {
     fixture.addFileToProject(
       "SomeClass.kt",
@@ -254,7 +251,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test that when Java support is disabled, a generic Java icon is returned")
+  @DisplayName("When Java support disabled, a generic Java icon is returned")
   fun getIcon_javaDisabled_returnsJavaIcon() {
     fixture.addFileToProject(
       "SomeClass.java",
@@ -273,8 +270,8 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test visibility icon for a public class")
-  fun getVisibilityIconForTesting_publicClass_returnsPublicIcon() {
+  @DisplayName("Visibility icon for a public class")
+  fun getIcon_publicClass_returnsPublicIcon() {
     fixture.addFileToProject(
       "PublicClass.java",
       """
@@ -291,8 +288,8 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test visibility icon for a private class")
-  fun getVisibilityIconForTesting_privateClass_returnsPrivateIcon() {
+  @DisplayName("Visibility icon for a private class")
+  fun getIcon_privateClass_returnsPrivateIcon() {
     fixture.addFileToProject(
       "OuterClass.java",
       """
@@ -311,8 +308,8 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test visibility icon for a protected class")
-  fun getVisibilityIconForTesting_protectedClass_returnsProtectedIcon() {
+  @DisplayName("Visibility icon for a protected class")
+  fun getIcon_protectedClass_returnsProtectedIcon() {
     fixture.addFileToProject(
       "OuterClass.java",
       """
@@ -333,8 +330,8 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
   }
 
   @Test
-  @DisplayName("Test visibility icon for a package-private class")
-  fun getVisibilityIconForTesting_packagePrivateClass_returnsPackageLocalIcon() {
+  @DisplayName("Visibility icon for a package-private class")
+  fun getIcon_packagePrivateClass_returnsPackageLocalIcon() {
     fixture.addFileToProject(
       "PackagePrivateClass.java",
       """

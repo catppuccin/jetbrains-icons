@@ -101,7 +101,7 @@ class JavaIconProvider : IconProvider() {
    * @param psiElement The [PsiClass] to get the visibility icon for.
    * @return The visibility icon based on the class's modifier, or null if not applicable.
    */
-  internal fun getVisibilityIcon(psiElement: PsiClass): Icon? =
+  private fun getVisibilityIcon(psiElement: PsiClass): Icon? =
     when {
       psiElement.hasModifierProperty(PsiModifier.PUBLIC) -> AllIcons.Nodes.Public
       psiElement.hasModifierProperty(PsiModifier.PRIVATE) -> AllIcons.Nodes.Private
