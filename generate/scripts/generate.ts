@@ -3,13 +3,13 @@ import {fileNames, fileExtensions} from "@/defaults/fileIcons";
 import {folderNames} from "@/defaults/folderIcons";
 
 function generateIcons(variant: string) {
-  mkdirSync('src/main/resources/icons', {recursive: true});
+  mkdirSync('src/main/resources/jetbrains_icons/icons', {recursive: true});
   readdirSync(`generate/vscode-icons/icons/${variant}`).forEach((file) => {
     if (!file.endsWith('.svg')) {
       return
     }
     let data = readFileSync(`generate/vscode-icons/icons/${variant}/${file}`, {encoding: 'utf-8'})
-    writeFileSync(`src/main/resources/icons/${variant}_${file}`, data, {encoding: 'utf-8'})
+    writeFileSync(`src/main/resources/jetbrains_icons/icons/${variant}_${file}`, data, {encoding: 'utf-8'})
   });
 }
 
@@ -31,7 +31,7 @@ class Icons(private val variant: String) {`
     }
 
     data += `\n    @JvmField`
-    data += `\n    val ${file.replace('.svg', '').replaceAll('-', '_')} = IconLoader.getIcon("/icons/" + variant + "_${file}", javaClass)`
+    data += `\n    val ${file.replace('.svg', '').replaceAll('-', '_')} = IconLoader.getIcon("/jetbrains_icons/icons/" + variant + "_${file}", javaClass)`
     data += `\n`
   })
 

@@ -53,5 +53,5 @@ node_modules
 .pnp.*
 
 ### Auto-generated ###
-src/main/resources/icons
+src/main/resources/jetbrains_icons/icons
 src/main/kotlin/com/github/catppuccin/jetbrains_icons/Icons.kt
