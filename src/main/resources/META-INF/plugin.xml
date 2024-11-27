@@ -40,10 +40,6 @@ For further help, see also:
       order="first"
       id="IconProvider"
     />
-    <projectViewNodeDecorator
-      implementation="com.github.catppuccin.jetbrains_icons.decorators.PythonProjectViewNodeDecorator"
-      id="PythonProjectViewNodeDecorator"
-    />
     <applicationConfigurable
       parentId="appearance"
       groupId="com.github.catppuccin.jetbrains_icons"
@@ -54,6 +50,7 @@ For further help, see also:
     <applicationService
       serviceImplementation="com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState"
     />
+    <postStartupActivity implementation="com.github.catppuccin.jetbrains_icons.activity.IconPathPatcherActivity"/>
   </extensions>
   <extensions defaultExtensionNs="com.intellij.kotlin">
     <supportsKotlinPluginMode supportsK2="true"/>
