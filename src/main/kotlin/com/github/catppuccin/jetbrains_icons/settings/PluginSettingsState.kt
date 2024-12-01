@@ -17,6 +17,7 @@ class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
 
   var pythonSupport = true
   var javaSupport = isPluginInstalled(getId("com.intellij.java"))
+  var goSupport = true
 
   override fun getState(): PluginSettingsState = this
 

@@ -14,6 +14,7 @@ class SettingsAdditionalSupportView : JPanel() {
     JBCheckBox("Java Filetypes", PluginSettingsState.instance.javaSupport).apply {
       isEnabled = isPluginInstalled(findId("com.intellij.java"))
     }
+  val go = JBCheckBox("Go", PluginSettingsState.instance.goSupport)
 
   init {
     val form =
@@ -24,6 +25,8 @@ class SettingsAdditionalSupportView : JPanel() {
         .addTooltip(
           "Use different shapes and colors for Java filetypes (e.g. Class, Interface, Record, etc.)"
         )
+        .addComponent(go)
+        .addTooltip("Override the Go plugin icons")
         .panel
 
     add(form)
