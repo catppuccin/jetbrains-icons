@@ -9,6 +9,11 @@
 - Add code formatting with ktfmt
 - Add static analysis with detekt
 - Add tests
+- Updated Gradle to v8.11.2
+- Updated pnpm to v9.14.2
+- Updated @types/node to v22.0.1
+- Updated typescript to v5.7.2
+- Updated tsx to v4.19.2
 
 ### Deprecated
 
@@ -17,6 +22,9 @@
 ### Fixed
 
 - Fixed K2 compatibility warning
+- Moved to supported Gradle Action
+- Fixed Python icons when python Core plugin is installed
+- Fixed Go icons when Go Core plugin is installed
 
 ### Security
 
