@@ -6,6 +6,20 @@
 
 ### Changed
 
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## 1.10.1 - 2024-12-13
+
+### Added
+
+### Changed
+
 - Add code formatting with ktfmt
 - Add static analysis with detekt
 - Add tests
