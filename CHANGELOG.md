@@ -6,6 +6,18 @@
 
 ### Changed
 
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## 1.10.1 - 2024-12-13
+
+### Changed
+
 - Add code formatting with ktfmt
 - Add static analysis with detekt
 - Add tests
@@ -15,18 +27,12 @@
 - Updated typescript to v5.7.2
 - Updated tsx to v4.19.2
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 
 - Fixed K2 compatibility warning
 - Moved to supported Gradle Action
 - Fixed Python icons when python Core plugin is installed
 - Fixed Go icons when Go Core plugin is installed
-
-### Security
 
 ## 1.10.0 - 2024-10-13
 
