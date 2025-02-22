@@ -23,7 +23,7 @@ plugins {
   // ktfmt
   id("com.ncorti.ktfmt.gradle") version "0.21.0"
   //detekt
-  id("io.gitlab.arturbosch.detekt").version("1.23.7")
+  id("io.gitlab.arturbosch.detekt").version("1.23.8")
 }
 
 group = properties("pluginGroup")
