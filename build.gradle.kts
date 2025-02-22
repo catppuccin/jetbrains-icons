@@ -21,7 +21,7 @@ plugins {
 
   // Code Quality
   // ktfmt
-  id("com.ncorti.ktfmt.gradle") version "0.21.0"
+  id("com.ncorti.ktfmt.gradle") version "0.22.0"
   //detekt
   id("io.gitlab.arturbosch.detekt").version("1.23.8")
 }
