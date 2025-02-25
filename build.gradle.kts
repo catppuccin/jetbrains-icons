@@ -90,7 +90,7 @@ tasks {
     }
   }
 
-  wrapper { gradleVersion = "8.12.1" }
+  wrapper { gradleVersion = "8.13" }
 
   patchPluginXml {
     pluginVersion.set(properties("pluginVersion"))
