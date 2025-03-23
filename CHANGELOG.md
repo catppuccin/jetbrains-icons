@@ -4,10 +4,6 @@
 
 ### Added
 
-- Upgrade submodule `vscode-icons` from v1.17.0 to v1.20.0 (
-  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1200) for added
-  icons and associations)
-
 ### Changed
 
 ### Deprecated
@@ -17,6 +13,14 @@
 ### Fixed
 
 ### Security
+
+## 1.11.0 - 2025-03-23
+
+### Added
+
+- Upgrade submodule `vscode-icons` from v1.17.0 to v1.20.0 (
+  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1200) for added
+  icons and associations)
 
 ## 1.10.2 - 2025-02-22
 
