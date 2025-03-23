@@ -4,6 +4,10 @@
 
 ### Added
 
+- Upgrade submodule `vscode-icons` from v1.17.0 to v1.20.0 (
+  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1200) for added
+  icons and associations)
+
 ### Changed
 
 ### Deprecated
