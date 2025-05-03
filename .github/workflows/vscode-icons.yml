@@ -7,7 +7,7 @@ on:
 
 jobs:
   run:
-    uses: catppuccin/actions/.github/workflows/vscode-icons.yml@v1
+    uses: catppuccin/actions/.github/workflows/vscode-icons.yml@fix/inputs
     with:
       path: generate/vscode-icons
     secrets: inherit
