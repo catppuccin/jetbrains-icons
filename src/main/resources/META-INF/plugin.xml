@@ -3,7 +3,7 @@
   <name>Catppuccin Icons</name>
   <vendor url="https://github.com/catppuccin">Catppuccin</vendor>
   <description><![CDATA[
-<h2>🦊 Soothing pastel icons for JetBrains IDEs</h2>
+<h2>Soothing pastel icons for JetBrains IDEs</h2>
 
 <p>
 This is an <strong>icon pack</strong> designed to be used with the <a href="https://plugins.jetbrains.com/plugin/18682-catppuccin-theme" target="_blank">Catppuccin Theme</a></li> extension.
@@ -12,7 +12,7 @@ This is an <strong>icon pack</strong> designed to be used with the <a href="http
 <h3>Usage</h3>
 
 <ol>
-  <li>Head to <strong>Settings</strong> → <strong>Appearance & Behavior</strong> → <strong>Catppuccin Icons</strong></li>
+  <li>Head to <strong>Settings</strong> -> <strong>Appearance & Behavior</strong> -> <strong>Catppuccin Icons</strong></li>
   <li>Select a flavor for the icons to use.</li>
   <li>Restart your IDE.</li>
   <li>Enjoy your new icons!</li>
