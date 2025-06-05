@@ -22,8 +22,11 @@ plugins {
   // Code Quality
   // ktfmt
   id("com.ncorti.ktfmt.gradle") version "0.22.0"
-  //detekt
+  // detekt
   id("io.gitlab.arturbosch.detekt").version("1.23.8")
+
+  // Kotlin Serialization
+  id("org.jetbrains.kotlin.plugin.serialization") version "2.1.20"
 }
 
 group = properties("pluginGroup")
@@ -52,6 +55,9 @@ dependencies {
   }
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
+
+  // kotlinx-serialization for JSONC
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
 }
 
 intellijPlatform {
@@ -152,7 +158,6 @@ tasks.withType<Detekt>().configureEach {
 }
 
 tasks.register<Detekt>("runStaticAnalysis") {
-
   parallel = true
   config.setFrom("detekt.yaml")
   buildUponDefaultConfig = true

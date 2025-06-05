@@ -1,0 +1,36 @@
+{
+  "patcherConfigs": [
+    {
+      "name": "python",
+      "enabledSetting": "pythonSupport",
+      "overrides": [
+        {
+          "targetIcon": "/icons/com/jetbrains/python/parser/pythonFile.svg",
+          "patchIcon": "_python.svg"
+        },
+        {
+          "targetIcon": "/icons/com/jetbrains/python/parser/expui/python.svg",
+          "patchIcon": "_python.svg"
+        },
+        {
+          "targetIcon": "/icons/com/jetbrains/python/pythonFile.svg",
+          "patchIcon": "_python.svg"
+        }
+      ]
+    },
+    {
+      "name": "go",
+      "enabledSetting": "goSupport",
+      "overrides": [
+        {
+          "targetIcon": "/icons/expui/runTest@20x20.svg",
+          "patchIcon": "_go.svg"
+        },
+        {
+          "targetIcon": "/icons/runTest.svg",
+          "patchIcon": "_go.svg"
+        }
+      ]
+    }
+  ]
+}
