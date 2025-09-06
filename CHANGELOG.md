@@ -14,6 +14,15 @@
 
 ### Security
 
+## 1.12.0 - 2025-06-03
+
+### Added
+
+- Support 2025.2 EAP
+- Upgrade submodule `vscode-icons` from v1.20.0 to v1.21.0 (
+  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1210) for added
+  icons and associations)
+
 ## 1.11.0 - 2025-03-23
 
 ### Added
