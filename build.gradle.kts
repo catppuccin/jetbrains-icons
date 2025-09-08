@@ -15,7 +15,7 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "2.1.20"
   // Gradle IntelliJ Plugin
-  id("org.jetbrains.intellij.platform") version "2.1.0"
+  id("org.jetbrains.intellij.platform") version "2.9.0"
   // Gradle Changelog Plugin
   id("org.jetbrains.changelog") version "2.2.1"
 
