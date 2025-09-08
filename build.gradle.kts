@@ -17,7 +17,7 @@ plugins {
   // Gradle IntelliJ Plugin
   id("org.jetbrains.intellij.platform") version "2.1.0"
   // Gradle Changelog Plugin
-  id("org.jetbrains.changelog") version "2.2.1"
+  id("org.jetbrains.changelog") version "2.4.0"
 
   // Code Quality
   // ktfmt
