@@ -275,8 +275,8 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "PublicClass.java",
       """
-    public class PublicClass { }
-    """
+      public class PublicClass { }
+      """
         .trimIndent(),
     )
 
@@ -293,10 +293,10 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "OuterClass.java",
       """
-    public class OuterClass {
-      private class PrivateClass { }
-    }
-    """
+      public class OuterClass {
+        private class PrivateClass { }
+      }
+      """
         .trimIndent(),
     )
 
@@ -313,10 +313,10 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "OuterClass.java",
       """
-    public class OuterClass {
-      protected class ProtectedClass { }
-    }
-    """
+      public class OuterClass {
+        protected class ProtectedClass { }
+      }
+      """
         .trimIndent(),
     )
 
@@ -335,8 +335,8 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "PackagePrivateClass.java",
       """
-    class PackagePrivateClass { }
-    """
+      class PackagePrivateClass { }
+      """
         .trimIndent(),
     )
 

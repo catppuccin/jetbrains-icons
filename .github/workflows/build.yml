@@ -69,10 +69,14 @@ jobs:
       - name: Test & Build Plugin
         run: ./gradlew buildPlugin
 
+      - name: Get Commit SHA
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
       - name: Upload JAR(s)
         uses: actions/upload-artifact@v4
         with:
-          name: "Catppuccin Icons"
+          name: "catppuccin-icons-jetbrains-${{ steps.vars.outputs.sha_short }}"
           path: build/libs/*.jar
 
       - name: Output Unreleased Changes
