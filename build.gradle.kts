@@ -13,20 +13,20 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "2.1.20"
+  id("org.jetbrains.kotlin.jvm") version "2.2.20"
   // Gradle IntelliJ Plugin
-  id("org.jetbrains.intellij.platform") version "2.1.0"
+  id("org.jetbrains.intellij.platform") version "2.9.0"
   // Gradle Changelog Plugin
-  id("org.jetbrains.changelog") version "2.2.1"
+  id("org.jetbrains.changelog") version "2.4.0"
 
   // Code Quality
   // ktfmt
-  id("com.ncorti.ktfmt.gradle") version "0.22.0"
+  id("com.ncorti.ktfmt.gradle") version "0.24.0"
   // detekt
   id("io.gitlab.arturbosch.detekt").version("1.23.8")
 
   // Kotlin Serialization
-  id("org.jetbrains.kotlin.plugin.serialization") version "2.1.20"
+  id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20"
 }
 
 group = properties("pluginGroup")
@@ -48,7 +48,7 @@ dependencies {
     testFramework(TestFrameworkType.Plugin.Java)
   }
 
-  testImplementation(platform("org.junit:junit-bom:5.12.2"))
+  testImplementation(platform("org.junit:junit-bom:5.14.0"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher") {
     because("Only needed to run tests in a version of IntelliJ IDEA that bundles older versions")
@@ -57,7 +57,7 @@ dependencies {
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
   // kotlinx-serialization for JSONC
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 }
 
 intellijPlatform {
