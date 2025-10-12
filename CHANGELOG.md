@@ -4,11 +4,6 @@
 
 ### Added
 
-- Support 2025.3 EAP
-- Upgrade submodule `vscode-icons` from v1.21.0 to v1.26.0 (
-  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1260) for added
-  icons and associations)
-
 ### Changed
 
 ### Deprecated
@@ -18,6 +13,15 @@
 ### Fixed
 
 ### Security
+
+## 1.13.0 - 2025-10-12
+
+### Added
+
+- Support 2025.3 EAP
+- Upgrade submodule `vscode-icons` from v1.21.0 to v1.26.0 (
+  See [vscode-icons CHANGELOG.md](https://github.com/catppuccin/vscode-icons/blob/main/CHANGELOG.md#v1260) for added
+  icons and associations)
 
 ## 1.12.0 - 2025-06-03
 
