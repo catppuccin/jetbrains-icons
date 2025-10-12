@@ -13,6 +13,26 @@ function generateIcons(variant: string) {
   });
 }
 
+function startsWithNumber(str: string) {
+  return /^\d/.test(str);
+}
+
+function generateJvmField(file: string) {
+  const replacedFile = file.replace('.svg', '').replaceAll('-', '_');
+  if (startsWithNumber(file)) {
+    return `_${replacedFile}`;
+  }
+  return replacedFile;
+}
+
+function generateExtensionsToIcons(file: string) {
+  const replacedFile = file.replaceAll('-', '_');
+  if (startsWithNumber(file)) {
+    return `_${replacedFile}`;
+  }
+  return replacedFile;
+}
+
 // VSCode sometimes doesn't need the `fileExtension` block to be populated but that affects JetBrains so we can add our
 // own extensions/overrides here if need be.
 const customFileExtensions = {razor: "razor"}
@@ -31,7 +51,7 @@ class Icons(private val variant: String) {`
     }
 
     data += `\n    @JvmField`
-    data += `\n    val ${file.replace('.svg', '').replaceAll('-', '_')} = IconLoader.getIcon("/jetbrains_icons/icons/" + variant + "_${file}", javaClass)`
+    data += `\n    val ${generateJvmField(file)} = IconLoader.getIcon("/jetbrains_icons/icons/" + variant + "_${file}", javaClass)`
     data += `\n`
   })
 
@@ -52,7 +72,7 @@ class Icons(private val variant: String) {`
   // Extensions to Icons
   data += `\n    val EXT_TO_ICONS = mapOf(\n`
   Object.entries(extendedFileExtensions).forEach(([key, value]: [string, string]) => {
-    data += `        "${key}" to ${value.replaceAll('-', '_')},\n`
+    data += `        "${key}" to ${generateExtensionsToIcons(value)},\n`
   })
   data += `    )\n`
 
