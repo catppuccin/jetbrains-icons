@@ -30,7 +30,7 @@ class PsiClassUtilsTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "SomeClass.java",
       """
-       class SomeClass { }
+      class SomeClass { }
       """
         .trimIndent(),
     )
@@ -60,7 +60,7 @@ class PsiClassUtilsTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "SomeClass.java",
       """
-       class SomeClass { }
+      class SomeClass { }
       """
         .trimIndent(),
     )
@@ -90,7 +90,7 @@ class PsiClassUtilsTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "SomeClass.java",
       """
-       class SomeClass { }
+      class SomeClass { }
       """
         .trimIndent(),
     )
@@ -120,7 +120,7 @@ class PsiClassUtilsTest : LightJavaCodeInsightFixtureTestCase5() {
     fixture.addFileToProject(
       "SomeClass.java",
       """
-       class SomeClass { }
+      class SomeClass { }
       """
         .trimIndent(),
     )
