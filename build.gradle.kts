@@ -13,20 +13,20 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "2.2.20"
+  id("org.jetbrains.kotlin.jvm") version "2.3.10"
   // Gradle IntelliJ Plugin
-  id("org.jetbrains.intellij.platform") version "2.9.0"
+  id("org.jetbrains.intellij.platform") version "2.11.0"
   // Gradle Changelog Plugin
-  id("org.jetbrains.changelog") version "2.4.0"
+  id("org.jetbrains.changelog") version "2.5.0"
 
   // Code Quality
   // ktfmt
-  id("com.ncorti.ktfmt.gradle") version "0.24.0"
+  id("com.ncorti.ktfmt.gradle") version "0.25.0"
   // detekt
   id("io.gitlab.arturbosch.detekt").version("1.23.8")
 
   // Kotlin Serialization
-  id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20"
+  id("org.jetbrains.kotlin.plugin.serialization") version "2.3.10"
 }
 
 group = properties("pluginGroup")
@@ -42,13 +42,12 @@ dependencies {
   intellijPlatform {
     create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
     bundledPlugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
-    instrumentationTools()
     pluginVerifier()
     testFramework(TestFrameworkType.Platform)
     testFramework(TestFrameworkType.Plugin.Java)
   }
 
-  testImplementation(platform("org.junit:junit-bom:6.0.0"))
+  testImplementation(platform("org.junit:junit-bom:6.0.2"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher") {
     because("Only needed to run tests in a version of IntelliJ IDEA that bundles older versions")
@@ -57,7 +56,7 @@ dependencies {
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
   // kotlinx-serialization for JSONC
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
 }
 
 intellijPlatform {
@@ -90,7 +89,7 @@ tasks {
     }
     withType<KotlinCompile> {
       compilerOptions {
-        apiVersion = KotlinVersion.KOTLIN_1_8
+        apiVersion = KotlinVersion.KOTLIN_1_9
         jvmTarget = JvmTarget.fromTarget(properties("javaVersion"))
       }
     }
