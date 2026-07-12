@@ -100,7 +100,9 @@ tasks {
   patchPluginXml {
     pluginVersion.set(properties("pluginVersion"))
     sinceBuild.set(properties("pluginSinceBuild"))
-    untilBuild.set(properties("pluginUntilBuild"))
+    // Unset so the plugin declares compatibility with all IDE versions from since-build onwards.
+    // An empty gradle.properties value would produce until-build="" instead of removing the attribute.
+    untilBuild.set(provider { null })
 
     // Get the latest available change notes from the changelog file
     changeNotes.set(
