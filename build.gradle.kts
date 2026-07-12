@@ -2,6 +2,7 @@ import com.ncorti.ktfmt.gradle.tasks.KtfmtCheckTask
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.date
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
@@ -80,6 +81,18 @@ intellijPlatform {
   pluginVerification { ides { recommended() } }
 }
 
+intellijPlatformTesting {
+  runIde {
+    register("runLatestIde") {
+      // The separate Community (IC) distribution is no longer published since 2025.3;
+      // the unified IntelliJ IDEA distribution replaces it.
+      type = IntelliJPlatformType.IntellijIdea
+      version = "2026.1.4"
+      task { jvmArgs("-Xmx2048m") }
+    }
+  }
+}
+
 tasks {
   // Set the JVM compatibility versions
   properties("javaVersion").let {
@@ -96,6 +109,10 @@ tasks {
   }
 
   wrapper { gradleVersion = "9.1.0" }
+
+  // Keep the sandbox heap above the 750MB threshold of MemorySizeConfigurator, which otherwise
+  // fails with an IOException trying to write vmoptions the sandbox does not have.
+  runIde { jvmArgs("-Xmx2048m") }
 
   patchPluginXml {
     pluginVersion.set(properties("pluginVersion"))
