@@ -56,7 +56,7 @@ dependencies {
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
   // kotlinx-serialization for JSONC
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 }
 
 intellijPlatform {
