@@ -4,6 +4,8 @@
 
 ### Added
 
+- Support 2026.2
+
 ### Changed
 
 ### Deprecated
