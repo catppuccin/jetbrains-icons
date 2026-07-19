@@ -4,9 +4,9 @@
 
 ### Added
 
-### Changed
+- Support 2026.2
 
-- Removed the `until-build` restriction, the plugin now stays compatible with all future IDE versions without needing a release per IDE version
+### Changed
 
 ### Deprecated
 
