@@ -62,4 +62,5 @@ For further help, see also:
   <extensions defaultExtensionNs="com.intellij.kotlin">
     <supportsKotlinPluginMode supportsK2="true"/>
   </extensions>
+  <resource-bundle>messages.PluginSettingsBundle</resource-bundle>
 </idea-plugin>

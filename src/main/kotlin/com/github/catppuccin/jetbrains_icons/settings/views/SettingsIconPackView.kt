@@ -1,5 +1,6 @@
 package com.github.catppuccin.jetbrains_icons.settings.views
 
+import com.github.catppuccin.jetbrains_icons.bundles.PluginSettingsBundle
 import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.github.catppuccin.jetbrains_icons.settings.Variant
 import com.github.catppuccin.jetbrains_icons.util.IdeTheme
@@ -31,7 +32,8 @@ class SettingsIconPackView(state: PluginSettingsState) : JPanel() {
 
   private var selectedLightVariant: String = Variant.LATTE.id
 
-  val syncCheckbox = JBCheckBox("Sync with OS", state.syncWithOs)
+  val syncCheckbox =
+    JBCheckBox(PluginSettingsBundle.message("settings.sync.with.os"), state.syncWithOs)
 
   private val gearIcon: Icon = themedActionIcon(AllIcons.General.Gear)
 
@@ -40,7 +42,7 @@ class SettingsIconPackView(state: PluginSettingsState) : JPanel() {
       init {
         isPopup = true
         templatePresentation.icon = gearIcon
-        templatePresentation.text = "Preferred Icon"
+        templatePresentation.text = PluginSettingsBundle.message("settings.sync.gear.tooltip")
       }
 
       override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.EDT
@@ -61,11 +63,11 @@ class SettingsIconPackView(state: PluginSettingsState) : JPanel() {
     get() = selectedLightVariant
 
   init {
-    preferredPacksGroup.add(Separator.create("For Dark OS"))
+    preferredPacksGroup.add(Separator.create(PluginSettingsBundle.message("settings.sync.dark")))
     for (pack in DARK_VARIANTS) {
       preferredPacksGroup.add(SelectVariantAction(pack, isDark = true))
     }
-    preferredPacksGroup.add(Separator.create("For Light OS"))
+    preferredPacksGroup.add(Separator.create(PluginSettingsBundle.message("settings.sync.light")))
     for (pack in LIGHT_VARIANTS) {
       preferredPacksGroup.add(SelectVariantAction(pack, isDark = false))
     }
@@ -73,7 +75,7 @@ class SettingsIconPackView(state: PluginSettingsState) : JPanel() {
     val presentation =
       Presentation().apply {
         icon = gearIcon
-        text = "Preferred Icon"
+        text = PluginSettingsBundle.message("settings.sync.gear.tooltip")
         isPopupGroup = true
         isEnabled = state.syncWithOs
       }
@@ -109,7 +111,12 @@ class SettingsIconPackView(state: PluginSettingsState) : JPanel() {
 
     val form =
       FormBuilder.createFormBuilder()
-        .addLabeledComponent(JBLabel("Variant:"), controls, 1, false)
+        .addLabeledComponent(
+          JBLabel(PluginSettingsBundle.message("settings.variant")),
+          controls,
+          1,
+          false,
+        )
         .panel
 
     add(form)
