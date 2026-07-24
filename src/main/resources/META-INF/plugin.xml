@@ -51,7 +51,14 @@ For further help, see also:
       serviceImplementation="com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState"
     />
     <postStartupActivity implementation="com.github.catppuccin.jetbrains_icons.activity.IconPathPatcherActivity"/>
+    <postStartupActivity implementation="com.github.catppuccin.jetbrains_icons.activity.ThemeSyncActivity"/>
   </extensions>
+  <applicationListeners>
+    <listener
+      class="com.github.catppuccin.jetbrains_icons.listeners.ThemeSyncListener"
+      topic="com.intellij.ide.ui.LafManagerListener"
+    />
+  </applicationListeners>
   <extensions defaultExtensionNs="com.intellij.kotlin">
     <supportsKotlinPluginMode supportsK2="true"/>
   </extensions>

@@ -14,14 +14,6 @@ import javax.swing.Icon
  * specific.
  */
 class IconProvider : IconProvider() {
-  /**
-   * Overrides of filenames to icons. If the filename matches (case-insensitive), then return this
-   * icon.
-   *
-   * All keys should be lowercase so file names can be matched.
-   */
-  private val iconOverrides = mapOf("dockerfile" to icons.docker)
-
   /** File extensions that are handled by more specific providers (not this class). */
   private val fileTypesByProviders = listOf(".java")
 
@@ -57,11 +49,9 @@ class IconProvider : IconProvider() {
     val fileTypeName = file?.fileType?.name?.lowercase()
 
     return when {
-      // Check if the name of the file is overridden by anything, if so return that icon.
-      iconOverrides.containsKey(fileTypeName) -> iconOverrides[fileTypeName]
+      fileTypeName == "dockerfile" -> icons.docker
       virtualFile?.isDirectory == true ->
         icons.FOLDER_TO_ICONS[virtualFile.name.lowercase()] ?: icons._folder
-
       else -> findFileIcon(virtualFile) ?: icons._file
     }
   }

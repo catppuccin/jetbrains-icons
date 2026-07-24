@@ -3,5 +3,14 @@ package com.github.catppuccin.jetbrains_icons
 import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 
 object IconPack {
-  val icons: Icons by lazy { Icons(PluginSettingsState.instance.variant) }
+  @Volatile private var current: Icons? = null
+
+  val icons: Icons
+    get() = current ?: load(PluginSettingsState.instance.variant).also { current = it }
+
+  fun reload(variant: String = PluginSettingsState.instance.variant) {
+    current = load(variant)
+  }
+
+  private fun load(variant: String): Icons = Icons(variant)
 }
