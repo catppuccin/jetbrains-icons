@@ -15,6 +15,12 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
   var variant = Variant.MOCHA.id
 
+  var syncWithOs = false
+
+  var darkVariant = Variant.MOCHA.id
+
+  var lightVariant = Variant.LATTE.id
+
   var pythonSupport = true
   var javaSupport = isPluginInstalled(getId("com.intellij.java"))
   var goSupport = true
