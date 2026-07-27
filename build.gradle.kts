@@ -4,6 +4,7 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.date
 import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.models.ProductRelease
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -60,6 +61,17 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 }
 
+// kotlinx-serialization drags in kotlin-stdlib (and the ancient org.jetbrains:annotations 13.0 that
+// stdlib depends on) transitively, which lands them in the plugin distribution's lib/ directory and
+// shadows the copies the IntelliJ Platform already ships. `kotlin.stdlib.default.dependency=false`
+// in gradle.properties only stops the Kotlin plugin from adding stdlib directly, not transitively.
+// The runtime classpath is what the distribution is assembled from, so exclude them there; the
+// compile classpath is left alone, since it takes both from the IntelliJ Platform dependency.
+configurations.runtimeClasspath {
+  exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib")
+  exclude(group = "org.jetbrains", module = "annotations")
+}
+
 intellijPlatform {
   pluginConfiguration {
     id.set(properties("pluginGroup"))
@@ -78,7 +90,23 @@ intellijPlatform {
     }
   }
 
-  pluginVerification { ides { recommended() } }
+  pluginVerification {
+    ides {
+      // Covers the IntelliJ IDEA Community releases in range, which stop at 2025.2: the separate
+      // Community distribution is no longer published for 2025.3 and later.
+      recommended()
+
+      // Without this, verification silently stops at 2025.2 while the plugin advertises support up
+      // to `pluginUntilBuild`, because recommended() has no Community releases left to offer. The
+      // unified IntelliJ IDEA distribution replaces the Community one from 2025.3 (253) onwards.
+      select {
+        types = listOf(IntelliJPlatformType.IntellijIdea)
+        channels = listOf(ProductRelease.Channel.RELEASE)
+        sinceBuild = "253"
+        untilBuild = properties("pluginUntilBuild")
+      }
+    }
+  }
 }
 
 intellijPlatformTesting {
@@ -102,6 +130,10 @@ tasks {
     }
     withType<KotlinCompile> {
       compilerOptions {
+        // Must not exceed the Kotlin stdlib bundled with the IDE at pluginSinceBuild, since the
+        // plugin does not bundle its own stdlib (see the runtimeClasspath exclusions above) and
+        // resolves against the IDE's. 2025.2 (252) bundles stdlib 2.2.0, so this matches exactly.
+        // Raising it requires raising pluginSinceBuild to an IDE that bundles that stdlib.
         apiVersion = KotlinVersion.KOTLIN_2_2
         jvmTarget = JvmTarget.fromTarget(properties("javaVersion"))
       }
@@ -128,6 +160,17 @@ tasks {
   test {
     useJUnitPlatform()
     testLogging { events("passed", "skipped", "failed") }
+
+    // Run the tests on a stock JDK instead of the JetBrains Runtime the platform would otherwise
+    // supply. JBR starts a "SystemPropertyWatcher" thread (sun.awt.UNIXToolkit) that the test
+    // framework's leak detector does not recognise, so every run fails on a leaked thread that has
+    // nothing to do with the plugin. Suppressing it instead would mean calling ThreadLeakTracker,
+    // which is @ApiStatus.Internal. These tests cover PSI and icon resolution rather than real UI
+    // rendering, so a stock JDK of the same major version as the bundled JBR is close enough.
+    javaLauncher =
+      project.the<JavaToolchainService>().launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+      }
   }
 
   buildPlugin { dependsOn(test) }

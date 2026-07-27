@@ -52,7 +52,15 @@ For further help, see also:
     />
     <postStartupActivity implementation="com.github.catppuccin.jetbrains_icons.activity.IconPathPatcherActivity"/>
   </extensions>
-  <extensions defaultExtensionNs="com.intellij.kotlin">
+  <!--
+    Namespaced "org.jetbrains.kotlin" (the Kotlin plugin's ID, which declares this extension point)
+    rather than "com.intellij.kotlin", which resolves to nothing and leaves K2 mode undeclared.
+
+    This has to live in the main descriptor even though the org.jetbrains.kotlin dependency is
+    optional: the Plugin Verifier only reads this file, and reports the mode as undeclared when the
+    extension is in the optional config file instead.
+  -->
+  <extensions defaultExtensionNs="org.jetbrains.kotlin">
     <supportsKotlinPluginMode supportsK2="true"/>
   </extensions>
   <resource-bundle>messages.PluginSettingsBundle</resource-bundle>

@@ -5,7 +5,7 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
-import com.intellij.openapi.extensions.PluginId.getId
+import com.intellij.openapi.extensions.PluginId
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(
@@ -16,7 +16,7 @@ class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
   var variant = Variant.MOCHA.id
 
   var pythonSupport = true
-  var javaSupport = isPluginInstalled(getId("com.intellij.java"))
+  var javaSupport = isPluginInstalled(PluginId.getId("com.intellij.java"))
   var goSupport = true
 
   override fun getState(): PluginSettingsState = this

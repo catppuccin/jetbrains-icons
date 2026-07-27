@@ -6,7 +6,6 @@ import com.intellij.psi.PsiElement
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase5
 import com.intellij.testFramework.runInEdtAndGet
 import javax.swing.Icon
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class IconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
@@ -38,6 +37,6 @@ class IconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
     val provider = IconProvider()
     val icon = runInEdtAndGet { provider.getIcon(element(), 1) }
 
-    assertEquals(expected, icon)
+    assertSameIcon(expected, icon)
   }
 }

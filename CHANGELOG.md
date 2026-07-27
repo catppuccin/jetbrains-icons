@@ -6,11 +6,25 @@
 
 ### Changed
 
+- Raised the minimum supported IDE to 2025.2 (build 252) and now build against it, so the compiler
+  reports APIs deprecated after the minimum rather than hiding them until runtime
+- Verify the plugin against the whole supported build range: the IntelliJ IDEA Community
+  distribution stops at 2025.2, so 2025.3 and later are now covered by the unified distribution
+- Run tests on a stock JDK 21 instead of the JetBrains Runtime, which starts a thread the test
+  framework's leak detector does not recognise
+
 ### Deprecated
 
 ### Removed
 
+- No longer bundle `kotlin-stdlib` and `annotations` in the plugin distribution; they shadowed the
+  copies the IntelliJ Platform already provides
+
 ### Fixed
+
+- Declare Kotlin K2 mode support under the correct `org.jetbrains.kotlin` extension namespace, so it
+  is actually honoured
+- Call `PluginId.getId` in a way that still compiles against current platform versions
 
 ### Security
 
