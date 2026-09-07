@@ -108,7 +108,7 @@ tasks {
     }
   }
 
-  wrapper { gradleVersion = "9.6.1" }
+  wrapper { gradleVersion = "9.7.1" }
 
   // Keep the sandbox heap above the 750MB threshold of MemorySizeConfigurator, which otherwise
   // fails with an IOException trying to write vmoptions the sandbox does not have.
