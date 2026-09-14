@@ -1,7 +1,7 @@
 package com.github.com.catppuccin.jetbrains_icons.providers
 
 import com.github.catppuccin.jetbrains_icons.Icons
-import com.github.catppuccin.jetbrains_icons.providers.JavaIconProvider
+import com.github.catppuccin.jetbrains_icons.providers.CatppuccinJavaIconProvider
 import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.intellij.icons.AllIcons
 import com.intellij.ide.projectView.impl.ProjectViewState
@@ -9,24 +9,21 @@ import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase5
 import com.intellij.testFramework.runInEdtAndGet
 import com.intellij.ui.LayeredIcon
 import com.intellij.ui.RowIcon
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertNull
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 /**
- * Tests for [JavaIconProvider]. This tests that the correct icons are returned for Java classes in
- * both the files and the structure views.
+ * Tests for [CatppuccinJavaIconProvider]. This tests that the correct icons are returned for Java
+ * classes in both the files and the structure views.
  */
-class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
+class CatppuccinJavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
   override fun getTestDataPath(): String = "src/test/testData"
 
   private val icons = Icons("mocha")
-  private val provider = JavaIconProvider()
+  private val provider = CatppuccinJavaIconProvider()
 
   @BeforeEach
   fun setUp() {
