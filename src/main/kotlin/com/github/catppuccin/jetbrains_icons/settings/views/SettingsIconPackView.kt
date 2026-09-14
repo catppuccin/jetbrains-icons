@@ -4,7 +4,6 @@ import com.github.catppuccin.jetbrains_icons.settings.Variant
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.components.JBLabel
 import com.intellij.util.ui.FormBuilder
-import java.awt.Component
 import java.awt.FlowLayout
 import javax.swing.JPanel
 
@@ -33,6 +32,6 @@ class SettingsIconPackView(private val currentVariant: String) : JPanel() {
       dropdown.addItem(variant)
     }
     dropdown.selectedItem = Variant.values().find { it.id == currentVariant }
-    dropdown.alignmentY = Component.CENTER_ALIGNMENT
+    dropdown.alignmentY = CENTER_ALIGNMENT
   }
 }

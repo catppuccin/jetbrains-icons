@@ -36,9 +36,9 @@ For further help, see also:
   <depends optional="true" config-file="com.github.catppuccin.jetbrains_icons-withJava.xml">com.intellij.java</depends>
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider
-      implementation="com.github.catppuccin.jetbrains_icons.IconProvider"
+      implementation="com.github.catppuccin.jetbrains_icons.CatppuccinIconProvider"
       order="first"
-      id="IconProvider"
+      id="CatppuccinIconProvider"
     />
     <applicationConfigurable
       parentId="appearance"
