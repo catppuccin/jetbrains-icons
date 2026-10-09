@@ -3,6 +3,7 @@ package com.github.com.catppuccin.jetbrains_icons.providers
 import com.github.catppuccin.jetbrains_icons.Icons
 import com.github.catppuccin.jetbrains_icons.providers.JavaIconProvider
 import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
+import com.github.com.catppuccin.jetbrains_icons.assertSameIcon
 import com.intellij.icons.AllIcons
 import com.intellij.ide.projectView.impl.ProjectViewState
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase5
@@ -47,7 +48,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeClass"), 1) }
 
-    assertEquals(icons.java_class, icon)
+    assertSameIcon(icons.java_class, icon)
   }
 
   @Test
@@ -63,7 +64,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeInterface"), 1) }
 
-    assertEquals(icons.java_interface, icon)
+    assertSameIcon(icons.java_interface, icon)
   }
 
   @Test
@@ -79,7 +80,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeEnum"), 1) }
 
-    assertEquals(icons.java_enum, icon)
+    assertSameIcon(icons.java_enum, icon)
   }
 
   @Test
@@ -95,7 +96,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeAnnotation"), 1) }
 
-    assertEquals(icons.java_annotation, icon)
+    assertSameIcon(icons.java_annotation, icon)
   }
 
   @Test
@@ -111,7 +112,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeRecord"), 1) }
 
-    assertEquals(icons.java_record, icon)
+    assertSameIcon(icons.java_record, icon)
   }
 
   @Test
@@ -127,7 +128,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeException"), 1) }
 
-    assertEquals(icons.java_exception, icon)
+    assertSameIcon(icons.java_exception, icon)
   }
 
   @Test
@@ -143,7 +144,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeSealedClass"), 1) }
 
-    assertEquals(icons.java_class_sealed, icon)
+    assertSameIcon(icons.java_class_sealed, icon)
   }
 
   @Test
@@ -159,7 +160,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeFinalClass"), 1) }
 
-    assertEquals(icons.java_class_final, icon)
+    assertSameIcon(icons.java_class_final, icon)
   }
 
   @Test
@@ -175,7 +176,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeAbstractClass"), 1) }
 
-    assertEquals(icons.java_class_abstract, icon)
+    assertSameIcon(icons.java_class_abstract, icon)
   }
 
   @Test
@@ -266,7 +267,7 @@ class JavaIconProviderTest : LightJavaCodeInsightFixtureTestCase5() {
 
     val icon = runInEdtAndGet { provider.getIcon(fixture.findClass("SomeClass"), 1) }
 
-    assertEquals(icons.java, icon)
+    assertSameIcon(icons.java, icon)
   }
 
   @Test

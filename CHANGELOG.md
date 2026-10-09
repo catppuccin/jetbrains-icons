@@ -6,6 +6,9 @@
 
 ### Changed
 
+- Raised the minimum supported IDE to 2025.2; older IDEs stay on 1.13.3
+- Reduced the plugin size by no longer bundling Kotlin libraries the IDE already provides
+
 ### Deprecated
 
 ### Removed
