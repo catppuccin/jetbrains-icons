@@ -30,9 +30,12 @@ jobs:
         uses: actions/setup-java@v6
         with:
           distribution: zulu
-          # Gradle runs on this JDK, and the `test` task's toolchain also requests 21 so the tests
-          # run on a stock JDK rather than the JetBrains Runtime (see build.gradle.kts).
-          java-version: 21
+          # Gradle runs on 25, the last version listed. 21 is installed for the `test` task's
+          # toolchain, which runs the tests on a stock JDK rather than the JetBrains Runtime (see
+          # build.gradle.kts).
+          java-version: |
+            21
+            25
           cache: 'gradle'
 
       - name: Setup Gradle
