@@ -107,14 +107,9 @@ class GeneralIconPatcher(
       val settings = PluginSettingsState.instance
       return configList.patcherConfigs.map { iconPatcherConfig ->
         val overrideMap = iconPatcherConfig.overrides.associate { it.targetIcon to it.patchIcon }
-        val isEnabled: () -> Boolean = {
-          runCatching {
-              val prop =
-                settings::class.members.first { it.name == iconPatcherConfig.enabledSetting }
-              prop.call(settings) as Boolean
-            }
-            .getOrDefault(false)
-        }
+        val property =
+          settings::class.members.firstOrNull { it.name == iconPatcherConfig.enabledSetting }
+        val isEnabled: () -> Boolean = { property?.call(settings) as? Boolean ?: false }
         Config(isEnabled, overrideMap)
       }
     }
