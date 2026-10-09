@@ -94,7 +94,8 @@ intellijPlatform {
       // unified IntelliJ IDEA distribution replaces the Community one from 2025.3 (253) onwards.
       select {
         types = listOf(IntelliJPlatformType.IntellijIdea)
-        channels = listOf(ProductRelease.Channel.RELEASE)
+        // EAP is included so a `pluginUntilBuild` that is still in early access gets verified too.
+        channels = listOf(ProductRelease.Channel.RELEASE, ProductRelease.Channel.EAP)
         sinceBuild = "253"
         untilBuild = properties("pluginUntilBuild")
       }
