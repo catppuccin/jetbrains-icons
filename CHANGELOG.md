@@ -17,8 +17,8 @@
 
 ### Removed
 
-- No longer bundle `kotlin-stdlib` and `annotations` in the plugin distribution; they shadowed the
-  copies the IntelliJ Platform already provides
+- No longer bundle `kotlin-stdlib`, `annotations` and `kotlinx-serialization` in the plugin
+  distribution; they shadowed the copies the IntelliJ Platform already provides
 
 ### Fixed
 

@@ -2,5 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>catppuccin/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "description": "Compile-only and supplied by the IDE at runtime, so it tracks the version bundled at pluginSinceBuild rather than the latest release",
+      "matchPackageNames": ["org.jetbrains.kotlinx:kotlinx-serialization-json"],
+      "enabled": false
+    }
   ]
 }

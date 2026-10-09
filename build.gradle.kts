@@ -57,19 +57,12 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
-  // kotlinx-serialization for JSONC
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
-}
-
-// kotlinx-serialization drags in kotlin-stdlib (and the ancient org.jetbrains:annotations 13.0 that
-// stdlib depends on) transitively, which lands them in the plugin distribution's lib/ directory and
-// shadows the copies the IntelliJ Platform already ships. `kotlin.stdlib.default.dependency=false`
-// in gradle.properties only stops the Kotlin plugin from adding stdlib directly, not transitively.
-// The runtime classpath is what the distribution is assembled from, so exclude them there; the
-// compile classpath is left alone, since it takes both from the IntelliJ Platform dependency.
-configurations.runtimeClasspath {
-  exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib")
-  exclude(group = "org.jetbrains", module = "annotations")
+  // kotlinx-serialization for JSONC. The IntelliJ Platform bundles it (lib/util-8.jar) and supplies
+  // it at runtime, so it is compile-only and not shipped with the plugin. Keep the version at the
+  // one bundled by the IDE at pluginSinceBuild (2025.2 bundles 1.8.1), not the latest release.
+  compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1") {
+    exclude(group = "org.jetbrains.kotlin")
+  }
 }
 
 intellijPlatform {
@@ -131,9 +124,9 @@ tasks {
     withType<KotlinCompile> {
       compilerOptions {
         // Must not exceed the Kotlin stdlib bundled with the IDE at pluginSinceBuild, since the
-        // plugin does not bundle its own stdlib (see the runtimeClasspath exclusions above) and
-        // resolves against the IDE's. 2025.2 (252) bundles stdlib 2.2.0, so this matches exactly.
-        // Raising it requires raising pluginSinceBuild to an IDE that bundles that stdlib.
+        // plugin does not bundle its own stdlib and resolves against the IDE's. 2025.2 (252) bundles
+        // stdlib 2.2.0, so this matches exactly. Raising it requires raising pluginSinceBuild to an
+        // IDE that bundles that stdlib.
         apiVersion = KotlinVersion.KOTLIN_2_2
         jvmTarget = JvmTarget.fromTarget(properties("javaVersion"))
       }
