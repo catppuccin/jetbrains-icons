@@ -17,9 +17,9 @@ enum class Variant(val id: String, private val label: String) {
   override fun toString(): String = label
 }
 
-class PluginSettingsComponent(currentVariant: String) {
+class PluginSettingsComponent(state: PluginSettingsState) {
   val additionalSupport = SettingsAdditionalSupportView()
-  val iconPack = SettingsIconPackView(currentVariant)
+  val iconPack = SettingsIconPackView(state)
 
   val view: JPanel =
     FormBuilder.createFormBuilder()
