@@ -6,6 +6,8 @@ import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.openapi.extensions.PluginId.getId
+import com.intellij.openapi.fileTypes.FileNameMatcher
+import com.intellij.openapi.fileTypes.WildcardFileNameMatcher
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(
@@ -18,6 +20,16 @@ class PluginSettingsState : PersistentStateComponent<PluginSettingsState> {
   var pythonSupport = true
   var javaSupport = isPluginInstalled(getId("com.intellij.java"))
   var goSupport = true
+  var ignoredFiles = ""
+    set(value) {
+      if (value == field) return
+
+      field = value
+      ignoredFileMatchers =
+        value.split(",").map(String::trim).filter(String::isNotEmpty).map(::WildcardFileNameMatcher)
+    }
+
+  @Transient var ignoredFileMatchers: List<FileNameMatcher> = emptyList()
 
   override fun getState(): PluginSettingsState = this
 

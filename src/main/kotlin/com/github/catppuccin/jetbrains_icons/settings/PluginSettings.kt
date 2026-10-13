@@ -20,7 +20,8 @@ class PluginSettings : Configurable {
     return packChanged() ||
       component.additionalSupport.python.isSelected != state.pythonSupport ||
       component.additionalSupport.java.isSelected != state.javaSupport ||
-      component.additionalSupport.go.isSelected != state.goSupport
+      component.additionalSupport.go.isSelected != state.goSupport ||
+      component.additionalSupport.ignoredFiles.text != state.ignoredFiles
   }
 
   override fun apply() {
@@ -29,6 +30,7 @@ class PluginSettings : Configurable {
     state.pythonSupport = component.additionalSupport.python.isSelected
     state.javaSupport = component.additionalSupport.java.isSelected
     state.goSupport = component.additionalSupport.go.isSelected
+    state.ignoredFiles = component.additionalSupport.ignoredFiles.text
 
     if (packChanged()) {
       state.variant = component.iconPack.variant
@@ -52,7 +54,7 @@ class PluginSettings : Configurable {
 
   private fun restart() {
     val exitConfirmed =
-      if (GeneralSettings.getInstance().isConfirmExit) {
+      !GeneralSettings.getInstance().isConfirmExit ||
         Messages.showYesNoDialog(
           PluginSettingsBundle.message("dialog.message.restart.ide"),
           PluginSettingsBundle.message("dialog.title.restart.ide"),
@@ -60,9 +62,6 @@ class PluginSettings : Configurable {
           PluginSettingsBundle.message("dialog.action.restart.cancel"),
           Messages.getWarningIcon(),
         ) == Messages.YES
-      } else {
-        true
-      }
 
     if (exitConfirmed) {
       val app = ApplicationManager.getApplication() as ApplicationEx

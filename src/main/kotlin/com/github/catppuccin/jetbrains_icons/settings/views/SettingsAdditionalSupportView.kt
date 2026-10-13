@@ -4,6 +4,8 @@ import com.github.catppuccin.jetbrains_icons.settings.PluginSettingsState
 import com.intellij.ide.plugins.PluginManager.isPluginInstalled
 import com.intellij.openapi.extensions.PluginId.findId
 import com.intellij.ui.components.JBCheckBox
+import com.intellij.ui.components.JBLabel
+import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.FormBuilder
 import java.awt.FlowLayout
 import javax.swing.JPanel
@@ -15,6 +17,7 @@ class SettingsAdditionalSupportView : JPanel() {
       isEnabled = isPluginInstalled(findId("com.intellij.java"))
     }
   val go = JBCheckBox("Go", PluginSettingsState.instance.goSupport)
+  val ignoredFiles = JBTextField(PluginSettingsState.instance.ignoredFiles)
 
   init {
     val form =
@@ -27,6 +30,8 @@ class SettingsAdditionalSupportView : JPanel() {
         )
         .addComponent(go)
         .addTooltip("Override the Go plugin icons")
+        .addLabeledComponent(JBLabel("Ignored files:"), ignoredFiles, 1, false)
+        .addTooltip("Comma-separated wildcard patterns to skip when applying icons")
         .panel
 
     add(form)
