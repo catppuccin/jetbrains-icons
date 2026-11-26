@@ -61,17 +61,16 @@ class GeneralIconPatcher(
      *
      * @param configs The list of [Config]s to install.
      */
-    suspend fun installAll(configs: List<Config>) =
-      isInstalledMutex.withLock {
-        if (!isInstalled) {
-          isInstalled = true
-          configs.forEach { config ->
-            IconLoader.installPathPatcher(
-              GeneralIconPatcher(config.isEnabled, config.overrideMap, config.variantProvider)
-            )
-          }
+    suspend fun installAll(configs: List<Config>) = isInstalledMutex.withLock {
+      if (!isInstalled) {
+        isInstalled = true
+        configs.forEach { config ->
+          IconLoader.installPathPatcher(
+            GeneralIconPatcher(config.isEnabled, config.overrideMap, config.variantProvider)
+          )
         }
       }
+    }
 
     /**
      * Configuration for a [GeneralIconPatcher] instance.

@@ -14,7 +14,7 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "2.4.10"
+  id("org.jetbrains.kotlin.jvm") version "2.4.21"
   // Gradle IntelliJ Plugin
   id("org.jetbrains.intellij.platform") version "2.18.1"
   // Gradle Changelog Plugin
@@ -22,12 +22,12 @@ plugins {
 
   // Code Quality
   // ktfmt
-  id("com.ncorti.ktfmt.gradle") version "0.25.0"
+  id("com.ncorti.ktfmt.gradle") version "0.27.0"
   // detekt
   id("io.gitlab.arturbosch.detekt").version("1.23.8")
 
   // Kotlin Serialization
-  id("org.jetbrains.kotlin.plugin.serialization") version "2.4.10"
+  id("org.jetbrains.kotlin.plugin.serialization") version "2.4.21"
 }
 
 group = properties("pluginGroup")
@@ -48,7 +48,7 @@ dependencies {
     testFramework(TestFrameworkType.Plugin.Java)
   }
 
-  testImplementation(platform("org.junit:junit-bom:6.1.2"))
+  testImplementation(platform("org.junit:junit-bom:6.1.3"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher") {
     because("Only needed to run tests in a version of IntelliJ IDEA that bundles older versions")
@@ -108,7 +108,7 @@ tasks {
     }
   }
 
-  wrapper { gradleVersion = "9.6.1" }
+  wrapper { gradleVersion = "9.8.1" }
 
   // Keep the sandbox heap above the 750MB threshold of MemorySizeConfigurator, which otherwise
   // fails with an IOException trying to write vmoptions the sandbox does not have.
