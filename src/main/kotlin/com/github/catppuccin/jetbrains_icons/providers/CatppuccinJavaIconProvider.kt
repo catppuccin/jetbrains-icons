@@ -6,7 +6,6 @@ import com.github.catppuccin.jetbrains_icons.util.PsiClassUtils
 import com.intellij.icons.AllIcons
 import com.intellij.ide.IconProvider
 import com.intellij.ide.projectView.ProjectView
-import com.intellij.openapi.util.Iconable.IconFlags
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiModifier
@@ -14,24 +13,22 @@ import com.intellij.psi.util.PsiUtilCore
 import com.intellij.ui.LayeredIcon
 import com.intellij.ui.RowIcon
 import javax.swing.Icon
-import org.jetbrains.annotations.NotNull
 
 /** Provides icons for Java classes */
-class JavaIconProvider : IconProvider() {
+class CatppuccinJavaIconProvider : IconProvider() {
   /**
    * Returns an icon for the given [PsiElement] if it's a Java class.
    *
    * @param element The [PsiElement] to get an icon for.
-   * @param flags Additional flags for icon retrieval.
+   * @param flags Additional flags for icon retrieval (not used in this implementation).
    * @return The icon for the element, or null if no suitable icon is found.
    */
-  override fun getIcon(@NotNull element: PsiElement, @IconFlags flags: Int): Icon? =
-    when {
-      !PluginSettingsState.instance.javaSupport -> icons.java
-      element !is PsiClass -> null
-      PsiUtilCore.getVirtualFile(element)?.name?.endsWith(".java") != true -> null
-      else -> getJavaClassIcon(element)
-    }
+  override fun getIcon(element: PsiElement, flags: Int): Icon? {
+    if (element !is PsiClass) return null
+    if (PsiUtilCore.getVirtualFile(element)?.name?.endsWith(".java") != true) return null
+
+    return if (PluginSettingsState.instance.javaSupport) getJavaClassIcon(element) else icons.java
+  }
 
   /**
    * Gets the appropriate icon for a Java class, including static and visibility markers.
